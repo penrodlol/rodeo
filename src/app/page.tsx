@@ -1,6 +1,6 @@
 import Text from '@/components/text';
 import Section from './_section';
-import Typography from './components/typography';
+import Typography from './components/_typography';
 
 // prettier-ignore
 export default function HomePage() {
