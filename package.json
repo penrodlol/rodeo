@@ -8,16 +8,39 @@
     "start": "next start"
   },
   "dependencies": {
+    "next": "15.5.3",
+    "next-themes": "^0.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "react-aria": "^3.43.2",
+    "react-aria-components": "^1.12.2",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwind-merge": "^3.3.1",
+    "tailwind-variants": "^3.1.1",
+    "tailwindcss": "^4",
+    "tailwindcss-react-aria-components": "^2.0.1",
+    "typescript": "^5"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "all",
+    "proseWrap": "always",
+    "printWidth": 120,
+    "tailwindFunctions": [
+      "tv",
+      "twMerge",
+      "twJoin"
+    ],
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }
