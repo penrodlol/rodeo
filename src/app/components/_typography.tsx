@@ -1,4 +1,4 @@
-import Text from '@/components/text';
+import { Currency, DateTime, Numeric, Percentage, Text, Unit } from '@/components/typography';
 import Box from '../_box';
 
 export default function Typography() {
@@ -30,6 +30,22 @@ export default function Typography() {
       <Box className="gap-6">
         <Text italic>Italic</Text>
         <Text underline>Underline</Text>
+      </Box>
+      <Box className="gap-6">
+        <Numeric value={123456} />
+        <Numeric value="123456" />
+        <Percentage value={0.55} />
+        <Percentage value="0.32" />
+        <Currency value={14.99} />
+        <Currency value="154.99" />
+        <Unit options={{ unit: 'kilobyte' }} value={100} />
+        <Unit options={{ unit: 'mile-per-hour' }} value="35" />
+      </Box>
+      <Box className="gap-6">
+        <DateTime value={new Date()} />
+        <DateTime value="09-21-2025" />
+        <DateTime value="2025-09-21T12:00:00.000Z" />
+        <DateTime value={new Date().getTime()} />
       </Box>
     </Box>
   );

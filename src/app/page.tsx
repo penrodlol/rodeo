@@ -1,4 +1,4 @@
-import Text from '@/components/text';
+import { Text } from '@/components/typography';
 import Section from './_section';
 import Typography from './components/_typography';
 
