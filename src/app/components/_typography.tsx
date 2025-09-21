@@ -1,4 +1,6 @@
+import Link from '@/components/link';
 import { Currency, DateTime, Numeric, Percentage, Text, Unit } from '@/components/typography';
+import { ArrowUpRightIcon, ExternalLinkIcon, LinkIcon, SquareArrowOutUpRightIcon } from 'lucide-react';
 import Box from '../_box';
 
 export default function Typography() {
@@ -30,6 +32,20 @@ export default function Typography() {
       <Box className="gap-6">
         <Text italic>Italic</Text>
         <Text underline>Underline</Text>
+      </Box>
+      {/* prettier-ignore */}
+      <Box className="gap-6">
+        <Link href="/" variant="soft">Internal</Link>
+        <Link href="/" variant="accent">Internal</Link>
+        <Link href="/" variant="warn">Internal</Link>
+        <Link href="/" variant="danger">Internal</Link>
+      </Box>
+      {/* prettier-ignore */}
+      <Box className="gap-6">
+        <Link href="http://" variant="soft" icon={{ source: <ArrowUpRightIcon /> }}>External Link</Link>
+        <Link href="http://" variant="accent" icon={{ source: <SquareArrowOutUpRightIcon /> }}>External Link</Link>
+        <Link href="http://" variant="warn" icon={{ source: <LinkIcon /> }}>External Link</Link>
+        <Link href="http://" variant="danger" icon={{ source: <ExternalLinkIcon /> }}>External Link</Link>
       </Box>
       <Box className="gap-6">
         <Numeric value={123456} />
