@@ -37,7 +37,7 @@ export default function Link({ children, className, href, icon, ...props }: Link
       {...props}
     >
       {icon && <Icon className={twMerge('size-3', icon.className)} {...icon} />}
-      <span>{children}</span>
+      {children}
     </Text>
   );
 }
