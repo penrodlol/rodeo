@@ -17,61 +17,61 @@
   --text-8xl: clamp(3.247rem, calc(3.247rem + (3.2024 * (100vw - 20rem) / 76)), 6.45rem);
   --text-9xl: clamp(3.653rem, calc(3.653rem + (4.0864 * (100vw - 20rem) / 76)), 7.74rem);
 
-  --color-gray-1: color-mix(in oklch, var(--gray-1) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-2: color-mix(in oklch, var(--gray-2) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-3: color-mix(in oklch, var(--gray-3) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-4: color-mix(in oklch, var(--gray-4) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-5: color-mix(in oklch, var(--gray-5) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-6: color-mix(in oklch, var(--gray-6) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-7: color-mix(in oklch, var(--gray-7) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-8: color-mix(in oklch, var(--gray-8) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-9: color-mix(in oklch, var(--gray-9) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-10: color-mix(in oklch, var(--gray-10) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-11: color-mix(in oklch, var(--gray-11) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-12: color-mix(in oklch, var(--gray-12) var(--opacity, 100%), var(--mono-contrast));
-  --color-gray-contrast: color-mix(in oklch, var(--gray-contrast) var(--opacity, 100%), var(--mono-contrast));
+  --color-gray-1: color-mix(in oklch, var(--gray-1) var(--opacity, 100%), var(--mono));
+  --color-gray-2: color-mix(in oklch, var(--gray-2) var(--opacity, 100%), var(--mono));
+  --color-gray-3: color-mix(in oklch, var(--gray-3) var(--opacity, 100%), var(--mono));
+  --color-gray-4: color-mix(in oklch, var(--gray-4) var(--opacity, 100%), var(--mono));
+  --color-gray-5: color-mix(in oklch, var(--gray-5) var(--opacity, 100%), var(--mono));
+  --color-gray-6: color-mix(in oklch, var(--gray-6) var(--opacity, 100%), var(--mono));
+  --color-gray-7: color-mix(in oklch, var(--gray-7) var(--opacity, 100%), var(--mono));
+  --color-gray-8: color-mix(in oklch, var(--gray-8) var(--opacity, 100%), var(--mono));
+  --color-gray-9: color-mix(in oklch, var(--gray-9) var(--opacity, 100%), var(--mono));
+  --color-gray-10: color-mix(in oklch, var(--gray-10) var(--opacity, 100%), var(--mono));
+  --color-gray-11: color-mix(in oklch, var(--gray-11) var(--opacity, 100%), var(--mono));
+  --color-gray-12: color-mix(in oklch, var(--gray-12) var(--opacity, 100%), var(--mono));
+  --color-gray-contrast: color-mix(in oklch, var(--gray-contrast) var(--opacity, 100%), var(--mono));
 
-  --color-accent-1: color-mix(in oklch, var(--accent-1) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-2: color-mix(in oklch, var(--accent-2) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-3: color-mix(in oklch, var(--accent-3) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-4: color-mix(in oklch, var(--accent-4) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-5: color-mix(in oklch, var(--accent-5) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-6: color-mix(in oklch, var(--accent-6) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-7: color-mix(in oklch, var(--accent-7) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-8: color-mix(in oklch, var(--accent-8) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-9: color-mix(in oklch, var(--accent-9) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-10: color-mix(in oklch, var(--accent-10) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-11: color-mix(in oklch, var(--accent-11) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-12: color-mix(in oklch, var(--accent-12) var(--opacity, 100%), var(--mono-contrast));
-  --color-accent-contrast: color-mix(in oklch, var(--accent-contrast) var(--opacity, 100%), var(--mono-contrast));
+  --color-accent-1: color-mix(in oklch, var(--accent-1) var(--opacity, 100%), var(--mono));
+  --color-accent-2: color-mix(in oklch, var(--accent-2) var(--opacity, 100%), var(--mono));
+  --color-accent-3: color-mix(in oklch, var(--accent-3) var(--opacity, 100%), var(--mono));
+  --color-accent-4: color-mix(in oklch, var(--accent-4) var(--opacity, 100%), var(--mono));
+  --color-accent-5: color-mix(in oklch, var(--accent-5) var(--opacity, 100%), var(--mono));
+  --color-accent-6: color-mix(in oklch, var(--accent-6) var(--opacity, 100%), var(--mono));
+  --color-accent-7: color-mix(in oklch, var(--accent-7) var(--opacity, 100%), var(--mono));
+  --color-accent-8: color-mix(in oklch, var(--accent-8) var(--opacity, 100%), var(--mono));
+  --color-accent-9: color-mix(in oklch, var(--accent-9) var(--opacity, 100%), var(--mono));
+  --color-accent-10: color-mix(in oklch, var(--accent-10) var(--opacity, 100%), var(--mono));
+  --color-accent-11: color-mix(in oklch, var(--accent-11) var(--opacity, 100%), var(--mono));
+  --color-accent-12: color-mix(in oklch, var(--accent-12) var(--opacity, 100%), var(--mono));
+  --color-accent-contrast: color-mix(in oklch, var(--accent-contrast) var(--opacity, 100%), var(--mono));
 
-  --color-warn-1: color-mix(in oklch, var(--warn-1) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-2: color-mix(in oklch, var(--warn-2) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-3: color-mix(in oklch, var(--warn-3) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-4: color-mix(in oklch, var(--warn-4) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-5: color-mix(in oklch, var(--warn-5) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-6: color-mix(in oklch, var(--warn-6) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-7: color-mix(in oklch, var(--warn-7) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-8: color-mix(in oklch, var(--warn-8) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-9: color-mix(in oklch, var(--warn-9) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-10: color-mix(in oklch, var(--warn-10) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-11: color-mix(in oklch, var(--warn-11) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-12: color-mix(in oklch, var(--warn-12) var(--opacity, 100%), var(--mono-contrast));
-  --color-warn-contrast: color-mix(in oklch, var(--warn-contrast) var(--opacity, 100%), var(--mono-contrast));
+  --color-warn-1: color-mix(in oklch, var(--warn-1) var(--opacity, 100%), var(--mono));
+  --color-warn-2: color-mix(in oklch, var(--warn-2) var(--opacity, 100%), var(--mono));
+  --color-warn-3: color-mix(in oklch, var(--warn-3) var(--opacity, 100%), var(--mono));
+  --color-warn-4: color-mix(in oklch, var(--warn-4) var(--opacity, 100%), var(--mono));
+  --color-warn-5: color-mix(in oklch, var(--warn-5) var(--opacity, 100%), var(--mono));
+  --color-warn-6: color-mix(in oklch, var(--warn-6) var(--opacity, 100%), var(--mono));
+  --color-warn-7: color-mix(in oklch, var(--warn-7) var(--opacity, 100%), var(--mono));
+  --color-warn-8: color-mix(in oklch, var(--warn-8) var(--opacity, 100%), var(--mono));
+  --color-warn-9: color-mix(in oklch, var(--warn-9) var(--opacity, 100%), var(--mono));
+  --color-warn-10: color-mix(in oklch, var(--warn-10) var(--opacity, 100%), var(--mono));
+  --color-warn-11: color-mix(in oklch, var(--warn-11) var(--opacity, 100%), var(--mono));
+  --color-warn-12: color-mix(in oklch, var(--warn-12) var(--opacity, 100%), var(--mono));
+  --color-warn-contrast: color-mix(in oklch, var(--warn-contrast) var(--opacity, 100%), var(--mono));
 
-  --color-danger-1: color-mix(in oklch, var(--danger-1) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-2: color-mix(in oklch, var(--danger-2) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-3: color-mix(in oklch, var(--danger-3) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-4: color-mix(in oklch, var(--danger-4) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-5: color-mix(in oklch, var(--danger-5) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-6: color-mix(in oklch, var(--danger-6) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-7: color-mix(in oklch, var(--danger-7) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-8: color-mix(in oklch, var(--danger-8) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-9: color-mix(in oklch, var(--danger-9) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-10: color-mix(in oklch, var(--danger-10) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-11: color-mix(in oklch, var(--danger-11) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-12: color-mix(in oklch, var(--danger-12) var(--opacity, 100%), var(--mono-contrast));
-  --color-danger-contrast: color-mix(in oklch, var(--danger-contrast) var(--opacity, 100%), var(--mono-contrast));
+  --color-danger-1: color-mix(in oklch, var(--danger-1) var(--opacity, 100%), var(--mono));
+  --color-danger-2: color-mix(in oklch, var(--danger-2) var(--opacity, 100%), var(--mono));
+  --color-danger-3: color-mix(in oklch, var(--danger-3) var(--opacity, 100%), var(--mono));
+  --color-danger-4: color-mix(in oklch, var(--danger-4) var(--opacity, 100%), var(--mono));
+  --color-danger-5: color-mix(in oklch, var(--danger-5) var(--opacity, 100%), var(--mono));
+  --color-danger-6: color-mix(in oklch, var(--danger-6) var(--opacity, 100%), var(--mono));
+  --color-danger-7: color-mix(in oklch, var(--danger-7) var(--opacity, 100%), var(--mono));
+  --color-danger-8: color-mix(in oklch, var(--danger-8) var(--opacity, 100%), var(--mono));
+  --color-danger-9: color-mix(in oklch, var(--danger-9) var(--opacity, 100%), var(--mono));
+  --color-danger-10: color-mix(in oklch, var(--danger-10) var(--opacity, 100%), var(--mono));
+  --color-danger-11: color-mix(in oklch, var(--danger-11) var(--opacity, 100%), var(--mono));
+  --color-danger-12: color-mix(in oklch, var(--danger-12) var(--opacity, 100%), var(--mono));
+  --color-danger-contrast: color-mix(in oklch, var(--danger-contrast) var(--opacity, 100%), var(--mono));
 }
 
 [data-theme='light'] {
@@ -131,7 +131,7 @@
   --danger-12: oklch(33.2% 0.0291 20.63);
   --danger-contrast: oklch(100% 0 none);
 
-  --mono-contrast: oklch(0% 0 none);
+  --mono: oklch(100% 0 none);
 }
 
 [data-theme='dark'] {
@@ -191,5 +191,5 @@
   --danger-12: oklch(92.3% 0.0336 18.43);
   --danger-contrast: oklch(0% 0 none);
 
-  --mono-contrast: oklch(100% 0 none);
+  --mono: oklch(0% 0 none);
 }
