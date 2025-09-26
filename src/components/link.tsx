@@ -1,6 +1,6 @@
 'use client';
 
-import { composeChildren, composeVariants } from '@/libs/primitive';
+import { composeChildren } from '@/libs/primitive';
 import { useMemo } from 'react';
 import { Link as LinkPrimitive } from 'react-aria-components';
 import { VariantProps, tv } from 'tailwind-variants';
@@ -8,7 +8,7 @@ import * as Button from './button';
 import Icon from './icon';
 import { textVariants } from './typography';
 
-export type LinkProps = React.ComponentProps<typeof LinkPrimitive> &
+export type LinkProps = React.PrimitiveComponentProps<typeof LinkPrimitive> &
   LinkVariants & { icon?: React.ComponentProps<typeof Icon>; buttonVariants?: Button.ButtonVariants };
 
 export type LinkVariants = VariantProps<typeof linkVariants>;
@@ -37,9 +37,7 @@ export default function Link({ children, className, href, icon, buttonVariants, 
       target={external ? '_blank' : undefined}
       rel={external ? 'noreferrer noopener' : undefined}
       className={
-        buttonVariants
-          ? composeVariants(Button.buttonVariants, buttonVariants, className)
-          : composeVariants(linkVariants, props, className)
+        buttonVariants ? Button.buttonVariants({ ...buttonVariants, className }) : linkVariants({ ...props, className })
       }
       {...props}
     >

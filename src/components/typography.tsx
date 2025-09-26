@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useDateFormatter, useNumberFormatter } from 'react-aria';
 import { tv, type VariantProps } from 'tailwind-variants';
 
-export type TextProps<T extends React.ElementType> = React.ComponentProps<T> & TextVariants & { as?: T };
+export type TextProps<T extends React.ElementType> = Omit<React.ComponentProps<T>, 'size'> & TextVariants & { as?: T };
 export type TextFormattedProps = Omit<React.ComponentProps<typeof Text<'p'>>, 'children'> & {
   value: Parameters<Intl.NumberFormat['format']>[0];
   options?: Parameters<typeof useNumberFormatter>[0];

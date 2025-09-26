@@ -1,11 +1,11 @@
 'use client';
 
-import { composeChildren, composeVariants } from '@/libs/primitive';
+import { composeChildren } from '@/libs/primitive';
 import { Button as ButtonPrimitive } from 'react-aria-components';
 import { VariantProps, tv } from 'tailwind-variants';
 import Icon from './icon';
 
-export type ButtonProps = React.ComponentProps<typeof ButtonPrimitive> &
+export type ButtonProps = React.PrimitiveComponentProps<typeof ButtonPrimitive> &
   ButtonVariants & { icon?: React.ComponentProps<typeof Icon> };
 
 export type ButtonVariants = VariantProps<typeof buttonVariants>;
@@ -53,7 +53,7 @@ export const buttonVariants = tv({
 
 export default function Button({ children, className, size, variant, icon, ...props }: ButtonProps) {
   return (
-    <ButtonPrimitive className={composeVariants(buttonVariants, { size, variant }, className)} {...props}>
+    <ButtonPrimitive className={buttonVariants({ size, variant, className })} {...props}>
       {(renderProps) => (
         <>
           {icon && <Icon {...icon} />}
