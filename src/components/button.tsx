@@ -20,9 +20,9 @@ export const buttonVariants = tv({
   defaultVariants: { variant: 'accent-solid', size: '2' },
   variants: {
     size: {
-      '1': 'text-2xs h-7 px-4 [&_svg]:size-3 [&_svg]:text-current/80',
-      '2': 'h-8 px-6 text-xs [&_svg]:size-3.5 [&_svg]:text-current/80',
-      '3': 'h-9 px-8 text-sm [&_svg]:size-4 [&_svg]:text-current/80',
+      '1': 'h-8 px-4 text-sm [&_svg]:size-3 [&_svg]:text-current/80',
+      '2': 'h-9 px-6 [&_svg]:size-3.5 [&_svg]:text-current/80',
+      '3': 'h-10 px-8 text-lg [&_svg]:size-4 [&_svg]:text-current/80',
       icon: 'size-8 [&_svg]:size-4',
     },
     // prettier-ignore
