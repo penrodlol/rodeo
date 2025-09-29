@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body
         className={twMerge(
-          'bg-gray-1 text-gray-12 selection:bg-accent-5 flex min-h-svh flex-col antialiased',
+          'bg-gray-1 text-gray-12 selection:bg-accent-5 flex min-h-svh flex-col text-base antialiased',
           sans.variable,
           mono.variable,
         )}

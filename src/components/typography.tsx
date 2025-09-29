@@ -17,7 +17,7 @@ export type TextFormattedDateTimeProps = Omit<React.ComponentProps<typeof Text<'
 export type TextVariants = VariantProps<typeof textVariants>;
 
 export const textVariants = tv({
-  base: 'max-w-prose',
+  base: 'text-gray-12 max-w-prose',
   defaultVariants: { font: 'sans', size: '3', weight: '4' },
   variants: {
     font: { sans: 'font-sans', serif: 'font-serif', mono: 'font-mono' },
