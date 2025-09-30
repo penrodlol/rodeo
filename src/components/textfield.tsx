@@ -3,6 +3,7 @@
 import { mergeProps } from 'react-aria';
 import {
   Group,
+  InputContext,
   Input as InputPrimitive,
   LabelContext,
   TextContext,
@@ -11,32 +12,26 @@ import {
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv, VariantProps } from 'tailwind-variants';
+import Button from './button';
 import Icon from './icon';
 import { Text } from './typography';
 
 export type TextFieldRootProps = React.PrimitiveComponentProps<typeof TextField>;
 export type TextFieldLabelProps = Omit<React.ComponentProps<typeof Text<'label'>>, 'as'>;
 export type TextFieldInputGroupProps = React.PrimitiveComponentProps<typeof Group>;
-export type TextFieldInputGroupSlotProps = React.ComponentProps<'div'> & TextFieldInputGroupSlotVariants;
+export type TextFieldInputGroupButtonProps = React.ComponentProps<typeof Button> & TextFieldInputGroupSlotVariants;
+export type TextFieldInputGroupTextProps = React.ComponentProps<typeof Text> & TextFieldInputGroupSlotVariants;
 export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof InputPrimitive>, 'prefix'> & {
   prefix?: string | React.ComponentProps<typeof Icon>;
   suffix?: string | React.ComponentProps<typeof Icon>;
 };
 
-export type TextFieldInputGroupSlotVariants = Pick<VariantProps<typeof textFieldInputGroupSlotVariants>, 'border'>;
+export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 
 export const textFieldInputGroupSlotVariants = tv({
-  base: 'flex h-full items-center justify-center px-1',
-  defaultVariants: { border: true },
-  variants: {
-    border: { true: 'border-gray-7' },
-    prefix: { true: '[grid-area:prefix]' },
-    suffix: { true: '[grid-area:suffix]' },
-  },
-  compoundVariants: [
-    { border: true, prefix: true, className: 'border-r' },
-    { border: true, suffix: true, className: 'border-l' },
-  ],
+  base: 'border-gray-6 flex h-full items-center justify-center px-1',
+  defaultVariants: { position: 'prefix' },
+  variants: { position: { prefix: 'border-r [grid-area:prefix]', suffix: 'border-l [grid-area:suffix]' } },
 });
 
 export function Root({ className, ...props }: TextFieldRootProps) {
@@ -74,7 +69,7 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
       className={twMerge(
         'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"prefix_input_suffix"]',
         'group/textfield-inputgroup items-center rounded motion-safe:transition-all',
-        'has-[input:focus]:inset-ring-accent-8 inset-ring-gray-7 inset-ring',
+        'has-[input:focus]:border-accent-8 border-gray-7 border',
         className,
       )}
       {...props}
@@ -82,12 +77,21 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
   );
 }
 
-export function InputGroupPrefix({ className, border, ...props }: TextFieldInputGroupSlotProps) {
-  return <div className={textFieldInputGroupSlotVariants({ border, prefix: true, className })} {...props} />;
+export function InputGroupButton({ className, position, ...props }: TextFieldInputGroupButtonProps) {
+  const inputPrimitiveProps = useSlottedContext(InputContext) ?? {};
+  return (
+    <div className={textFieldInputGroupSlotVariants({ position, className })}>
+      <Button size="icon" variant="accent-ghost" isDisabled={inputPrimitiveProps.disabled} {...props} />
+    </div>
+  );
 }
 
-export function InputGroupSuffix({ className, border, ...props }: TextFieldInputGroupSlotProps) {
-  return <div className={textFieldInputGroupSlotVariants({ border, suffix: true, className })} {...props} />;
+export function InputGroupText({ className, position, ...props }: TextFieldInputGroupTextProps) {
+  return (
+    <div className={textFieldInputGroupSlotVariants({ position, className: ['px-3', className] })}>
+      <Text size="2" variant="soft" {...props} />
+    </div>
+  );
 }
 
 export function Input({ className, prefix, suffix, ...props }: TextFieldInputProps) {
@@ -95,10 +99,10 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
     <div
       className={twMerge(
         'bg-gray-1 relative h-10 w-full rounded [grid-area:input] motion-safe:transition-all',
-        'inset-ring-gray-7 has-focus:inset-ring-accent-8 inset-ring',
-        'group-invalid/textfield:inset-ring-danger-7 group-invalid/textfield:hover:inset-ring-danger-8',
-        'group-invalid/textfield:has-focus:inset-ring-danger-8',
-        'group-[*]/textfield-inputgroup:bg-transparent group-[*]/textfield-inputgroup:inset-ring-0',
+        'border-gray-7 has-focus:border-accent-8 border',
+        'group-invalid/textfield:border-danger-7 group-invalid/textfield:hover:border-danger-8',
+        'group-invalid/textfield:has-focus:border-danger-8',
+        'group-[*]/textfield-inputgroup:border-0 group-[*]/textfield-inputgroup:bg-transparent',
         '[&_input]:absolute [&_input]:inset-0 [&_input]:z-20 [&_input]:rounded-[inherit] [&_input]:px-4',
         '[&_input]:placeholder:text-gray-11 [&_input]:outline-none [&_input]:placeholder:[--opacity:70%]',
         '[&_:where(svg,span)]:absolute [&_:where(svg,span)]:top-1/2 [&_:where(svg,span)]:z-10 [&_:where(svg,span)]:-translate-y-1/2',

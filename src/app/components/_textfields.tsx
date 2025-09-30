@@ -1,4 +1,3 @@
-import Button from '@/components/button';
 import * as TextField from '@/components/textfield';
 import { EditIcon, MailIcon, SendHorizonalIcon } from 'lucide-react';
 import Box from '../_box';
@@ -93,9 +92,7 @@ export default function TextFields() {
           <TextField.Label>Email Address</TextField.Label>
           <TextField.InputGroup>
             <TextField.Input type="email" placeholder="Enter your email" />
-            <TextField.InputGroupPrefix>
-              <Button size="icon" variant="accent-ghost" icon={{ source: <EditIcon /> }} />
-            </TextField.InputGroupPrefix>
+            <TextField.InputGroupButton position="prefix" aria-label="Edit" icon={{ source: <EditIcon /> }} />
           </TextField.InputGroup>
           <TextField.Description>Provide a email to receive updates</TextField.Description>
         </TextField.Root>
@@ -103,34 +100,61 @@ export default function TextFields() {
           <TextField.Label>Email Address</TextField.Label>
           <TextField.InputGroup>
             <TextField.Input type="email" placeholder="Enter your email" />
-            <TextField.InputGroupSuffix>
-              <Button size="icon" variant="accent-ghost" icon={{ source: <SendHorizonalIcon /> }} />
-            </TextField.InputGroupSuffix>
+            <TextField.InputGroupButton position="suffix" aria-label="Send" icon={{ source: <SendHorizonalIcon /> }} />
           </TextField.InputGroup>
           <TextField.Description>Provide a email to receive updates</TextField.Description>
         </TextField.Root>
         <TextField.Root>
           <TextField.Label>Email Address</TextField.Label>
           <TextField.InputGroup>
-            <TextField.InputGroupPrefix>
-              <Button size="icon" variant="accent-ghost" icon={{ source: <EditIcon /> }} />
-            </TextField.InputGroupPrefix>
+            <TextField.InputGroupButton position="prefix" aria-label="Edit" icon={{ source: <EditIcon /> }} />
             <TextField.Input type="email" placeholder="Enter your email" />
-            <TextField.InputGroupSuffix>
-              <Button size="icon" variant="accent-ghost" icon={{ source: <SendHorizonalIcon /> }} />
-            </TextField.InputGroupSuffix>
+            <TextField.InputGroupButton position="suffix" aria-label="Send" icon={{ source: <SendHorizonalIcon /> }} />
           </TextField.InputGroup>
           <TextField.Description>Provide a email to receive updates</TextField.Description>
         </TextField.Root>
         <TextField.Root isDisabled>
           <TextField.Label>Email Address</TextField.Label>
           <TextField.InputGroup>
-            <TextField.InputGroupPrefix>
-              <Button size="icon" variant="accent-ghost" icon={{ source: <EditIcon /> }} />
-            </TextField.InputGroupPrefix>
+            <TextField.InputGroupButton position="prefix" aria-label="Edit" icon={{ source: <EditIcon /> }} />
             <TextField.Input type="email" placeholder="Enter your email" />
           </TextField.InputGroup>
           <TextField.Description>Provide a email to receive updates</TextField.Description>
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root>
+          <TextField.Label>Website Address</TextField.Label>
+          <TextField.InputGroup>
+            <TextField.InputGroupText position="prefix">https://</TextField.InputGroupText>
+            <TextField.Input type="url" placeholder="Enter your website" />
+          </TextField.InputGroup>
+          <TextField.Description>Provide a website address to showcase</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Website Address</TextField.Label>
+          <TextField.InputGroup>
+            <TextField.Input type="url" placeholder="Enter your website" />
+            <TextField.InputGroupText position="suffix">.com</TextField.InputGroupText>
+          </TextField.InputGroup>
+          <TextField.Description>Provide a website address to showcase</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Website Address</TextField.Label>
+          <TextField.InputGroup>
+            <TextField.InputGroupText position="prefix">https://</TextField.InputGroupText>
+            <TextField.Input type="url" placeholder="Enter your website" />
+            <TextField.InputGroupText position="suffix">.com</TextField.InputGroupText>
+          </TextField.InputGroup>
+          <TextField.Description>Provide a website address to showcase</TextField.Description>
+        </TextField.Root>
+        <TextField.Root isDisabled>
+          <TextField.Label>Website Address</TextField.Label>
+          <TextField.InputGroup>
+            <TextField.InputGroupText position="prefix">https://</TextField.InputGroupText>
+            <TextField.Input type="url" placeholder="Enter your website" />
+          </TextField.InputGroup>
+          <TextField.Description>Provide a website address to showcase</TextField.Description>
         </TextField.Root>
       </Box>
     </Box>
