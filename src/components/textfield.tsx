@@ -29,7 +29,7 @@ export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof Inpu
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 
 export const textFieldInputGroupSlotVariants = tv({
-  base: 'border-gray-6 flex h-full items-center justify-center px-1',
+  base: 'flex h-full items-center justify-center border-[inherit]',
   defaultVariants: { position: 'prefix' },
   variants: { position: { prefix: 'border-r [grid-area:prefix]', suffix: 'border-l [grid-area:suffix]' } },
 });
@@ -39,7 +39,7 @@ export function Root({ className, ...props }: TextFieldRootProps) {
     <TextField
       className={twMerge(
         'group/textfield flex w-full flex-col gap-0.5',
-        'disabled:pointer-events-none disabled:[--opacity:70%]',
+        'disabled:select-none disabled:[--opacity:70%]',
         className,
       )}
       {...props}
@@ -69,7 +69,7 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
       className={twMerge(
         'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"prefix_input_suffix"]',
         'group/textfield-inputgroup items-center rounded motion-safe:transition-all',
-        'has-[input:focus]:border-accent-8 border-gray-7 border',
+        'focus-within:border-accent-8 border-gray-7 border',
         className,
       )}
       {...props}
@@ -80,7 +80,7 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
 export function InputGroupButton({ className, position, ...props }: TextFieldInputGroupButtonProps) {
   const inputPrimitiveProps = useSlottedContext(InputContext) ?? {};
   return (
-    <div className={textFieldInputGroupSlotVariants({ position, className })}>
+    <div className={textFieldInputGroupSlotVariants({ position, className: ['px-1', className] })}>
       <Button size="icon" variant="accent-ghost" isDisabled={inputPrimitiveProps.disabled} {...props} />
     </div>
   );
@@ -98,28 +98,42 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
   return (
     <div
       className={twMerge(
-        'bg-gray-1 relative h-10 w-full rounded [grid-area:input] motion-safe:transition-all',
-        'border-gray-7 has-focus:border-accent-8 border',
-        'group-invalid/textfield:border-danger-7 group-invalid/textfield:hover:border-danger-8',
+        'bg-gray-1 border-gray-7 relative h-10 w-full rounded border [grid-area:input]',
+        'has-focus:border-accent-8 motion-safe:transition-all',
+
+        'group-invalid/textfield:border-danger-7',
         'group-invalid/textfield:has-focus:border-danger-8',
-        'group-[*]/textfield-inputgroup:border-0 group-[*]/textfield-inputgroup:bg-transparent',
-        '[&_input]:absolute [&_input]:inset-0 [&_input]:z-20 [&_input]:rounded-[inherit] [&_input]:px-4',
-        '[&_input]:placeholder:text-gray-11 [&_input]:outline-none [&_input]:placeholder:[--opacity:70%]',
-        '[&_:where(svg,span)]:absolute [&_:where(svg,span)]:top-1/2 [&_:where(svg,span)]:z-10 [&_:where(svg,span)]:-translate-y-1/2',
-        '[&_:where(svg,span)]:text-gray-11 [&_:where(svg,span)]:[--opacity:70%] has-disabled:[&_svg]:[--opacity:50%]',
-        '[&_:where(svg,span):has(+input)]:left-3 [&_:where(svg,span):not(:has(+input))]:right-3',
-        typeof prefix === 'object' && '[&_input]:pl-10',
-        typeof suffix === 'object' && '[&_input]:pr-10',
-        typeof prefix === 'string' && '[&_input]:pl-8',
-        typeof suffix === 'string' && '[&_input]:pr-8',
+
+        'group-[*]/textfield-inputgroup:border-0',
+        'group-[*]/textfield-inputgroup:bg-transparent',
+
+        'slot-[input]:absolute slot-[input]:inset-0 slot-[input]:z-20',
+        'slot-[input]:rounded-[inherit] slot-[input]:px-4 slot-[input]:outline-none',
+        'slot-[input]:placeholder:text-gray-11 slot-[input]:placeholder:[--opacity:70%]',
+
+        'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
+        'slot-[affix]:text-gray-11 slot-[affix]:[--opacity:70%] has-disabled:[slot-affix]:[--opacity:50%]',
+        'slot-[affix]:has-[+[data-slot=input]]:left-3 slot-[affix]:not-has-[+[data-slot=input]]:right-3',
+
+        typeof prefix === 'object' && 'slot-[input]:pl-10',
+        typeof suffix === 'object' && 'slot-[input]:pr-10',
+        typeof prefix === 'string' && 'slot-[input]:pl-8',
+        typeof suffix === 'string' && 'slot-[input]:pr-8',
+
         className,
       )}
     >
-      {prefix &&
-        (typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : <span aria-hidden>{prefix}</span>)}
-      <InputPrimitive {...props} />
-      {suffix &&
-        (typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : <span aria-hidden>{suffix}</span>)}
+      {prefix && (
+        <div data-slot="affix">
+          {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
+        </div>
+      )}
+      <InputPrimitive data-slot="input" {...props} />
+      {suffix && (
+        <div data-slot="affix">
+          {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
+        </div>
+      )}
     </div>
   );
 }

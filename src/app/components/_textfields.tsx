@@ -4,7 +4,7 @@ import Box from '../_box';
 
 export default function TextFields() {
   return (
-    <Box className="flex-col gap-12">
+    <Box className="flex-col gap-6">
       <Box className="gap-12 *:w-72">
         <TextField.Root>
           <TextField.Label>Email Address</TextField.Label>

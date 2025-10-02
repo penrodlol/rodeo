@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "tailwindcss-react-aria-components";
+@plugin "../libs/tailwind.ts";
 
 @theme inline {
   --text-xs: clamp(0.66rem, 0.15vi + 0.62rem, 0.74rem);
