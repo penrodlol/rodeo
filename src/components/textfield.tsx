@@ -74,7 +74,7 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
     <Group
       className={twMerge(
         'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"prefix_input_suffix"]',
-        'group/textfield-inputgroup items-center overflow-hidden rounded',
+        'group/textfield-inputgroup bg-gray-1 items-center overflow-hidden rounded',
         'focus-within:border-accent-8 border-gray-7 border motion-safe:transition-all',
         className,
       )}
@@ -121,10 +121,12 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
 
         'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
         'slot-[affix]:text-gray-11 slot-[affix]:[--opacity:70%] has-disabled:[slot-affix]:[--opacity:50%]',
-        'slot-[affix]:has-[+[data-slot=input]]:left-3 slot-[affix]:not-has-[+[data-slot=input]]:right-3',
+        '*:data-[prefix]:left-3 *:data-[suffix]:right-3',
 
-        'group-[:has([data-slot=prefix-button])]/textfield-inputgroup:slot-[input]:pl-0',
-        'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:slot-[input]:pr-0',
+        'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/textfield-inputgroup:slot-[input]:pl-0',
+        'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/textfield-inputgroup:slot-[input]:pr-0',
+        'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:*:data-[prefix]:left-0.5',
+        'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:*:data-[suffix]:right-0.5',
 
         typeof prefix === 'object' && 'slot-[input]:pl-10',
         typeof suffix === 'object' && 'slot-[input]:pr-10',
@@ -135,13 +137,13 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
       )}
     >
       {prefix && (
-        <div data-slot="affix">
+        <div data-slot="affix" data-prefix>
           {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
         </div>
       )}
       <InputPrimitive data-slot="input" {...props} />
       {suffix && (
-        <div data-slot="affix">
+        <div data-slot="affix" data-suffix>
           {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
         </div>
       )}
