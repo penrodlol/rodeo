@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { mergeProps } from 'react-aria';
 import {
   Group,
@@ -29,9 +30,14 @@ export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof Inpu
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 
 export const textFieldInputGroupSlotVariants = tv({
-  base: 'flex h-full items-center justify-center border-[inherit]',
+  slots: { button: 'px-1', text: 'bg-gray-2 border-[inherit] px-2.5' },
   defaultVariants: { position: 'prefix' },
-  variants: { position: { prefix: 'border-r [grid-area:prefix]', suffix: 'border-l [grid-area:suffix]' } },
+  variants: { position: { prefix: {}, suffix: {} } },
+  compoundSlots: [{ slots: ['button', 'text'], className: 'flex h-full items-center justify-center' }],
+  compoundVariants: [
+    { position: 'prefix', className: { text: 'border-r [grid-area:prefix]', button: '[grid-area:prefix]' } },
+    { position: 'suffix', className: { text: 'border-l [grid-area:suffix]', button: '[grid-area:suffix]' } },
+  ],
 });
 
 export function Root({ className, ...props }: TextFieldRootProps) {
@@ -68,8 +74,8 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
     <Group
       className={twMerge(
         'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"prefix_input_suffix"]',
-        'group/textfield-inputgroup items-center rounded motion-safe:transition-all',
-        'focus-within:border-accent-8 border-gray-7 border',
+        'group/textfield-inputgroup items-center overflow-hidden rounded',
+        'focus-within:border-accent-8 border-gray-7 border motion-safe:transition-all',
         className,
       )}
       {...props}
@@ -79,16 +85,18 @@ export function InputGroup({ className, ...props }: TextFieldInputGroupProps) {
 
 export function InputGroupButton({ className, position, ...props }: TextFieldInputGroupButtonProps) {
   const inputPrimitiveProps = useSlottedContext(InputContext) ?? {};
+  const slots = useMemo(() => textFieldInputGroupSlotVariants({ position }), [position]);
   return (
-    <div className={textFieldInputGroupSlotVariants({ position, className: ['px-1', className] })}>
+    <div data-slot={`${position ?? 'prefix'}-button`} className={slots.button({ className })}>
       <Button size="icon" variant="accent-ghost" isDisabled={inputPrimitiveProps.disabled} {...props} />
     </div>
   );
 }
 
 export function InputGroupText({ className, position, ...props }: TextFieldInputGroupTextProps) {
+  const slots = useMemo(() => textFieldInputGroupSlotVariants({ position }), [position]);
   return (
-    <div className={textFieldInputGroupSlotVariants({ position, className: ['px-3', className] })}>
+    <div data-slot={`${position ?? 'prefix'}-text`} className={slots.text({ className })}>
       <Text size="2" variant="soft" {...props} />
     </div>
   );
@@ -114,6 +122,9 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
         'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
         'slot-[affix]:text-gray-11 slot-[affix]:[--opacity:70%] has-disabled:[slot-affix]:[--opacity:50%]',
         'slot-[affix]:has-[+[data-slot=input]]:left-3 slot-[affix]:not-has-[+[data-slot=input]]:right-3',
+
+        'group-[:has([data-slot=prefix-button])]/textfield-inputgroup:slot-[input]:pl-0',
+        'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:slot-[input]:pr-0',
 
         typeof prefix === 'object' && 'slot-[input]:pl-10',
         typeof suffix === 'object' && 'slot-[input]:pr-10',
