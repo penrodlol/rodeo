@@ -7,6 +7,7 @@ import {
   InputContext,
   Input as InputPrimitive,
   LabelContext,
+  TextArea as TextAreaPrimitive,
   TextContext,
   TextField,
   useSlottedContext,
@@ -25,6 +26,9 @@ export type TextFieldInputGroupTextProps = React.ComponentProps<typeof Text> & T
 export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof InputPrimitive>, 'prefix'> & {
   prefix?: string | React.ComponentProps<typeof Icon>;
   suffix?: string | React.ComponentProps<typeof Icon>;
+};
+export type TextFieldTextAreaProps = React.PrimitiveComponentProps<typeof TextAreaPrimitive> & {
+  resize?: 'auto' | 'none';
 };
 
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
@@ -148,6 +152,24 @@ export function Input({ className, prefix, suffix, ...props }: TextFieldInputPro
         </div>
       )}
     </div>
+  );
+}
+
+export function TextArea({ className, resize, ...props }: TextFieldTextAreaProps) {
+  return (
+    <TextAreaPrimitive
+      className={twMerge(
+        'bg-gray-1 border-gray-7 min-h-24 w-full rounded border p-4 outline-none',
+        'placeholder:text-gray-11 placeholder:[--opacity:70%]',
+        'focus:border-accent-8 focus:border',
+        'invalid:border-danger-7 invalid:focus:border-danger-8',
+        '[scrollbar-color:var(--gray-3)_transparent] [scrollbar-width:thin]',
+        resize === 'auto' && 'field-sizing-content',
+        resize === 'none' && 'resize-none',
+        className,
+      )}
+      {...props}
+    />
   );
 }
 

@@ -6,6 +6,18 @@ export default function TextFields() {
   return (
     <Box className="flex-col gap-6">
       <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root isRequired isInvalid aria-label="Email Address">
+          <TextField.Input type="email" placeholder="Enter your email" />
+          <TextField.ErrorMessage>This field is required.</TextField.ErrorMessage>
+        </TextField.Root>
+        <TextField.Root isDisabled aria-label="Email Address">
+          <TextField.Input type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
         <TextField.Root>
           <TextField.Label>Email Address</TextField.Label>
           <TextField.Input type="email" placeholder="Enter your email" />
@@ -155,6 +167,29 @@ export default function TextFields() {
             <TextField.Input type="url" placeholder="Enter your website" />
           </TextField.InputGroup>
           <TextField.Description>Provide a website address to showcase</TextField.Description>
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea resize="auto" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea resize="none" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root isRequired isInvalid>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+          <TextField.ErrorMessage>This field is required.</TextField.ErrorMessage>
+        </TextField.Root>
+        <TextField.Root isDisabled>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
         </TextField.Root>
       </Box>
     </Box>
