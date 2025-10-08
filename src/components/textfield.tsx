@@ -60,6 +60,9 @@ export const textFieldInputVariants = tv({
       'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
       '*:data-[prefix]:left-3 *:data-[suffix]:right-3',
 
+      'has-data-[prefix=object]:slot-[input]:pl-10 has-data-[suffix=object]:slot-[input]:pr-10',
+      'has-data-[prefix=string]:slot-[input]:pl-8 has-data-[suffix=string]:slot-[input]:pr-8',
+
       'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/textfield-inputgroup:slot-[input]:pl-0',
       'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/textfield-inputgroup:slot-[input]:pr-0',
       'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:*:data-[prefix]:left-0.5',
@@ -161,25 +164,15 @@ export function InputGroupText({ className, position, ...props }: TextFieldInput
 export function Input({ className, variant, elevation, prefix, suffix, ...props }: TextFieldInputProps) {
   const slots = useMemo(() => textFieldInputVariants({ variant, elevation }), [variant, elevation]);
   return (
-    <div
-      className={slots.input({
-        className: [
-          typeof prefix === 'object' && 'slot-[input]:pl-10',
-          typeof suffix === 'object' && 'slot-[input]:pr-10',
-          typeof prefix === 'string' && 'slot-[input]:pl-8',
-          typeof suffix === 'string' && 'slot-[input]:pr-8',
-          className,
-        ],
-      })}
-    >
+    <div className={slots.input({ className })}>
       {prefix && (
-        <div data-slot="affix" data-prefix>
+        <div data-slot="affix" data-prefix={typeof prefix}>
           {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
         </div>
       )}
       <InputPrimitive data-slot="input" {...props} />
       {suffix && (
-        <div data-slot="affix" data-suffix>
+        <div data-slot="affix" data-suffix={typeof suffix}>
           {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
         </div>
       )}
