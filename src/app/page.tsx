@@ -1,4 +1,3 @@
-import { Text } from '@/components/typography';
 import Section from './_section';
 import Buttons from './components/_buttons';
 import Icons from './components/_icons';
@@ -10,11 +9,11 @@ import Typography from './components/_typography';
 export default function HomePage() {
   return (
     <>
-      <Section><Text font="mono" weight="8" size="8">Typography</Text><Typography /></Section>
-      <Section><Text font="mono" weight="8" size="8">Buttons</Text><Buttons /></Section>
-      <Section><Text font="mono" weight="8" size="8">Text Fields</Text><TextFields /></Section>
-      <Section><Text font="mono" weight="8" size="8">Icons</Text><Icons /></Section>
-      <Section><Text font="mono" weight="8" size="8">Separators</Text><Separators /></Section>
+      <Section><Typography /></Section>
+      <Section><Buttons /></Section>
+      <Section><TextFields /></Section>
+      <Section><Icons /></Section>
+      <Section><Separators /></Section>
     </>
   );
 }

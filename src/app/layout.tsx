@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
+import Header from './_header';
 import './tailwind.css';
 
 const sans = Geist({ variable: '--font-sans', subsets: ['latin'] });
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <ThemeProvider>
-          <header></header>
+          <Header />
           <main className="flex-1">{children}</main>
           <footer></footer>
         </ThemeProvider>
