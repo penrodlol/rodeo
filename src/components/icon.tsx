@@ -18,7 +18,8 @@ export const iconVariants = tv({
 
 export default function Icon({ className, variant, size, source, ...props }: IconProps) {
   return useMemo(
-    () => cloneElement(source, { className: iconVariants({ variant, size, className }), ...props }),
+    () =>
+      cloneElement(source, { 'data-slot': 'icon', className: iconVariants({ variant, size, className }), ...props }),
     [source, props, variant, size, className],
   );
 }

@@ -7,7 +7,7 @@ import Box from '../_box';
 export default function Buttons() {
   return (
     <Box className="flex-col gap-6">
-      <Box className=" gap-6">
+      <Box className="gap-6">
         <Button variant="gray-solid">Button</Button>
         <Button variant="gray-soft">Button</Button>
         <Button variant="gray-soft-outline">Button</Button>
@@ -18,6 +18,17 @@ export default function Buttons() {
         <Button variant="gray-soft-outline" isDisabled>Button</Button>
         <Button variant="gray-outline" isDisabled>Button</Button>
         <Button variant="gray-ghost" isDisabled>Button</Button>
+      </Box>
+      <Box className="gap-6">
+        <Button elevation='1' variant="gray-solid">Button</Button>
+        <Button elevation='1' variant="gray-soft">Button</Button>
+        <Button elevation='1' variant="gray-soft-outline">Button</Button>
+        <Button elevation='2' variant="gray-solid">Button</Button>
+        <Button elevation='2' variant="gray-soft">Button</Button>
+        <Button elevation='2' variant="gray-soft-outline">Button</Button>
+        <Button elevation='3' variant="gray-solid">Button</Button>
+        <Button elevation='3' variant="gray-soft">Button</Button>
+        <Button elevation='3' variant="gray-soft-outline">Button</Button>
       </Box>
       <Box className="gap-6">
         <Button variant="accent-solid">Button</Button>
@@ -32,6 +43,17 @@ export default function Buttons() {
         <Button variant="accent-ghost" isDisabled>Button</Button>
       </Box>
       <Box className="gap-6">
+        <Button elevation='1' variant="accent-solid">Button</Button>
+        <Button elevation='1' variant="accent-soft">Button</Button>
+        <Button elevation='1' variant="accent-soft-outline">Button</Button>
+        <Button elevation='2' variant="accent-solid">Button</Button>
+        <Button elevation='2' variant="accent-soft">Button</Button>
+        <Button elevation='2' variant="accent-soft-outline">Button</Button>
+        <Button elevation='3' variant="accent-solid">Button</Button>
+        <Button elevation='3' variant="accent-soft">Button</Button>
+        <Button elevation='3' variant="accent-soft-outline">Button</Button>
+      </Box>
+      <Box className="gap-6">
         <Button variant="warn-solid">Button</Button>
         <Button variant="warn-soft">Button</Button>
         <Button variant="warn-soft-outline">Button</Button>
@@ -44,6 +66,17 @@ export default function Buttons() {
         <Button variant="warn-ghost" isDisabled>Button</Button>
       </Box>
       <Box className="gap-6">
+        <Button elevation='1' variant="warn-solid">Button</Button>
+        <Button elevation='1' variant="warn-soft">Button</Button>
+        <Button elevation='1' variant="warn-soft-outline">Button</Button>
+        <Button elevation='2' variant="warn-solid">Button</Button>
+        <Button elevation='2' variant="warn-soft">Button</Button>
+        <Button elevation='2' variant="warn-soft-outline">Button</Button>
+        <Button elevation='3' variant="warn-solid">Button</Button>
+        <Button elevation='3' variant="warn-soft">Button</Button>
+        <Button elevation='3' variant="warn-soft-outline">Button</Button>
+      </Box>
+      <Box className="gap-6">
         <Button variant="danger-solid">Button</Button>
         <Button variant="danger-soft">Button</Button>
         <Button variant="danger-soft-outline">Button</Button>
@@ -54,6 +87,17 @@ export default function Buttons() {
         <Button variant="danger-soft-outline" isDisabled>Button</Button>
         <Button variant="danger-outline" isDisabled>Button</Button>
         <Button variant="danger-ghost" isDisabled>Button</Button>
+      </Box>
+      <Box className="gap-6">
+        <Button elevation='1' variant="danger-solid">Button</Button>
+        <Button elevation='1' variant="danger-soft">Button</Button>
+        <Button elevation='1' variant="danger-soft-outline">Button</Button>
+        <Button elevation='2' variant="danger-solid">Button</Button>
+        <Button elevation='2' variant="danger-soft">Button</Button>
+        <Button elevation='2' variant="danger-soft-outline">Button</Button>
+        <Button elevation='3' variant="danger-solid">Button</Button>
+        <Button elevation='3' variant="danger-soft">Button</Button>
+        <Button elevation='3' variant="danger-soft-outline">Button</Button>
       </Box>
       <Box className=" items-end gap-6">
         <Button variant="gray-solid" size="1">Button</Button>
