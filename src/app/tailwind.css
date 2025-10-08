@@ -133,18 +133,18 @@
 }
 
 [data-theme='dark'] {
-  --gray-1: oklch(9.7% 0 none);
-  --gray-2: oklch(19.9% 0 none);
-  --gray-3: oklch(24.7% 0 none);
-  --gray-4: oklch(27.9% 0 none);
-  --gray-5: oklch(31% 0 none);
-  --gray-6: oklch(34.8% 0 none);
-  --gray-7: oklch(40% 0 none);
-  --gray-8: oklch(49% 0 none);
-  --gray-9: oklch(53.4% 0 none);
-  --gray-10: oklch(58.1% 0 none);
-  --gray-11: oklch(76.7% 0 none);
-  --gray-12: oklch(94.8% 0 none);
+  --gray-1: oklch(0% 0 0);
+  --gray-2: oklch(18.3% 0 0);
+  --gray-3: oklch(23.9% 0 0);
+  --gray-4: oklch(27.5% 0 0);
+  --gray-5: oklch(30.8% 0 0);
+  --gray-6: oklch(34.7% 0 0);
+  --gray-7: oklch(40% 0 0);
+  --gray-8: oklch(49% 0 0);
+  --gray-9: oklch(53.4% 0 0);
+  --gray-10: oklch(58.1% 0 0);
+  --gray-11: oklch(76.7% 0 0);
+  --gray-12: oklch(94.8% 0 0);
   --gray-contrast: oklch(100% 0 0);
 
   --accent-1: oklch(0% 0.0118 281.6);
