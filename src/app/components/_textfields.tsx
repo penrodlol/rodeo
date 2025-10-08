@@ -18,6 +18,63 @@ export default function TextFields() {
         </TextField.Root>
       </Box>
       <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="1" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="2" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="3" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input variant="soft" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root isRequired isInvalid aria-label="Email Address">
+          <TextField.Input variant="soft" type="email" placeholder="Enter your email" />
+          <TextField.ErrorMessage>This field is required.</TextField.ErrorMessage>
+        </TextField.Root>
+        <TextField.Root isDisabled aria-label="Email Address">
+          <TextField.Input variant="soft" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="1" variant="soft" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="2" variant="soft" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="3" variant="soft" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input variant="soft-outline" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root isRequired isInvalid aria-label="Email Address">
+          <TextField.Input variant="soft-outline" type="email" placeholder="Enter your email" />
+          <TextField.ErrorMessage>This field is required.</TextField.ErrorMessage>
+        </TextField.Root>
+        <TextField.Root isDisabled aria-label="Email Address">
+          <TextField.Input variant="soft-outline" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="1" variant="soft-outline" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="2" variant="soft-outline" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+        <TextField.Root aria-label="Email Address">
+          <TextField.Input elevation="3" variant="soft-outline" type="email" placeholder="Enter your email" />
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
         <TextField.Root>
           <TextField.Label>Email Address</TextField.Label>
           <TextField.Input type="email" placeholder="Enter your email" />
@@ -189,6 +246,40 @@ export default function TextFields() {
         <TextField.Root isDisabled>
           <TextField.Label>Feedback</TextField.Label>
           <TextField.TextArea placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea variant="outline" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea variant="soft" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea variant="soft-outline" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea elevation="1" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea elevation="2" placeholder="Enter your feedback" />
+          <TextField.Description>Provide your feedback to help us improve</TextField.Description>
+        </TextField.Root>
+        <TextField.Root>
+          <TextField.Label>Feedback</TextField.Label>
+          <TextField.TextArea elevation="3" placeholder="Enter your feedback" />
           <TextField.Description>Provide your feedback to help us improve</TextField.Description>
         </TextField.Root>
       </Box>
