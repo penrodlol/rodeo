@@ -72,8 +72,8 @@ export const textFieldInputVariants = tv({
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
   defaultVariants: { variant: 'outline' },
   compoundSlots: [
-    { slots: ['group', 'input'], variant: 'soft', className: 'bg-gray-3' },
-    { slots: ['group', 'input'], variant: 'soft-outline', className: 'bg-gray-3 border-transparent' },
+    { slots: ['group', 'input'], variant: 'soft', className: 'bg-gray-3 border-transparent' },
+    { slots: ['group', 'input'], variant: 'soft-outline', className: 'bg-gray-3' },
     { slots: ['group', 'input'], variant: 'outline', className: 'bg-gray-1' },
     { slots: ['group', 'input'], elevation: '1', className: 'elevation-1' },
     { slots: ['group', 'input'], elevation: '2', className: 'elevation-2' },
@@ -102,7 +102,7 @@ export const textFieldTextAreaVariants = tv({
   ],
   defaultVariants: { variant: 'outline' },
   variants: {
-    variant: { soft: 'bg-gray-3', 'soft-outline': 'bg-gray-3 border-transparent', outline: 'bg-gray-1' },
+    variant: { soft: 'bg-gray-3 border-transparent', 'soft-outline': 'bg-gray-3', outline: 'bg-gray-1' },
     elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     resize: { auto: 'field-sizing-content', none: 'resize-none' },
   },

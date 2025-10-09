@@ -42,13 +42,13 @@ export default function TextFields() {
       </Box>
       <Box className="gap-12 *:w-72">
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="1" variant="soft" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft" elevation="1" type="email" placeholder="Enter your email" />
         </TextField.Root>
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="2" variant="soft" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft" elevation="2" type="email" placeholder="Enter your email" />
         </TextField.Root>
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="3" variant="soft" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft" elevation="3" type="email" placeholder="Enter your email" />
         </TextField.Root>
       </Box>
       <Box className="gap-12 *:w-72">
@@ -65,13 +65,13 @@ export default function TextFields() {
       </Box>
       <Box className="gap-12 *:w-72">
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="1" variant="soft-outline" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft-outline" elevation="1" type="email" placeholder="Enter your email" />
         </TextField.Root>
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="2" variant="soft-outline" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft-outline" elevation="2" type="email" placeholder="Enter your email" />
         </TextField.Root>
         <TextField.Root aria-label="Email Address">
-          <TextField.Input elevation="3" variant="soft-outline" type="email" placeholder="Enter your email" />
+          <TextField.Input variant="soft-outline" elevation="3" type="email" placeholder="Enter your email" />
         </TextField.Root>
       </Box>
       <Box className="gap-12 *:w-72">
