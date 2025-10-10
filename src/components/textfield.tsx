@@ -112,6 +112,7 @@ export const textFieldTextAreaVariants = tv({
 export function Root({ className, ...props }: TextFieldRootProps) {
   return (
     <TextField
+      data-slot="textfield"
       className={twMerge(
         'group/textfield flex w-full flex-col gap-0.5',
         'disabled:opacity-70 disabled:select-none',
@@ -126,6 +127,7 @@ export function Label({ className, ...props }: TextFieldLabelProps) {
   return (
     <Text
       as={LabelPrimitive}
+      data-slot="label"
       className={twMerge(
         'flex max-w-max gap-1 pb-1 select-none',
         'group-required/textfield:after:content-["*"]',
@@ -139,7 +141,7 @@ export function Label({ className, ...props }: TextFieldLabelProps) {
 
 export function InputGroup({ className, variant, elevation, ...props }: TextFieldInputGroupProps) {
   const slots = useMemo(() => textFieldInputVariants({ variant, elevation }), [variant, elevation]);
-  return <Group className={slots.group({ className })} {...props} />;
+  return <Group data-slot="input-group" className={slots.group({ className })} {...props} />;
 }
 
 export function InputGroupButton({ className, position, ...props }: TextFieldInputGroupButtonProps) {
@@ -182,14 +184,18 @@ export function Input({ className, variant, elevation, prefix, suffix, ...props 
 
 export function TextArea({ className, variant, elevation, resize, ...props }: TextFieldTextAreaProps) {
   return (
-    <TextAreaPrimitive className={textFieldTextAreaVariants({ variant, elevation, resize, className })} {...props} />
+    <TextAreaPrimitive
+      data-slot="textarea"
+      className={textFieldTextAreaVariants({ variant, elevation, resize, className })}
+      {...props}
+    />
   );
 }
 
 export function Description(props: React.ComponentProps<typeof Text>) {
-  return <Text size="2" variant="soft" slot="description" as={TextPrimitive} {...props} />;
+  return <Text size="2" variant="soft" data-slot="description" slot="description" as={TextPrimitive} {...props} />;
 }
 
 export function ErrorMessage(props: TextFieldErrorMessageProps) {
-  return <Text size="2" variant="danger" as={FieldError} {...props} />;
+  return <Text size="2" variant="danger" data-slot="error-message" as={FieldError} {...props} />;
 }

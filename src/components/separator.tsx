@@ -15,6 +15,7 @@ export const separatorVariants = tv({
 export default function Separator({ className, orientation, ...props }: SeparatorProps) {
   return (
     <div
+      data-slot="separator"
       role="separator"
       aria-orientation={orientation}
       className={separatorVariants({ orientation, className })}

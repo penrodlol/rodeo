@@ -33,6 +33,7 @@ export default function Link({ children, className, href, icon, buttonVariants, 
 
   return (
     <LinkPrimitive
+      data-slot="link"
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noreferrer noopener' : undefined}
