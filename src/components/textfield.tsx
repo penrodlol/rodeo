@@ -1,22 +1,22 @@
 'use client';
 
 import { useMemo } from 'react';
-import { mergeProps } from 'react-aria';
 import {
+  FieldError,
   Group,
   InputContext,
   Input as InputPrimitive,
-  LabelContext,
+  Label as LabelPrimitive,
   TextArea as TextAreaPrimitive,
-  TextContext,
   TextField,
+  Text as TextPrimitive,
   useSlottedContext,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv, VariantProps } from 'tailwind-variants';
 import Button from './button';
 import Icon from './icon';
-import { Text } from './typography';
+import { Text, TextVariants } from './typography';
 
 export type TextFieldRootProps = React.PrimitiveComponentProps<typeof TextField>;
 export type TextFieldLabelProps = Omit<React.ComponentProps<typeof Text<'label'>>, 'as'>;
@@ -28,6 +28,7 @@ export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof Inpu
     prefix?: string | React.ComponentProps<typeof Icon>;
     suffix?: string | React.ComponentProps<typeof Icon>;
   };
+export type TextFieldErrorMessageProps = React.PrimitiveComponentProps<typeof FieldError> & TextVariants;
 export type TextFieldTextAreaProps = React.PrimitiveComponentProps<typeof TextAreaPrimitive> &
   TextFieldTextAreaSlotVariants;
 
@@ -122,17 +123,16 @@ export function Root({ className, ...props }: TextFieldRootProps) {
 }
 
 export function Label({ className, ...props }: TextFieldLabelProps) {
-  const primitiveProps = useSlottedContext(LabelContext);
   return (
     <Text
-      as="label"
+      as={LabelPrimitive}
       className={twMerge(
         'flex max-w-max gap-1 pb-1 select-none',
         'group-required/textfield:after:content-["*"]',
         'group-required/textfield:after:text-danger-11',
         className,
       )}
-      {...mergeProps(primitiveProps, props)}
+      {...props}
     />
   );
 }
@@ -187,11 +187,9 @@ export function TextArea({ className, variant, elevation, resize, ...props }: Te
 }
 
 export function Description(props: React.ComponentProps<typeof Text>) {
-  const primitiveProps = useSlottedContext(TextContext, 'description');
-  return <Text size="2" variant="soft" {...mergeProps(primitiveProps, props)} />;
+  return <Text size="2" variant="soft" slot="description" as={TextPrimitive} {...props} />;
 }
 
-export function ErrorMessage(props: React.ComponentProps<typeof Text>) {
-  const primitiveProps = useSlottedContext(TextContext, 'errorMessage');
-  return <Text size="2" variant="danger" {...mergeProps(primitiveProps, props)} />;
+export function ErrorMessage(props: TextFieldErrorMessageProps) {
+  return <Text size="2" variant="danger" as={FieldError} {...props} />;
 }
