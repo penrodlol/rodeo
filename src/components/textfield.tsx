@@ -40,18 +40,19 @@ export const textFieldInputVariants = tv({
   slots: {
     group: [
       'grid grid-cols-[auto_1fr_auto] [grid-template-areas:"prefix_input_suffix"]',
-      'group/textfield-inputgroup items-center overflow-hidden rounded',
+      'group/field-inputgroup items-center overflow-hidden rounded',
+      'group-invalid/field:border-danger-7 group-invalid/field:has-focus:border-danger-8',
       'focus-within:border-accent-8 border-gray-7 border motion-safe:transition-all',
     ],
     input: [
       'border-gray-7 relative h-10 w-full rounded border [grid-area:input]',
       'has-focus:border-accent-8 motion-safe:transition-all',
 
-      'group-invalid/textfield:border-danger-7',
-      'group-invalid/textfield:has-focus:border-danger-8',
+      'group-invalid/field:border-danger-7',
+      'group-invalid/field:has-focus:border-danger-8',
 
-      'group-[*]/textfield-inputgroup:border-0',
-      'group-[*]/textfield-inputgroup:bg-transparent',
+      'group-[*]/field-inputgroup:border-0',
+      'group-[*]/field-inputgroup:bg-transparent',
 
       'slot-[input]:absolute slot-[input]:inset-0 slot-[input]:z-20',
       'slot-[input]:rounded-[inherit] slot-[input]:px-4 slot-[input]:outline-none',
@@ -64,10 +65,10 @@ export const textFieldInputVariants = tv({
       'has-data-[prefix=object]:slot-[input]:pl-10 has-data-[suffix=object]:slot-[input]:pr-10',
       'has-data-[prefix=string]:slot-[input]:pl-8 has-data-[suffix=string]:slot-[input]:pr-8',
 
-      'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/textfield-inputgroup:slot-[input]:pl-0',
-      'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/textfield-inputgroup:slot-[input]:pr-0',
-      'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:*:data-[prefix]:left-0.5',
-      'group-[:has([data-slot=suffix-button])]/textfield-inputgroup:*:data-[suffix]:right-0.5',
+      'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/field-inputgroup:slot-[input]:pl-0',
+      'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/field-inputgroup:slot-[input]:pr-0',
+      'group-[:has([data-slot=suffix-button])]/field-inputgroup:*:data-[prefix]:left-0.5',
+      'group-[:has([data-slot=suffix-button])]/field-inputgroup:*:data-[suffix]:right-0.5',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
@@ -114,7 +115,7 @@ export function Root({ className, ...props }: TextFieldRootProps) {
     <TextField
       data-slot="textfield"
       className={twMerge(
-        'group/textfield flex w-full flex-col gap-0.5',
+        'group/field flex w-full flex-col gap-0.5',
         'disabled:opacity-70 disabled:select-none',
         className,
       )}
@@ -130,8 +131,8 @@ export function Label({ className, ...props }: TextFieldLabelProps) {
       data-slot="label"
       className={twMerge(
         'flex max-w-max gap-1 pb-1 select-none',
-        'group-required/textfield:after:content-["*"]',
-        'group-required/textfield:after:text-danger-11',
+        'group-required/field:after:content-["*"]',
+        'group-required/field:after:text-danger-11',
         className,
       )}
       {...props}
