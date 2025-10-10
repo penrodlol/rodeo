@@ -1,6 +1,7 @@
 import Section from './_section';
 import Buttons from './components/_buttons';
 import Icons from './components/_icons';
+import Selects from './components/_selects';
 import Separators from './components/_separators';
 import TextFields from './components/_textfields';
 import Typography from './components/_typography';
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Section><Typography /></Section>
       <Section><Buttons /></Section>
       <Section><TextFields /></Section>
+      <Section><Selects /></Section>
       <Section><Icons /></Section>
       <Section><Separators /></Section>
     </>
