@@ -6,7 +6,7 @@ export default function Section({ children, className, ...props }: React.Compone
       <div
         className={twMerge(
           'border-gray-6 mx-auto w-full max-w-screen-2xl border-x border-dashed',
-          'px-20 pt-14 pb-20 not-lg:px-8 group-last-of-type:pb-96 [&>:first-child]:mb-12',
+          'px-20 pt-14 pb-20 not-lg:px-8 group-last-of-type:pb-96',
           className,
         )}
       >
