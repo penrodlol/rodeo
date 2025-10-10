@@ -36,6 +36,10 @@ export type TextFieldInputSlotVariants = VariantProps<typeof textFieldInputVaria
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 export type TextFieldTextAreaSlotVariants = VariantProps<typeof textFieldTextAreaVariants>;
 
+export const textFieldRootVariants = tv({
+  base: 'group/field flex w-full flex-col gap-0.5 disabled:opacity-70 disabled:select-none',
+});
+
 export const textFieldInputVariants = tv({
   slots: {
     group: [
@@ -111,17 +115,7 @@ export const textFieldTextAreaVariants = tv({
 });
 
 export function Root({ className, ...props }: TextFieldRootProps) {
-  return (
-    <TextField
-      data-slot="textfield"
-      className={twMerge(
-        'group/field flex w-full flex-col gap-0.5',
-        'disabled:opacity-70 disabled:select-none',
-        className,
-      )}
-      {...props}
-    />
-  );
+  return <TextField data-slot="textfield" className={textFieldRootVariants({ className })} {...props} />;
 }
 
 export function Label({ className, ...props }: TextFieldLabelProps) {
