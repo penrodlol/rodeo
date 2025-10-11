@@ -36,10 +36,6 @@ export type TextFieldInputSlotVariants = VariantProps<typeof textFieldInputVaria
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 export type TextFieldTextAreaSlotVariants = VariantProps<typeof textFieldTextAreaVariants>;
 
-export const textFieldRootVariants = tv({
-  base: 'group/field flex w-full flex-col gap-0.5 disabled:opacity-70 disabled:select-none',
-});
-
 export const textFieldInputVariants = tv({
   slots: {
     group: [
@@ -104,7 +100,7 @@ export const textFieldTextAreaVariants = tv({
     'placeholder:text-gray-11 placeholder:opacity-70',
     'focus:border-accent-8 focus:border',
     'invalid:border-danger-7 invalid:focus:border-danger-8',
-    '[scrollbar-color:var(--gray-3)_transparent] [scrollbar-width:thin]',
+    '[scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
   ],
   defaultVariants: { variant: 'outline' },
   variants: {
@@ -115,7 +111,17 @@ export const textFieldTextAreaVariants = tv({
 });
 
 export function Root({ className, ...props }: TextFieldRootProps) {
-  return <TextField data-slot="textfield" className={textFieldRootVariants({ className })} {...props} />;
+  return (
+    <TextField
+      data-slot="textfield"
+      className={twMerge(
+        'group/field flex w-full flex-col gap-0.5',
+        'disabled:opacity-70 disabled:select-none',
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export function Label({ className, ...props }: TextFieldLabelProps) {

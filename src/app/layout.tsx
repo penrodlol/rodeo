@@ -12,7 +12,11 @@ export const metadata: Metadata = { title: 'Rodeo', description: 'UI Component L
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className="[scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]"
+    >
       <body
         className={twMerge(
           'bg-gray-1 text-gray-12 selection:bg-accent-5 flex min-h-svh flex-col text-base antialiased',

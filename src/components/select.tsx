@@ -1,6 +1,7 @@
 'use client';
 
-import { ChevronDownIcon } from 'lucide-react';
+import { composeChildren } from '@/libs/primitive';
+import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 import {
   Button,
   Header as HeaderPrimitive,
@@ -18,13 +19,22 @@ import Icon from './icon';
 import * as TextField from './textfield';
 import { Text } from './typography';
 
+export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
+export type SelectOptionsProps = React.PrimitiveComponentProps<typeof ListBox> & SelectOptionsVariants;
+export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem>;
+export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
+export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
+export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
+export type SelectOptionGroupHeaderProps = React.ComponentProps<typeof Text>;
 
 export type SelectValueVariants = VariantProps<typeof selectValueVariants>;
+export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
 
 export const selectValueVariants = tv({
   base: [
-    'flex h-10 items-center justify-between rounded px-4 outline-none motion-safe:transition-all',
+    'flex h-10 items-center justify-between rounded px-4 outline-none',
+    'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
     'group-invalid/field:border-danger-7',
@@ -35,60 +45,99 @@ export const selectValueVariants = tv({
   ],
 });
 
+export const selectOptionsVariants = tv({
+  base: 'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
+  defaultVariants: { width: 'trigger' },
+  variants: { width: { trigger: 'w-(--trigger-width)' } },
+});
+
 export const Label = TextField.Label;
 export const Description = TextField.Description;
 export const ErrorMessage = TextField.ErrorMessage;
 
-export function Root({ className, ...props }: React.PrimitiveComponentProps<typeof Select>) {
-  return <Select data-slot="select" className={TextField.textFieldRootVariants({ className })} {...props} />;
+export function Root({ className, ...props }: SelectRootProps) {
+  return (
+    <Select
+      data-slot="select"
+      className={twMerge(
+        'group/field flex w-full flex-col gap-0.5',
+        'disabled:opacity-70 disabled:select-none',
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export function Value({ className, ...props }: SelectValueProps) {
   return (
-    <Button data-slot="value" className={selectValueVariants({ className })} {...props}>
+    <Button data-slot="select-value" className={selectValueVariants({ className })} {...props}>
       <SelectValue />
       <Icon size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
   );
 }
 
-export function Options({ className, ...props }: React.PrimitiveComponentProps<typeof ListBox>) {
+export function Options({ className, width, ...props }: SelectOptionsProps) {
   return (
-    <Popover
-      data-slot="options-popover"
-      className={twMerge(
-        ['bg-gray-1 border-gray-6 w-(--trigger-width) rounded border p-2', 'slot-[options]:outline-none'],
-        className,
-      )}
-    >
-      <ListBox data-slot="options" {...props} />
+    <Popover data-slot="select-options" className={selectOptionsVariants({ width, className })}>
+      <ListBox data-slot="select-options-list" {...props} />
     </Popover>
   );
 }
 
-export function Option({ className, ...props }: React.PrimitiveComponentProps<typeof ListBoxItem>) {
-  return <ListBoxItem data-slot="option" className={twMerge('flex flex-col px-4 py-1.5', className)} {...props} />;
+export function Option({ children, className, ...props }: SelectOptionProps) {
+  return (
+    <ListBoxItem
+      data-slot="select-option"
+      className={twMerge(
+        'focus:bg-gray-4 relative flex flex-col rounded px-7 py-1.5 outline-none',
+        'selected:text-accent-9 selected:font-medium',
+        'selected:*:text-accent-9 selected:*:font-medium',
+        'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
+        'has-slot-[select-option-description]:slot-[icon]:top-4.5',
+        className,
+      )}
+      {...props}
+    >
+      {(renderProps) => (
+        <>
+          {renderProps.isSelected && <Icon size="1" variant="accent" source={<CheckIcon />} />}
+          {composeChildren(children, renderProps)}
+        </>
+      )}
+    </ListBoxItem>
+  );
 }
 
-export function OptionLabel(props: React.ComponentProps<typeof Text>) {
-  return <Text data-slot="label" as={TextPrimitive} {...props} />;
+export function OptionLabel(props: SelectOptionLabelProps) {
+  return <Text data-slot="select-option-label" as={TextPrimitive} {...props} />;
 }
 
-export function OptionDescription(props: React.ComponentProps<typeof Text>) {
-  return <Text data-slot="description" size="2" variant="soft" as={TextPrimitive} {...props} />;
+export function OptionDescription(props: SelectOptionDescriptionProps) {
+  return <Text data-slot="select-option-description" size="2" variant="soft" as={TextPrimitive} {...props} />;
 }
 
-export function Section(props: React.PrimitiveComponentProps<typeof ListBoxSection>) {
-  return <ListBoxSection data-slot="section" {...props} />;
+export function OptionGroup({ className, ...props }: SelectOptionGroupProps) {
+  return (
+    <ListBoxSection data-slot="select-option-group" className={twMerge('group/select-group', className)} {...props} />
+  );
 }
 
-export function Header({ className, ...props }: React.ComponentProps<typeof Text>) {
+export function OptionGroupHeader({ className, ...props }: SelectOptionGroupHeaderProps) {
   return (
     <Text
-      data-slot="header"
+      data-slot="select-option-group-header"
       variant="soft"
       weight="5"
-      className={twMerge('p-2 select-none', className)}
+      className={twMerge(
+        'px-4 py-2',
+        'group-not-first-of-type/select-group:border-t',
+        'group-not-first-of-type/select-group:border-gray-6',
+        'group-not-first-of-type/select-group:mt-2',
+        'group-not-first-of-type/select-group:pt-4',
+        className,
+      )}
       as={HeaderPrimitive}
       {...props}
     />
