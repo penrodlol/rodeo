@@ -47,6 +47,8 @@ export const selectValueVariants = tv({
     'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
     'slot-[select-value-content]:gap-2 slot-[select-value-content]:truncate',
   ],
+  defaultVariants: { descriptionVisible: false },
+  variants: { descriptionVisible: { false: 'slot-[select-option-description]:hidden' } },
 });
 
 export const selectOptionsVariants = tv({
@@ -85,9 +87,9 @@ export function Root({ className, ...props }: SelectRootProps) {
   );
 }
 
-export function Value({ className, ...props }: SelectValueProps) {
+export function Value({ className, descriptionVisible, ...props }: SelectValueProps) {
   return (
-    <Button data-slot="select-value" className={selectValueVariants({ className })} {...props}>
+    <Button data-slot="select-value" className={selectValueVariants({ descriptionVisible, className })} {...props}>
       <SelectValue data-slot="select-value-content" />
       <Icon size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>

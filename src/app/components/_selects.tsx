@@ -81,7 +81,7 @@ export default function Selects() {
       <Box className="*:w-72">
         <Select.Root placeholder="Select a team member">
           <Select.Label>Team Member</Select.Label>
-          <Select.Value />
+          <Select.Value descriptionVisible />
           <Select.Options>
             <Select.Option orientation="horizontal">
               <Select.OptionLabel>Phoenix Baker</Select.OptionLabel>
