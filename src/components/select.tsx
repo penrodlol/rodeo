@@ -22,7 +22,7 @@ import { Text } from './typography';
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
 export type SelectOptionsProps = React.PrimitiveComponentProps<typeof ListBox> & SelectOptionsVariants;
-export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem>;
+export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & SelectOptionVariants;
 export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
 export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
 export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
@@ -30,10 +30,11 @@ export type SelectOptionGroupHeaderProps = React.ComponentProps<typeof Text>;
 
 export type SelectValueVariants = VariantProps<typeof selectValueVariants>;
 export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
+export type SelectOptionVariants = VariantProps<typeof selectOptionVariants>;
 
 export const selectValueVariants = tv({
   base: [
-    'flex h-10 items-center justify-between rounded px-4 outline-none',
+    'flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
@@ -42,6 +43,9 @@ export const selectValueVariants = tv({
     'group-invalid/field:group-open/field:border-danger-8',
 
     'group-open/field:slot-[icon]:rotate-180 slot-[icon]:motion-safe:transition-transform',
+
+    'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
+    'slot-[select-value-content]:gap-2 slot-[select-value-content]:truncate',
   ],
 });
 
@@ -49,6 +53,18 @@ export const selectOptionsVariants = tv({
   base: 'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
   defaultVariants: { width: 'trigger' },
   variants: { width: { trigger: 'w-(--trigger-width)' } },
+});
+
+export const selectOptionVariants = tv({
+  base: [
+    'focus:bg-gray-4 relative flex rounded px-7 py-1.5 outline-none',
+    'selected:text-accent-9 selected:font-medium',
+    'selected:*:text-accent-9 selected:*:font-medium',
+    'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
+    'has-slot-[select-option-description]:slot-[icon]:top-4.5',
+  ],
+  defaultVariants: { orientation: 'vertical' },
+  variants: { orientation: { vertical: 'flex-col', horizontal: 'flex-row items-center gap-2' } },
 });
 
 export const Label = TextField.Label;
@@ -72,7 +88,7 @@ export function Root({ className, ...props }: SelectRootProps) {
 export function Value({ className, ...props }: SelectValueProps) {
   return (
     <Button data-slot="select-value" className={selectValueVariants({ className })} {...props}>
-      <SelectValue />
+      <SelectValue data-slot="select-value-content" />
       <Icon size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
   );
@@ -86,20 +102,9 @@ export function Options({ className, width, ...props }: SelectOptionsProps) {
   );
 }
 
-export function Option({ children, className, ...props }: SelectOptionProps) {
+export function Option({ children, className, orientation, ...props }: SelectOptionProps) {
   return (
-    <ListBoxItem
-      data-slot="select-option"
-      className={twMerge(
-        'focus:bg-gray-4 relative flex flex-col rounded px-7 py-1.5 outline-none',
-        'selected:text-accent-9 selected:font-medium',
-        'selected:*:text-accent-9 selected:*:font-medium',
-        'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
-        'has-slot-[select-option-description]:slot-[icon]:top-4.5',
-        className,
-      )}
-      {...props}
-    >
+    <ListBoxItem data-slot="select-option" className={selectOptionVariants({ orientation, className })} {...props}>
       {(renderProps) => (
         <>
           {renderProps.isSelected && <Icon size="1" variant="accent" source={<CheckIcon />} />}
@@ -111,11 +116,20 @@ export function Option({ children, className, ...props }: SelectOptionProps) {
 }
 
 export function OptionLabel(props: SelectOptionLabelProps) {
-  return <Text data-slot="select-option-label" as={TextPrimitive} {...props} />;
+  return <Text data-slot="select-option-label" slot="label" as={TextPrimitive} {...props} />;
 }
 
 export function OptionDescription(props: SelectOptionDescriptionProps) {
-  return <Text data-slot="select-option-description" size="2" variant="soft" as={TextPrimitive} {...props} />;
+  return (
+    <Text
+      data-slot="select-option-description"
+      size="2"
+      variant="soft"
+      slot="description"
+      as={TextPrimitive}
+      {...props}
+    />
+  );
 }
 
 export function OptionGroup({ className, ...props }: SelectOptionGroupProps) {
@@ -128,6 +142,7 @@ export function OptionGroupHeader({ className, ...props }: SelectOptionGroupHead
   return (
     <Text
       data-slot="select-option-group-header"
+      size="2"
       variant="soft"
       weight="5"
       className={twMerge(
