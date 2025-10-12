@@ -23,7 +23,7 @@ import { Text } from './typography';
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
 export type SelectOptionsProps = React.PrimitiveComponentProps<typeof ListBox> & SelectOptionsVariants;
-export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & SelectOptionVariants;
+export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem>;
 export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
 export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
 export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
@@ -31,7 +31,6 @@ export type SelectOptionGroupHeaderProps = React.ComponentProps<typeof Text>;
 
 export type SelectValueVariants = VariantProps<typeof selectValueVariants>;
 export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
-export type SelectOptionVariants = VariantProps<typeof selectOptionVariants>;
 
 export const selectValueVariants = tv({
   base: [
@@ -54,20 +53,14 @@ export const selectValueVariants = tv({
 
 export const selectOptionsVariants = tv({
   base: 'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
-  defaultVariants: { width: 'trigger' },
-  variants: { width: { trigger: 'w-(--trigger-width)' } },
-});
-
-export const selectOptionVariants = tv({
-  base: [
-    'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
-    'selected:text-accent-9 selected:font-medium',
-    'selected:*:text-accent-9 selected:*:font-medium',
-    'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
-    'has-slot-[select-option-description]:slot-[icon]:top-4.5',
-  ],
-  defaultVariants: { orientation: 'vertical' },
-  variants: { orientation: { vertical: 'flex-col', horizontal: 'flex-row items-center gap-2' } },
+  defaultVariants: { width: 'trigger', optionOrientation: 'vertical' },
+  variants: {
+    width: { trigger: 'w-(--trigger-width)' },
+    optionOrientation: {
+      vertical: 'slot-[select-option]:flex-col',
+      horizontal: 'slot-[select-option]:flex-row slot-[select-option]:gap-2 slot-[select-option]:items-center',
+    },
+  },
 });
 
 export const Label = TextField.Label;
@@ -97,21 +90,28 @@ export function Value({ className, descriptionVisible, ...props }: SelectValuePr
   );
 }
 
-export function Options({ className, width, ...props }: SelectOptionsProps) {
+export function Options({ className, width, optionOrientation, ...props }: SelectOptionsProps) {
   return (
-    <Popover data-slot="select-options" className={selectOptionsVariants({ width, className })}>
+    <Popover data-slot="select-options" className={selectOptionsVariants({ width, optionOrientation, className })}>
       <ListBox data-slot="select-options-list" {...props} />
     </Popover>
   );
 }
 
-export function Option({ children, className, orientation, ...props }: SelectOptionProps) {
+export function Option({ children, className, ...props }: SelectOptionProps) {
   const textValue = useMemo(() => (typeof children === 'string' ? children.trim() : ''), [children]);
   return (
     <ListBoxItem
       data-slot="select-option"
       textValue={textValue}
-      className={selectOptionVariants({ orientation, className })}
+      className={twMerge(
+        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
+        'selected:text-accent-9 selected:font-medium',
+        'selected:*:text-accent-9 selected:*:font-medium',
+        'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
+        'has-slot-[select-option-description]:slot-[icon]:top-4.5',
+        className,
+      )}
       {...props}
     >
       {(renderProps) => (
