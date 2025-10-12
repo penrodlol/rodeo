@@ -23,31 +23,31 @@ export default function Selects() {
           <Select.Label>Shipping Country</Select.Label>
           <Select.Value />
           <Select.Options>
-            <Select.Option>
+            <Select.Option textValue="United States">
               <Select.OptionLabel>United States</Select.OptionLabel>
               <Select.OptionDescription>20 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="Canada">
               <Select.OptionLabel>Canada</Select.OptionLabel>
               <Select.OptionDescription>10 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="Mexico">
               <Select.OptionLabel>Mexico</Select.OptionLabel>
               <Select.OptionDescription>5 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="United Kingdom">
               <Select.OptionLabel>United Kingdom</Select.OptionLabel>
               <Select.OptionDescription>15 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="Germany">
               <Select.OptionLabel>Germany</Select.OptionLabel>
               <Select.OptionDescription>8 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="France">
               <Select.OptionLabel>France</Select.OptionLabel>
               <Select.OptionDescription>12 shipping options</Select.OptionDescription>
             </Select.Option>
-            <Select.Option>
+            <Select.Option textValue="Japan">
               <Select.OptionLabel>Japan</Select.OptionLabel>
               <Select.OptionDescription>18 shipping options</Select.OptionDescription>
             </Select.Option>
@@ -78,28 +78,28 @@ export default function Selects() {
           <Select.Description>Select your shipping country</Select.Description>
         </Select.Root>
       </Box>
-      <Box className="*:w-72">
+      <Box className="*:w-64">
         <Select.Root placeholder="Select a team member">
           <Select.Label>Team Member</Select.Label>
           <Select.Value descriptionVisible />
           <Select.Options>
-            <Select.Option orientation="horizontal">
+            <Select.Option textValue="Phoenix Baker" orientation="horizontal">
               <Select.OptionLabel>Phoenix Baker</Select.OptionLabel>
               <Select.OptionDescription>@phoenix</Select.OptionDescription>
             </Select.Option>
-            <Select.Option orientation="horizontal">
+            <Select.Option textValue="Rivera Richards" orientation="horizontal">
               <Select.OptionLabel>Rivera Richards</Select.OptionLabel>
               <Select.OptionDescription>@rivera</Select.OptionDescription>
             </Select.Option>
-            <Select.Option orientation="horizontal">
+            <Select.Option textValue="Emerson Cooper" orientation="horizontal">
               <Select.OptionLabel>Emerson Cooper</Select.OptionLabel>
               <Select.OptionDescription>@emerson</Select.OptionDescription>
             </Select.Option>
-            <Select.Option orientation="horizontal">
+            <Select.Option textValue="Finley Howard" orientation="horizontal">
               <Select.OptionLabel>Finley Howard</Select.OptionLabel>
               <Select.OptionDescription>@finley</Select.OptionDescription>
             </Select.Option>
-            <Select.Option orientation="horizontal">
+            <Select.Option textValue="Reese Ward" orientation="horizontal">
               <Select.OptionLabel>Reese Ward</Select.OptionLabel>
               <Select.OptionDescription>@reese</Select.OptionDescription>
             </Select.Option>

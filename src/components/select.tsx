@@ -2,6 +2,7 @@
 
 import { composeChildren } from '@/libs/primitive';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
+import { useMemo } from 'react';
 import {
   Button,
   Header as HeaderPrimitive,
@@ -59,7 +60,7 @@ export const selectOptionsVariants = tv({
 
 export const selectOptionVariants = tv({
   base: [
-    'focus:bg-gray-4 relative flex rounded px-7 py-1.5 outline-none',
+    'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
     'selected:text-accent-9 selected:font-medium',
     'selected:*:text-accent-9 selected:*:font-medium',
     'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
@@ -105,8 +106,14 @@ export function Options({ className, width, ...props }: SelectOptionsProps) {
 }
 
 export function Option({ children, className, orientation, ...props }: SelectOptionProps) {
+  const textValue = useMemo(() => (typeof children === 'string' ? children.trim() : ''), [children]);
   return (
-    <ListBoxItem data-slot="select-option" className={selectOptionVariants({ orientation, className })} {...props}>
+    <ListBoxItem
+      data-slot="select-option"
+      textValue={textValue}
+      className={selectOptionVariants({ orientation, className })}
+      {...props}
+    >
       {(renderProps) => (
         <>
           {renderProps.isSelected && <Icon size="1" variant="accent" source={<CheckIcon />} />}
