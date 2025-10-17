@@ -34,7 +34,7 @@ export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
 
 export const selectValueVariants = tv({
   base: [
-    'flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
+    'flex h-10 items-center justify-between gap-2 rounded px-4 text-left outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
@@ -44,11 +44,17 @@ export const selectValueVariants = tv({
 
     'group-open/field:slot-[icon]:rotate-180 slot-[icon]:motion-safe:transition-transform',
 
-    'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
-    'slot-[select-value-content]:gap-2 slot-[select-value-content]:truncate',
+    'slot-[select-value-content]:truncate',
   ],
-  defaultVariants: { descriptionVisible: false },
-  variants: { descriptionVisible: { false: 'slot-[select-option-description]:hidden' } },
+  defaultVariants: { variant: 'outline', descriptionVisible: false },
+  variants: {
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    variant: { soft: 'bg-gray-3 border-transparent', 'soft-outline': 'bg-gray-3', outline: 'bg-gray-1' },
+    descriptionVisible: {
+      true: 'slot-[select-option-description]:ml-2',
+      false: 'slot-[select-option-description]:hidden',
+    },
+  },
 });
 
 export const selectOptionsVariants = tv({
@@ -78,7 +84,7 @@ export function Root({ className, ...props }: SelectRootProps) {
     <Select
       data-slot="select"
       className={twMerge(
-        'group/field flex w-full flex-col gap-1',
+        'group/field flex w-full flex-col gap-0.5',
         'disabled:opacity-70 disabled:select-none',
         className,
       )}
@@ -87,9 +93,13 @@ export function Root({ className, ...props }: SelectRootProps) {
   );
 }
 
-export function Value({ className, descriptionVisible, ...props }: SelectValueProps) {
+export function Value({ className, elevation, variant, descriptionVisible, ...props }: SelectValueProps) {
   return (
-    <Button data-slot="select-value" className={selectValueVariants({ descriptionVisible, className })} {...props}>
+    <Button
+      data-slot="select-value"
+      className={selectValueVariants({ elevation, variant, descriptionVisible, className })}
+      {...props}
+    >
       <SelectValue data-slot="select-value-content" />
       <Icon size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
@@ -138,9 +148,9 @@ export function OptionDescription(props: SelectOptionDescriptionProps) {
   return (
     <Text
       data-slot="select-option-description"
+      slot="description"
       size="2"
       variant="soft"
-      slot="description"
       as={TextPrimitive}
       {...props}
     />
