@@ -370,6 +370,17 @@ export default function Selects() {
             ))}
           </Select.Options>
         </Select.Root>
+        <Select.Root placeholder="Select a project">
+          <Select.Label>Project Type</Select.Label>
+          <Select.Value />
+          <Select.Description>Select your project type</Select.Description>
+          <Select.Options>
+            <Select.Option href="/">Create new...</Select.Option>
+            <Select.Option>Proposal</Select.Option>
+            <Select.Option>Budget</Select.Option>
+            <Select.Option>Onboarding</Select.Option>
+          </Select.Options>
+        </Select.Root>
       </Box>
     </Box>
   );

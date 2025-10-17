@@ -121,20 +121,25 @@ export function Options({ className, width, optionOrientation, ...props }: Selec
   );
 }
 
-export function Option({ children, className, icon, ...props }: SelectOptionProps) {
+export function Option({ children, className, icon, href, ...props }: SelectOptionProps) {
   const textValue = useMemo(() => (typeof children === 'string' ? children.trim() : ''), [children]);
+  const externalLink = useMemo(() => /^(?!\/|#).*/.test(href?.toString() ?? ''), [href]);
   return (
     <ListBoxItem
       data-slot="select-option"
       textValue={textValue}
+      href={href}
+      target={externalLink ? '_blank' : undefined}
+      rel={externalLink ? 'noopener noreferrer' : undefined}
       className={twMerge(
         'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 outline-none',
         'selected:text-accent-9 selected:font-medium selected:*:text-accent-9 selected:*:font-medium',
-        'disabled:text-gray-11/50 disabled:*:text-gray-11/50',
+        'disabled:text-gray-11/50 disabled:*:text-gray-11/50 disabled:cursor-default',
         'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
         'slot-[icon]:not-data-check:size-3.5',
         'has-slot-[select-option-description]:slot-[icon]:top-4.5',
         icon ? 'slot-[icon]:data-check:right-1.5 slot-[icon]:data-check:left-[unset] pl-9' : 'pl-7',
+        href && 'text-gray-11',
         className,
       )}
       {...props}
