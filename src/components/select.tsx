@@ -124,6 +124,7 @@ export function Option({ children, className, ...props }: SelectOptionProps) {
         'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
         'selected:text-accent-9 selected:font-medium',
         'selected:*:text-accent-9 selected:*:font-medium',
+        'disabled:text-gray-11/50 disabled:*:text-gray-11/50',
         'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
         'has-slot-[select-option-description]:slot-[icon]:top-4.5',
         className,

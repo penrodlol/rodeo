@@ -2,181 +2,217 @@ import * as Select from '@/components/select';
 import Box from '../_box';
 
 const COUNTRIES = [
-  { name: 'United States', description: '19 shipping options' },
-  { name: 'Canada', description: '10 shipping options' },
-  { name: 'Mexico', description: '5 shipping options' },
-  { name: 'Germany', description: '8 shipping options' },
-  { name: 'France', description: '12 shipping options' },
-  { name: 'Japan', description: '18 shipping options' },
+  { name: 'United States', description: '19 shipping options', disabled: false },
+  { name: 'Canada', description: '10 shipping options', disabled: false },
+  { name: 'Mexico', description: '5 shipping options', disabled: false },
+  { name: 'Germany', description: '8 shipping options', disabled: true },
+  { name: 'France', description: '12 shipping options', disabled: false },
+  { name: 'Japan', description: '18 shipping options', disabled: false },
 ];
 
 const COUNTRIES_BY_REGION = [
   { region: 'North America', countries: COUNTRIES.slice(0, 3) },
-  { region: 'Europe', countries: COUNTRIES.slice(3, 6) },
-  { region: 'Asia', countries: COUNTRIES.slice(6, 7) },
+  { region: 'Europe', countries: COUNTRIES.slice(3, 5) },
+  { region: 'Asia', countries: COUNTRIES.slice(5, 6) },
 ];
 
 export default function Selects() {
   return (
     <Box className="flex-col gap-6">
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isDisabled placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="1" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="2" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="3" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isDisabled placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="1" variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="2" variant="soft" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="3" variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft-outline" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root isDisabled placeholder="Select a country" aria-label="Select a country">
+        <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="1" variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="2" variant="soft-outline" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
-        <Select.Root placeholder="Select a country" aria-label="Select a country">
+        <Select.Root placeholder="Select a country" aria-label="Shipping Country">
           <Select.Value elevation="3" variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -187,7 +223,9 @@ export default function Selects() {
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -197,7 +235,9 @@ export default function Selects() {
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -206,7 +246,9 @@ export default function Selects() {
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -218,7 +260,9 @@ export default function Selects() {
           <Select.Description>Select your shipping country</Select.Description>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -229,7 +273,9 @@ export default function Selects() {
           <Select.Description>Select your shipping country</Select.Description>
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
         </Select.Root>
@@ -238,7 +284,9 @@ export default function Selects() {
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name}>{country.name}</Select.Option>
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select.Options>
           <Select.Description>Select your shipping country</Select.Description>
@@ -250,7 +298,7 @@ export default function Selects() {
           <Select.Value />
           <Select.Options>
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name} textValue={country.name}>
+              <Select.Option key={country.name} textValue={country.name} isDisabled={country.disabled}>
                 <Select.OptionLabel>{country.name}</Select.OptionLabel>
                 <Select.OptionDescription>{country.description}</Select.OptionDescription>
               </Select.Option>
@@ -263,7 +311,7 @@ export default function Selects() {
           <Select.Value descriptionVisible />
           <Select.Options optionOrientation="horizontal">
             {COUNTRIES.map((country) => (
-              <Select.Option key={country.name} textValue={country.name}>
+              <Select.Option key={country.name} textValue={country.name} isDisabled={country.disabled}>
                 <Select.OptionLabel>{country.name}</Select.OptionLabel>
                 <Select.OptionDescription>{country.description}</Select.OptionDescription>
               </Select.Option>
@@ -279,7 +327,9 @@ export default function Selects() {
               <Select.OptionGroup key={group.region}>
                 <Select.OptionGroupHeader>{group.region}</Select.OptionGroupHeader>
                 {group.countries.map((country) => (
-                  <Select.Option key={country.name}>{country.name}</Select.Option>
+                  <Select.Option key={country.name} isDisabled={country.disabled}>
+                    {country.name}
+                  </Select.Option>
                 ))}
               </Select.OptionGroup>
             ))}
