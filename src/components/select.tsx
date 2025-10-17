@@ -210,7 +210,7 @@ export function OptionLoadMore({ children, className, spinner, ...props }: Selec
   return (
     <ListBoxLoadMoreItem
       data-slot="select-option-load-more"
-      className={twMerge('text-gray-11 flex items-center gap-2 p-4 pl-7 text-sm', className)}
+      className={twMerge('text-gray-11 flex items-center gap-2 p-4 pb-5 pl-7 text-sm', className)}
       {...props}
     >
       <Spinner size="1" {...spinner} />

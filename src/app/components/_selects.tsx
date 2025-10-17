@@ -1,5 +1,9 @@
+'use client';
+
 import * as Select from '@/components/select';
 import { BirdIcon, MailIcon, MessagesSquareIcon, PhoneCallIcon } from 'lucide-react';
+import { Collection } from 'react-aria-components';
+import { useAsyncList } from 'react-stately';
 import Box from '../_box';
 
 const COUNTRIES = [
@@ -18,6 +22,16 @@ const COUNTRIES_BY_REGION = [
 ];
 
 export default function Selects() {
+  const optionsAsync = useAsyncList<{ name: number }>({
+    async load({ cursor }) {
+      if (cursor) await new Promise((resolve) => setTimeout(resolve, 5000));
+      const start = cursor ? Number(cursor) : 1;
+      const items = Array.from({ length: 20 }, (_, i) => ({ name: start + i }));
+      const nextCursor = start + 20 <= 151 ? String(start + 20) : undefined;
+      return { items, cursor: nextCursor };
+    },
+  });
+
   return (
     <Box className="flex-col gap-6">
       <Box className="gap-12 *:w-72">
@@ -379,6 +393,21 @@ export default function Selects() {
             <Select.Option>Proposal</Select.Option>
             <Select.Option>Budget</Select.Option>
             <Select.Option>Onboarding</Select.Option>
+          </Select.Options>
+        </Select.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select an option">
+          <Select.Label>Option Choice</Select.Label>
+          <Select.Value />
+          <Select.Options>
+            <Collection items={optionsAsync.items}>
+              {(item) => <Select.Option id={item.name}>Option {item.name}</Select.Option>}
+            </Collection>
+            <Select.OptionLoadMore
+              onLoadMore={optionsAsync.loadMore}
+              isLoading={optionsAsync.loadingState === 'loadingMore'}
+            />
           </Select.Options>
         </Select.Root>
       </Box>
