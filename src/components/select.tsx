@@ -22,7 +22,8 @@ import { Text } from './typography';
 
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
-export type SelectOptionsProps = React.PrimitiveComponentProps<typeof ListBox> & SelectOptionsVariants;
+export type SelectOptionsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> &
+  SelectOptionsVariants;
 export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & {
   icon?: React.ComponentProps<typeof Icon>;
 };
@@ -113,7 +114,7 @@ export function Value({ className, elevation, variant, iconVisible, descriptionV
   );
 }
 
-export function Options({ className, width, optionOrientation, ...props }: SelectOptionsProps) {
+export function Options<T extends object>({ className, width, optionOrientation, ...props }: SelectOptionsProps<T>) {
   return (
     <Popover data-slot="select-options" className={selectOptionsVariants({ width, optionOrientation, className })}>
       <ListBox data-slot="select-options-list" {...props} />
