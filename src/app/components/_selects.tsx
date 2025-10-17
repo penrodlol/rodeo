@@ -358,6 +358,18 @@ export default function Selects() {
             </Select.Option>
           </Select.Options>
         </Select.Root>
+        <Select.Root placeholder="Select a country" selectionMode="multiple">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Value />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
       </Box>
     </Box>
   );

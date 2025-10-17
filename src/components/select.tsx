@@ -36,7 +36,7 @@ export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
 
 export const selectValueVariants = tv({
   base: [
-    'flex h-10 items-center justify-between gap-2 rounded px-4 text-left outline-none',
+    'flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
@@ -47,8 +47,10 @@ export const selectValueVariants = tv({
     'group-open/field:slot-[icon]:data-chevron:rotate-180',
     'slot-[icon]:data-chevron:motion-safe:transition-transform',
 
-    'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
-    'slot-[select-value-content]:truncate slot-[select-value-content]:gap-2',
+    'slot-[select-value-content]:truncate slot-[select-value-content]:relative',
+    'slot-[select-value-content]:has-slot-[icon]:pl-6',
+    'slot-[icon]:not-data-chevron:absolute slot-[icon]:not-data-chevron:left-0',
+    'slot-[icon]:not-data-chevron:top-1/2 slot-[icon]:not-data-chevron:-translate-y-1/2',
   ],
   defaultVariants: { variant: 'outline', descriptionVisible: false, iconVisible: true },
   variants: {
