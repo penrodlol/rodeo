@@ -50,10 +50,11 @@ export const selectValueVariants = tv({
     'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
     'slot-[select-value-content]:truncate slot-[select-value-content]:gap-2',
   ],
-  defaultVariants: { variant: 'outline', descriptionVisible: false },
+  defaultVariants: { variant: 'outline', descriptionVisible: false, iconVisible: true },
   variants: {
     elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     variant: { soft: 'bg-gray-3 border-transparent', 'soft-outline': 'bg-gray-3', outline: 'bg-gray-1' },
+    iconVisible: { false: 'slot-[icon]:not-data-chevron:hidden' },
     descriptionVisible: {
       true: 'slot-[select-option-description]:ml-2',
       false: 'slot-[select-option-description]:hidden',
@@ -97,11 +98,11 @@ export function Root({ className, ...props }: SelectRootProps) {
   );
 }
 
-export function Value({ className, elevation, variant, descriptionVisible, ...props }: SelectValueProps) {
+export function Value({ className, elevation, variant, iconVisible, descriptionVisible, ...props }: SelectValueProps) {
   return (
     <Button
       data-slot="select-value"
-      className={selectValueVariants({ elevation, variant, descriptionVisible, className })}
+      className={selectValueVariants({ elevation, variant, iconVisible, descriptionVisible, className })}
       {...props}
     >
       <SelectValue data-slot="select-value-content" />
