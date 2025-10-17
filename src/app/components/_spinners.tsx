@@ -9,6 +9,9 @@ export default function Spinners() {
         <Spinner />
         <Spinner />
         <Spinner />
+        <Spinner variant="accent" />
+        <Spinner variant="accent" />
+        <Spinner variant="accent" />
         <Spinner variant="soft" />
         <Spinner variant="soft" />
         <Spinner variant="soft" />
