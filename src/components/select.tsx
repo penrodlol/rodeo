@@ -8,6 +8,7 @@ import {
   Header as HeaderPrimitive,
   ListBox,
   ListBoxItem,
+  ListBoxLoadMoreItem,
   ListBoxSection,
   Popover,
   Select,
@@ -17,6 +18,7 @@ import {
 import { twMerge } from 'tailwind-merge';
 import { tv, VariantProps } from 'tailwind-variants';
 import Icon from './icon';
+import Spinner from './spinner';
 import * as TextField from './textfield';
 import { Text } from './typography';
 
@@ -31,6 +33,9 @@ export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
 export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
 export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
 export type SelectOptionGroupHeaderProps = React.ComponentProps<typeof Text>;
+export type SelectOptionLoadMoreProps = React.PrimitiveComponentProps<typeof ListBoxLoadMoreItem> & {
+  spinner?: React.ComponentProps<typeof Spinner>;
+};
 
 export type SelectValueVariants = VariantProps<typeof selectValueVariants>;
 export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
@@ -67,8 +72,9 @@ export const selectValueVariants = tv({
 
 export const selectOptionsVariants = tv({
   base: [
-    'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
+    'bg-gray-2 border-gray-6 rounded border p-2 shadow-md select-none',
     'overflow-auto [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
+    'slot-[select-options-list]:max-h-96 slot-[select-options-list]:outline-none',
     'exiting:duration-0 entering:opacity-0 origin-(--trigger-anchor-point) motion-safe:transition-all',
     'placement-bottom:entering:-translate-y-1 placement-top:entering:translate-y-1',
     'placement-left:entering:translate-x-1 placement-right:entering:-translate-x-1',
@@ -197,5 +203,18 @@ export function OptionGroupHeader({ className, ...props }: SelectOptionGroupHead
       as={HeaderPrimitive}
       {...props}
     />
+  );
+}
+
+export function OptionLoadMore({ children, className, spinner, ...props }: SelectOptionLoadMoreProps) {
+  return (
+    <ListBoxLoadMoreItem
+      data-slot="select-option-load-more"
+      className={twMerge('text-gray-11 flex items-center gap-2 p-4 pl-7 text-sm', className)}
+      {...props}
+    >
+      <Spinner size="1" {...spinner} />
+      {children ?? 'Loading more...'}
+    </ListBoxLoadMoreItem>
   );
 }
