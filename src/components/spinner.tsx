@@ -19,7 +19,6 @@ export default function Spinner({ className, size, variant, ...props }: SpinnerP
   return (
     <Icon
       role="status"
-      aria-label="Loading"
       source={<LoaderCircleIcon />}
       className={spinnerVariants({ size, variant, className })}
       {...props}
