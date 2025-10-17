@@ -115,7 +115,7 @@ export function Root({ className, ...props }: TextFieldRootProps) {
     <TextField
       data-slot="textfield"
       className={twMerge(
-        'group/field flex w-full flex-col gap-0.5',
+        'group/field flex w-full flex-col gap-1',
         'disabled:opacity-70 disabled:select-none',
         className,
       )}

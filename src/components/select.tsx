@@ -52,7 +52,13 @@ export const selectValueVariants = tv({
 });
 
 export const selectOptionsVariants = tv({
-  base: 'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
+  base: [
+    'bg-gray-2 border-gray-6 slot-[select-options-list]:outline-none rounded border p-2 shadow-md select-none',
+    'overflow-auto [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
+    'exiting:duration-0 entering:opacity-0 origin-(--trigger-anchor-point) motion-safe:transition-all',
+    'placement-bottom:entering:-translate-y-1 placement-top:entering:translate-y-1',
+    'placement-left:entering:translate-x-1 placement-right:entering:-translate-x-1',
+  ],
   defaultVariants: { width: 'trigger', optionOrientation: 'vertical' },
   variants: {
     width: { trigger: 'w-(--trigger-width)' },
@@ -72,7 +78,7 @@ export function Root({ className, ...props }: SelectRootProps) {
     <Select
       data-slot="select"
       className={twMerge(
-        'group/field flex w-full flex-col gap-0.5',
+        'group/field flex w-full flex-col gap-1',
         'disabled:opacity-70 disabled:select-none',
         className,
       )}
