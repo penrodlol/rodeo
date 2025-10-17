@@ -1,4 +1,5 @@
 import * as Select from '@/components/select';
+import { BirdIcon, MailIcon, MessagesSquareIcon, PhoneCallIcon } from 'lucide-react';
 import Box from '../_box';
 
 const COUNTRIES = [
@@ -335,6 +336,27 @@ export default function Selects() {
             ))}
           </Select.Options>
           <Select.Description>Select your shipping country</Select.Description>
+        </Select.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select a device">
+          <Select.Label>Device Notifications</Select.Label>
+          <Select.Value />
+          <Select.Description>Select your device for notifications</Select.Description>
+          <Select.Options>
+            <Select.Option textValue="text message" icon={{ source: <MessagesSquareIcon /> }}>
+              Text Message
+            </Select.Option>
+            <Select.Option textValue="email" icon={{ source: <MailIcon /> }}>
+              Email
+            </Select.Option>
+            <Select.Option textValue="phone call" icon={{ source: <PhoneCallIcon /> }}>
+              Phone Call
+            </Select.Option>
+            <Select.Option textValue="messenger pigeon" icon={{ source: <BirdIcon /> }}>
+              Messenger Pigeon
+            </Select.Option>
+          </Select.Options>
         </Select.Root>
       </Box>
     </Box>

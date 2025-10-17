@@ -23,7 +23,9 @@ import { Text } from './typography';
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
 export type SelectOptionsProps = React.PrimitiveComponentProps<typeof ListBox> & SelectOptionsVariants;
-export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem>;
+export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & {
+  icon?: React.ComponentProps<typeof Icon>;
+};
 export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
 export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
 export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
@@ -42,9 +44,11 @@ export const selectValueVariants = tv({
     'group-invalid/field:focus:border-danger-8',
     'group-invalid/field:group-open/field:border-danger-8',
 
-    'group-open/field:slot-[icon]:rotate-180 slot-[icon]:motion-safe:transition-transform',
+    'group-open/field:slot-[icon]:data-chevron:rotate-180',
+    'slot-[icon]:data-chevron:motion-safe:transition-transform',
 
-    'slot-[select-value-content]:truncate',
+    'slot-[select-value-content]:flex slot-[select-value-content]:items-center',
+    'slot-[select-value-content]:truncate slot-[select-value-content]:gap-2',
   ],
   defaultVariants: { variant: 'outline', descriptionVisible: false },
   variants: {
@@ -101,7 +105,7 @@ export function Value({ className, elevation, variant, descriptionVisible, ...pr
       {...props}
     >
       <SelectValue data-slot="select-value-content" />
-      <Icon size="1" variant="soft" source={<ChevronDownIcon />} />
+      <Icon data-chevron size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
   );
 }
@@ -114,26 +118,28 @@ export function Options({ className, width, optionOrientation, ...props }: Selec
   );
 }
 
-export function Option({ children, className, ...props }: SelectOptionProps) {
+export function Option({ children, className, icon, ...props }: SelectOptionProps) {
   const textValue = useMemo(() => (typeof children === 'string' ? children.trim() : ''), [children]);
   return (
     <ListBoxItem
       data-slot="select-option"
       textValue={textValue}
       className={twMerge(
-        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
-        'selected:text-accent-9 selected:font-medium',
-        'selected:*:text-accent-9 selected:*:font-medium',
+        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 outline-none',
+        'selected:text-accent-9 selected:font-medium selected:*:text-accent-9 selected:*:font-medium',
         'disabled:text-gray-11/50 disabled:*:text-gray-11/50',
         'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
+        'slot-[icon]:not-data-check:size-3.5',
         'has-slot-[select-option-description]:slot-[icon]:top-4.5',
+        icon ? 'slot-[icon]:data-check:right-1.5 slot-[icon]:data-check:left-[unset] pl-9' : 'pl-7',
         className,
       )}
       {...props}
     >
       {(renderProps) => (
         <>
-          {renderProps.isSelected && <Icon size="1" variant="accent" source={<CheckIcon />} />}
+          {renderProps.isSelected && <Icon data-check size="1" variant="accent" source={<CheckIcon />} />}
+          {icon && <Icon size="1" variant="soft" {...icon} />}
           {composeChildren(children, renderProps)}
         </>
       )}
