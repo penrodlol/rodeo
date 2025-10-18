@@ -1,6 +1,6 @@
 'use client';
 
-import { cloneElement, useMemo } from 'react';
+import { cloneElement, isValidElement } from 'react';
 import { tv, VariantProps } from 'tailwind-variants';
 
 export type IconProps = React.ComponentProps<'svg'> & IconVariants & { source: React.JSX.Element };
@@ -17,9 +17,10 @@ export const iconVariants = tv({
 });
 
 export default function Icon({ className, variant, size, source, ...props }: IconProps) {
-  return useMemo(
-    () =>
-      cloneElement(source, { 'data-slot': 'icon', className: iconVariants({ variant, size, className }), ...props }),
-    [source, props, variant, size, className],
-  );
+  if (!isValidElement(source)) return null;
+  return cloneElement(source as React.JSX.Element, {
+    'data-slot': 'icon',
+    className: iconVariants({ variant, size, className }),
+    ...props,
+  });
 }
