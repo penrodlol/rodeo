@@ -24,7 +24,11 @@ import { Text } from './typography';
 
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectTriggerProps = React.PrimitiveComponentProps<typeof Button> &
-  SelectTriggerVariants & { valueProps?: React.ComponentProps<typeof SelectValue> };
+  SelectTriggerVariants & {
+    valueProps?: React.ComponentProps<typeof SelectValue>;
+    prefix?: string | React.ComponentProps<typeof Icon>;
+    suffix?: string | React.ComponentProps<typeof Icon>;
+  };
 export type SelectOptionsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> &
   SelectOptionsVariants;
 export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & {
@@ -43,7 +47,7 @@ export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
 
 export const selectTriggerVariants = tv({
   base: [
-    'flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
+    'relative flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
@@ -58,6 +62,15 @@ export const selectTriggerVariants = tv({
     'slot-[select-value-content]:has-slot-[icon]:pl-6',
     'slot-[icon]:not-data-chevron:absolute slot-[icon]:not-data-chevron:left-0',
     'slot-[icon]:not-data-chevron:top-1/2 slot-[icon]:not-data-chevron:-translate-y-1/2',
+
+    'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:-translate-y-1/2',
+    'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
+    '*:data-[prefix]:left-4 *:data-[suffix=object]:right-14 *:data-[suffix=string]:right-10',
+
+    'has-data-[prefix=object]:slot-[select-value-content]:pl-6',
+    'has-data-[suffix=object]:slot-[select-value-content]:pr-6',
+    'has-data-[prefix=string]:slot-[select-value-content]:pl-5',
+    'has-data-[suffix=string]:slot-[select-value-content]:pr-5',
   ],
   defaultVariants: { variant: 'outline', descriptionVisible: false, iconVisible: true },
   variants: {
@@ -115,6 +128,8 @@ export function Trigger({
   iconVisible,
   descriptionVisible,
   valueProps,
+  prefix,
+  suffix,
   ...props
 }: SelectTriggerProps) {
   return (
@@ -123,7 +138,17 @@ export function Trigger({
       className={selectTriggerVariants({ elevation, variant, iconVisible, descriptionVisible, className })}
       {...props}
     >
+      {prefix && (
+        <div data-slot="affix" data-prefix={typeof prefix}>
+          {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
+        </div>
+      )}
       <SelectValue data-slot="select-value-content" {...valueProps} />
+      {suffix && (
+        <div data-slot="affix" data-suffix={typeof suffix}>
+          {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
+        </div>
+      )}
       <Icon data-chevron size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
   );

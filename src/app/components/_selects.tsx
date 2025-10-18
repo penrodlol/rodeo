@@ -1,7 +1,7 @@
 'use client';
 
 import * as Select from '@/components/select';
-import { BirdIcon, MailIcon, MessagesSquareIcon, PhoneCallIcon } from 'lucide-react';
+import { BirdIcon, FlagIcon, MailIcon, MessagesSquareIcon, PhoneCallIcon } from 'lucide-react';
 import { Collection } from 'react-aria-components';
 import { useAsyncList } from 'react-stately';
 import Box from '../_box';
@@ -305,6 +305,82 @@ export default function Selects() {
             ))}
           </Select.Options>
           <Select.Description>Select your shipping country</Select.Description>
+        </Select.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger prefix="$" />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger suffix="$" />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger prefix="$" suffix="$" />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger prefix={{ source: <FlagIcon /> }} />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger suffix={{ source: <FlagIcon /> }} />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
+        </Select.Root>
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger prefix={{ source: <FlagIcon /> }} suffix={{ source: <FlagIcon /> }} />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            {COUNTRIES.map((country) => (
+              <Select.Option key={country.name} isDisabled={country.disabled}>
+                {country.name}
+              </Select.Option>
+            ))}
+          </Select.Options>
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
