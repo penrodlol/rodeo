@@ -65,7 +65,9 @@ export const selectTriggerVariants = tv({
 
     'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:-translate-y-1/2',
     'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-    '*:data-[prefix]:left-4 *:data-[suffix=object]:right-14 *:data-[suffix=string]:right-10',
+    '*:data-prefix:left-4 *:data-[suffix=object]:right-14 *:data-[suffix=string]:right-10',
+
+    'has-[[data-slot=select-value-content]_[data-slot=icon]:not([data-chevron])]:*:data-[prefix]:hidden',
 
     'has-data-[prefix=object]:slot-[select-value-content]:pl-6',
     'has-data-[suffix=object]:slot-[select-value-content]:pr-6',
