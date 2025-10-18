@@ -22,11 +22,11 @@ const COUNTRIES_BY_REGION = [
 ];
 
 export default function Selects() {
-  const optionsAsync = useAsyncList<{ name: number }>({
+  const optionsAsync = useAsyncList<{ name: string }>({
     async load({ cursor }) {
       if (cursor) await new Promise((resolve) => setTimeout(resolve, 5000));
       const start = cursor ? Number(cursor) : 1;
-      const items = Array.from({ length: 20 }, (_, i) => ({ name: start + i }));
+      const items = Array.from({ length: 20 }, (_, i) => ({ name: `Option ${start + i}` }));
       const nextCursor = start + 20 <= 151 ? String(start + 20) : undefined;
       return { items, cursor: nextCursor };
     },
@@ -36,7 +36,7 @@ export default function Selects() {
     <Box className="flex-col gap-6">
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -46,7 +46,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value />
+          <Select.Trigger />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -57,7 +57,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -69,7 +69,7 @@ export default function Selects() {
       </Box>
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="1" />
+          <Select.Trigger elevation="1" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -79,7 +79,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="2" />
+          <Select.Trigger elevation="2" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -90,7 +90,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="3" />
+          <Select.Trigger elevation="3" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -102,7 +102,7 @@ export default function Selects() {
       </Box>
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft" />
+          <Select.Trigger variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -112,7 +112,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft" />
+          <Select.Trigger variant="soft" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -123,7 +123,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft" />
+          <Select.Trigger variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -135,7 +135,7 @@ export default function Selects() {
       </Box>
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="1" variant="soft" />
+          <Select.Trigger elevation="1" variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -145,7 +145,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="2" variant="soft" />
+          <Select.Trigger elevation="2" variant="soft" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -156,7 +156,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="3" variant="soft" />
+          <Select.Trigger elevation="3" variant="soft" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -168,7 +168,7 @@ export default function Selects() {
       </Box>
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft-outline" />
+          <Select.Trigger variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -178,7 +178,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isRequired isInvalid placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft-outline" />
+          <Select.Trigger variant="soft-outline" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -189,7 +189,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root isDisabled placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value variant="soft-outline" />
+          <Select.Trigger variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -201,7 +201,7 @@ export default function Selects() {
       </Box>
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="1" variant="soft-outline" />
+          <Select.Trigger elevation="1" variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -211,7 +211,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="2" variant="soft-outline" />
+          <Select.Trigger elevation="2" variant="soft-outline" />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -222,7 +222,7 @@ export default function Selects() {
           </Select.Options>
         </Select.Root>
         <Select.Root placeholder="Select a country" aria-label="Shipping Country">
-          <Select.Value elevation="3" variant="soft-outline" />
+          <Select.Trigger elevation="3" variant="soft-outline" />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -235,7 +235,7 @@ export default function Selects() {
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -246,7 +246,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root isRequired isInvalid placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -258,7 +258,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root isDisabled placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -271,7 +271,7 @@ export default function Selects() {
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Description>Select your shipping country</Select.Description>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -283,7 +283,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root isRequired isInvalid placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.ErrorMessage>Country is required</Select.ErrorMessage>
           <Select.Description>Select your shipping country</Select.Description>
           <Select.Options>
@@ -296,7 +296,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root isDisabled placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} isDisabled={country.disabled}>
@@ -310,7 +310,7 @@ export default function Selects() {
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} textValue={country.name} isDisabled={country.disabled}>
@@ -323,7 +323,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value descriptionVisible />
+          <Select.Trigger descriptionVisible />
           <Select.Options optionOrientation="horizontal">
             {COUNTRIES.map((country) => (
               <Select.Option key={country.name} textValue={country.name} isDisabled={country.disabled}>
@@ -336,7 +336,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root placeholder="Select a country">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Options>
             {COUNTRIES_BY_REGION.map((group) => (
               <Select.OptionGroup key={group.region}>
@@ -355,7 +355,7 @@ export default function Selects() {
       <Box className="gap-12 *:w-72">
         <Select.Root placeholder="Select a device">
           <Select.Label>Device Notifications</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Description>Select your device for notifications</Select.Description>
           <Select.Options>
             <Select.Option textValue="text message" icon={{ source: <MessagesSquareIcon /> }}>
@@ -374,7 +374,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root placeholder="Select a country" selectionMode="multiple">
           <Select.Label>Shipping Country</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Description>Select your shipping country</Select.Description>
           <Select.Options>
             {COUNTRIES.map((country) => (
@@ -386,7 +386,7 @@ export default function Selects() {
         </Select.Root>
         <Select.Root placeholder="Select a project">
           <Select.Label>Project Type</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
           <Select.Description>Select your project type</Select.Description>
           <Select.Options>
             <Select.Option href="/">Create new...</Select.Option>
@@ -397,12 +397,23 @@ export default function Selects() {
         </Select.Root>
       </Box>
       <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select a country">
+          <Select.Label>Shipping Country</Select.Label>
+          <Select.Trigger />
+          <Select.Description>Select your shipping country</Select.Description>
+          <Select.Options>
+            <Collection items={COUNTRIES}>
+              {(item) => <Select.Option id={item.name}>{item.name}</Select.Option>}
+            </Collection>
+          </Select.Options>
+        </Select.Root>
         <Select.Root placeholder="Select an option">
           <Select.Label>Option Choice</Select.Label>
-          <Select.Value />
+          <Select.Trigger />
+          <Select.Description>Select an option</Select.Description>
           <Select.Options>
             <Collection items={optionsAsync.items}>
-              {(item) => <Select.Option id={item.name}>Option {item.name}</Select.Option>}
+              {(item) => <Select.Option id={item.name}>{item.name}</Select.Option>}
             </Collection>
             <Select.OptionLoadMore
               onLoadMore={optionsAsync.loadMore}

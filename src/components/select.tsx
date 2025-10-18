@@ -23,7 +23,8 @@ import * as TextField from './textfield';
 import { Text } from './typography';
 
 export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
-export type SelectValueProps = React.PrimitiveComponentProps<typeof Button> & SelectValueVariants;
+export type SelectTriggerProps = React.PrimitiveComponentProps<typeof Button> &
+  SelectTriggerVariants & { valueProps?: React.ComponentProps<typeof SelectValue> };
 export type SelectOptionsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> &
   SelectOptionsVariants;
 export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & {
@@ -37,10 +38,10 @@ export type SelectOptionLoadMoreProps = React.PrimitiveComponentProps<typeof Lis
   spinner?: React.ComponentProps<typeof Spinner>;
 };
 
-export type SelectValueVariants = VariantProps<typeof selectValueVariants>;
+export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
 export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
 
-export const selectValueVariants = tv({
+export const selectTriggerVariants = tv({
   base: [
     'flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
@@ -107,14 +108,22 @@ export function Root({ className, ...props }: SelectRootProps) {
   );
 }
 
-export function Value({ className, elevation, variant, iconVisible, descriptionVisible, ...props }: SelectValueProps) {
+export function Trigger({
+  className,
+  elevation,
+  variant,
+  iconVisible,
+  descriptionVisible,
+  valueProps,
+  ...props
+}: SelectTriggerProps) {
   return (
     <Button
-      data-slot="select-value"
-      className={selectValueVariants({ elevation, variant, iconVisible, descriptionVisible, className })}
+      data-slot="select-trigger"
+      className={selectTriggerVariants({ elevation, variant, iconVisible, descriptionVisible, className })}
       {...props}
     >
-      <SelectValue data-slot="select-value-content" />
+      <SelectValue data-slot="select-value-content" {...valueProps} />
       <Icon data-chevron size="1" variant="soft" source={<ChevronDownIcon />} />
     </Button>
   );
