@@ -59,16 +59,19 @@ export const textFieldInputVariants = tv({
       'slot-[input]:placeholder:text-gray-11 slot-[input]:placeholder:opacity-70',
 
       'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
+      'slot-[affix]:flex slot-[affix]:items-center slot-[affix]:justify-center slot-[affix]:w-9',
       'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-      '*:data-[prefix]:left-3 *:data-[suffix]:right-3',
+      '*:data-[prefix]:left-0 *:data-[suffix]:right-0',
 
-      'has-data-[prefix=object]:slot-[input]:pl-10 has-data-[suffix=object]:slot-[input]:pr-10',
-      'has-data-[prefix=string]:slot-[input]:pl-8 has-data-[suffix=string]:slot-[input]:pr-8',
+      'has-data-prefix:slot-[input]:pl-9 has-data-suffix:slot-[input]:pr-9',
 
       'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/field-inputgroup:slot-[input]:pl-0',
       'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/field-inputgroup:slot-[input]:pr-0',
-      'group-[:has([data-slot=suffix-button])]/field-inputgroup:*:data-[prefix]:left-0.5',
-      'group-[:has([data-slot=suffix-button])]/field-inputgroup:*:data-[suffix]:right-0.5',
+
+      'group-[:has([data-slot=prefix-button])]/field-inputgroup:has-data-prefix:*:data-[prefix]:justify-start',
+      'group-[:has([data-slot=prefix-button])]/field-inputgroup:has-data-prefix:slot-[input]:pl-6',
+      'group-[:has([data-slot=suffix-button])]/field-inputgroup:has-data-suffix:*:data-[suffix]:justify-end',
+      'group-[:has([data-slot=suffix-button])]/field-inputgroup:has-data-suffix:slot-[input]:pr-6',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
