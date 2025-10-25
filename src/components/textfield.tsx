@@ -64,14 +64,6 @@ export const textFieldInputVariants = tv({
       '*:data-[prefix]:left-0 *:data-[suffix]:right-0',
 
       'has-data-prefix:slot-[input]:pl-9 has-data-suffix:slot-[input]:pr-9',
-
-      'group-[:has([data-slot=prefix-button]):not(:has([data-prefix]))]/field-inputgroup:slot-[input]:pl-0',
-      'group-[:has([data-slot=suffix-button]):not(:has([data-suffix]))]/field-inputgroup:slot-[input]:pr-0',
-
-      'group-[:has([data-slot=prefix-button])]/field-inputgroup:has-data-prefix:*:data-[prefix]:justify-start',
-      'group-[:has([data-slot=prefix-button])]/field-inputgroup:has-data-prefix:slot-[input]:pl-6',
-      'group-[:has([data-slot=suffix-button])]/field-inputgroup:has-data-suffix:*:data-[suffix]:justify-end',
-      'group-[:has([data-slot=suffix-button])]/field-inputgroup:has-data-suffix:slot-[input]:pr-6',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
@@ -87,13 +79,13 @@ export const textFieldInputVariants = tv({
 });
 
 export const textFieldInputGroupSlotVariants = tv({
-  slots: { button: 'px-1', text: 'bg-gray-2 border-[inherit] px-2.5' },
+  slots: { button: 'px-1', text: 'bg-gray-2 px-2.5' },
   defaultVariants: { position: 'prefix' },
   variants: { position: { prefix: {}, suffix: {} } },
-  compoundSlots: [{ slots: ['button', 'text'], className: 'flex h-full items-center justify-center' }],
+  compoundSlots: [{ slots: ['button', 'text'], className: 'flex h-full items-center justify-center border-[inherit]' }],
   compoundVariants: [
-    { position: 'prefix', className: { text: 'border-r [grid-area:prefix]', button: '[grid-area:prefix]' } },
-    { position: 'suffix', className: { text: 'border-l [grid-area:suffix]', button: '[grid-area:suffix]' } },
+    { position: 'prefix', className: { text: 'border-r [grid-area:prefix]', button: 'border-r [grid-area:prefix]' } },
+    { position: 'suffix', className: { text: 'border-l [grid-area:suffix]', button: 'border-l [grid-area:suffix]' } },
   ],
 });
 
@@ -167,7 +159,7 @@ export function InputGroupText({ className, position, ...props }: TextFieldInput
   );
 }
 
-export function Input({ className, variant, elevation, prefix, suffix, ...props }: TextFieldInputProps) {
+export function Input({ children, className, variant, elevation, prefix, suffix, ...props }: TextFieldInputProps) {
   const slots = useMemo(() => textFieldInputVariants({ variant, elevation }), [variant, elevation]);
   return (
     <div className={slots.input({ className })}>
@@ -182,6 +174,7 @@ export function Input({ className, variant, elevation, prefix, suffix, ...props 
           {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
         </div>
       )}
+      {children}
     </div>
   );
 }
