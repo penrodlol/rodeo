@@ -36,6 +36,10 @@ export type TextFieldInputSlotVariants = VariantProps<typeof textFieldInputVaria
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
 export type TextFieldTextAreaSlotVariants = VariantProps<typeof textFieldTextAreaVariants>;
 
+export const textFieldRootVariants = tv({
+  base: 'group/field flex w-full flex-col gap-0.5 disabled:opacity-70 disabled:select-none',
+});
+
 export const textFieldInputVariants = tv({
   slots: {
     group: [
@@ -59,11 +63,11 @@ export const textFieldInputVariants = tv({
       'slot-[input]:placeholder:text-gray-11 slot-[input]:placeholder:opacity-70',
 
       'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
-      'slot-[affix]:flex slot-[affix]:items-center slot-[affix]:justify-center slot-[affix]:w-9',
       'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-      'slot-[affix]:data-prefix:left-0 slot-[affix]:data-suffix:right-0',
+      'slot-[affix]:data-prefix:left-4 slot-[affix]:data-suffix:right-4',
 
-      'has-data-prefix:slot-[input]:pl-9 has-data-suffix:slot-[input]:pr-9',
+      'has-data-[prefix=string]:slot-[input]:pl-9 has-data-[affix=string]:slot-[input]:pr-9',
+      'has-data-[prefix=object]:slot-[input]:pl-11 has-data-[affix=object]:slot-[input]:pr-11',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
@@ -79,14 +83,18 @@ export const textFieldInputVariants = tv({
 });
 
 export const textFieldInputGroupSlotVariants = tv({
-  slots: { button: 'px-1', text: 'bg-gray-2 px-2.5' },
-  defaultVariants: { position: 'prefix' },
-  variants: { position: { prefix: {}, suffix: {} } },
-  compoundSlots: [{ slots: ['button', 'text'], className: 'flex h-full items-center justify-center border-[inherit]' }],
-  compoundVariants: [
-    { position: 'prefix', className: { text: 'border-r [grid-area:prefix]', button: 'border-r [grid-area:prefix]' } },
-    { position: 'suffix', className: { text: 'border-l [grid-area:suffix]', button: 'border-l [grid-area:suffix]' } },
+  base: [
+    'relative flex h-full items-center justify-center',
+    'before:border-gray-6 before:absolute before:w-px',
+    'has-slot-[button]:before:inset-y-1.5 before:inset-y-0',
   ],
+  defaultVariants: { position: 'suffix' },
+  variants: {
+    position: {
+      prefix: '[grid-area:prefix] before:right-0 before:border-r',
+      suffix: '[grid-area:suffix] before:left-0 before:border-l',
+    },
+  },
 });
 
 export const textFieldTextAreaVariants = tv({
@@ -106,17 +114,7 @@ export const textFieldTextAreaVariants = tv({
 });
 
 export function Root({ className, ...props }: TextFieldRootProps) {
-  return (
-    <TextField
-      data-slot="textfield"
-      className={twMerge(
-        'group/field flex w-full flex-col gap-0.5',
-        'disabled:opacity-70 disabled:select-none',
-        className,
-      )}
-      {...props}
-    />
-  );
+  return <TextField data-slot="textfield" className={textFieldRootVariants({ className })} {...props} />;
 }
 
 export function Label({ className, ...props }: TextFieldLabelProps) {
@@ -142,18 +140,22 @@ export function InputGroup({ className, variant, elevation, ...props }: TextFiel
 
 export function InputGroupButton({ className, position, ...props }: TextFieldInputGroupButtonProps) {
   const inputPrimitiveProps = useSlottedContext(InputContext) ?? {};
-  const slots = useMemo(() => textFieldInputGroupSlotVariants({ position }), [position]);
   return (
-    <div data-slot="group-button" className={slots.button({ className })}>
+    <div
+      data-slot="group-slot"
+      className={textFieldInputGroupSlotVariants({ position, className: ['px-1', className] })}
+    >
       <Button size="icon" variant="accent-ghost" isDisabled={inputPrimitiveProps.disabled} {...props} />
     </div>
   );
 }
 
 export function InputGroupText({ className, position, ...props }: TextFieldInputGroupTextProps) {
-  const slots = useMemo(() => textFieldInputGroupSlotVariants({ position }), [position]);
   return (
-    <div data-slot="group-text" className={slots.text({ className })}>
+    <div
+      data-slot="group-slot"
+      className={textFieldInputGroupSlotVariants({ position, className: ['bg-gray-2 px-2.5', className] })}
+    >
       <Text size="2" variant="soft" {...props} />
     </div>
   );
@@ -164,13 +166,13 @@ export function Input({ children, className, variant, elevation, prefix, suffix,
   return (
     <div className={slots.input({ className })}>
       {prefix && (
-        <div data-slot="affix" data-prefix>
+        <div data-slot="affix" data-prefix={typeof prefix}>
           {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
         </div>
       )}
       <InputPrimitive data-slot="input" {...props} />
       {suffix && (
-        <div data-slot="affix" data-suffix>
+        <div data-slot="affix" data-suffix={typeof suffix}>
           {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
         </div>
       )}
