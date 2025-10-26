@@ -1,6 +1,7 @@
 import Section from './_section';
 import Buttons from './components/_buttons';
 import Icons from './components/_icons';
+import SearchFields from './components/_searchfields';
 import Selects from './components/_selects';
 import Separators from './components/_separators';
 import Spinners from './components/_spinners';
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Section><Typography /></Section>
       <Section><Buttons /></Section>
       <Section><TextFields /></Section>
+      <Section><SearchFields /></Section>
       <Section><Selects /></Section>
       <Section><Icons /></Section>
       <Section><Spinners /></Section>
