@@ -34,8 +34,8 @@ export function Input({ className, clearButtonVisible, clearButtonProps, ...prop
         'slot-[button]:absolute slot-[button]:top-1/2 slot-[button]:-translate-y-1/2',
         'slot-[button]:z-30 slot-[button]:right-1',
 
-        'has-data-suffix:slot-[button]:right-10',
-        'has-data-suffix:has-slot-[button]:slot-[input]:pr-19',
+        'has-data-suffix:slot-[button]:right-9',
+        'has-data-suffix:has-slot-[button]:slot-[input]:pr-18',
 
         'group-empty/field:slot-[button]:hidden',
 
