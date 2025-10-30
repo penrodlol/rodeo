@@ -64,10 +64,10 @@ export const textFieldInputVariants = tv({
 
       'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
       'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-      'slot-[affix]:data-prefix:left-4 slot-[affix]:data-suffix:right-4',
+      'slot-[affix]:data-prefix:left-3 slot-[affix]:data-suffix:right-3',
 
-      'has-data-[prefix=string]:slot-[input]:pl-9 has-data-[affix=string]:slot-[input]:pr-9',
-      'has-data-[prefix=object]:slot-[input]:pl-11 has-data-[affix=object]:slot-[input]:pr-11',
+      'has-data-[prefix=string]:slot-[input]:pl-8 has-data-[suffix=string]:slot-[input]:pr-8',
+      'has-data-[prefix=object]:slot-[input]:pl-10 has-data-[suffix=object]:slot-[input]:pr-10',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
