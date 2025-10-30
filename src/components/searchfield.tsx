@@ -1,7 +1,7 @@
 'use client';
 
 import { XIcon } from 'lucide-react';
-import { SearchField } from 'react-aria-components';
+import { ButtonContext, SearchField } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import Button from './button';
 import * as TextField from './textfield';
@@ -9,7 +9,6 @@ import * as TextField from './textfield';
 export const Label = TextField.Label;
 export const InputGroup = TextField.InputGroup;
 export const InputGroupText = TextField.InputGroupText;
-export const InputGroupButton = TextField.InputGroupButton;
 export const ErrorMessage = TextField.ErrorMessage;
 export const Description = TextField.Description;
 
@@ -47,5 +46,13 @@ export function Input({ className, clearButtonVisible, clearButtonProps, ...prop
         <Button size="icon" variant="gray-ghost" icon={{ source: <XIcon /> }} {...clearButtonProps} />
       )}
     </TextField.Input>
+  );
+}
+
+export function InputGroupButton(props: React.ComponentProps<typeof TextField.InputGroupButton>) {
+  return (
+    <ButtonContext value={props}>
+      <TextField.InputGroupButton {...props} />
+    </ButtonContext>
   );
 }
