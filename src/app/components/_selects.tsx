@@ -22,6 +22,11 @@ const COUNTRIES_BY_REGION = [
   { region: 'Asia', countries: COUNTRIES.slice(5, 6) },
 ];
 
+const LARGE_COUNTRIES = Array.from({ length: 100 }, (_, i) => ({
+  name: `Country ${i + 1}`,
+  description: `${Math.floor(Math.random() * 20) + 1} shipping options`,
+}));
+
 export default function Selects() {
   const { contains } = useFilter({ sensitivity: 'base' });
   const optionsAsync = useAsyncList<{ name: string }>({
@@ -385,6 +390,36 @@ export default function Selects() {
               </SearchField.InputGroup>
             </SearchField.Root>
             <Select.Items items={COUNTRIES}>
+              {({ name, description }) => (
+                <Select.Item id={name} textValue={name}>
+                  <Select.ItemLabel>{name}</Select.ItemLabel>
+                  <Select.ItemDescription>{description}</Select.ItemDescription>
+                </Select.Item>
+              )}
+            </Select.Items>
+          </Select.Content>
+        </Select.Root>
+      </Box>
+      <Box className="gap-12 *:w-72">
+        <Select.Root placeholder="Select a project">
+          <Select.Label>Project Type</Select.Label>
+          <Select.Trigger />
+          <Select.Description>Select your project type</Select.Description>
+          <Select.Content>
+            <Select.Items itemsVirtualized={LARGE_COUNTRIES}>
+              {({ name }) => <Select.Item id={name}>{name}</Select.Item>}
+            </Select.Items>
+          </Select.Content>
+        </Select.Root>
+        <Select.Root placeholder="Select a project">
+          <Select.Label>Project Type</Select.Label>
+          <Select.Trigger />
+          <Select.Description>Select your project type</Select.Description>
+          <Select.Content>
+            <Select.Items
+              itemsVirtualized={LARGE_COUNTRIES}
+              virtualizerProps={{ layoutOptions: Select.SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS }}
+            >
               {({ name, description }) => (
                 <Select.Item id={name} textValue={name}>
                   <Select.ItemLabel>{name}</Select.ItemLabel>

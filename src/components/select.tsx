@@ -7,14 +7,17 @@ import {
   Autocomplete,
   Button,
   Header as HeaderPrimitive,
-  ListBox,
   ListBoxItem,
   ListBoxLoadMoreItem,
+  ListBox as ListBoxPrimitive,
   ListBoxSection,
-  Popover,
+  ListLayout,
+  ListLayoutOptions,
+  Popover as PopoverPrimitive,
   Select,
   SelectValue,
   Text as TextPrimitive,
+  Virtualizer,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv, VariantProps } from 'tailwind-variants';
@@ -29,9 +32,13 @@ export type SelectTriggerProps = React.PrimitiveComponentProps<typeof Button> &
     prefix?: React.ComponentProps<typeof TextField.InputAffix>['affix'];
     suffix?: React.ComponentProps<typeof TextField.InputAffix>['affix'];
   };
-export type SelectContentProps<T extends object> = React.PrimitiveComponentProps<typeof Popover> &
+export type SelectContentProps<T extends object> = React.PrimitiveComponentProps<typeof PopoverPrimitive> &
   SelectContentVariants & { filterProps?: Omit<React.PrimitiveComponentProps<typeof Autocomplete<T>>, 'children'> };
-export type SelectItemsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> & SelectItemsVariants;
+export type SelectItemsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBoxPrimitive<T>> &
+  SelectItemsVariants & {
+    itemsVirtualized?: React.PrimitiveComponentProps<typeof ListBoxPrimitive<T>>['items'];
+    virtualizerProps?: Omit<React.ComponentProps<typeof Virtualizer<ListLayoutOptions>>, 'children' | 'layout'>;
+  };
 export type SelectItemProps<T extends object> = React.PrimitiveComponentProps<typeof ListBoxItem<T>> & {
   icon?: React.ComponentProps<typeof Icon>;
 };
@@ -42,6 +49,9 @@ export type SelectItemLoadMoreProps = React.PrimitiveComponentProps<typeof ListB
 export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
 export type SelectContentVariants = VariantProps<typeof selectContentVariants>;
 export type SelectItemsVariants = VariantProps<typeof selectItemsVariants>;
+
+export const SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 36 };
+export const SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 56 };
 
 export const selectTriggerVariants = tv({
   base: [
@@ -74,25 +84,26 @@ export const selectTriggerVariants = tv({
 
 export const selectContentVariants = tv({
   base: [
-    'bg-gray-2 border-gray-6 flex flex-col gap-2 rounded border p-2 outline-none select-none',
-    'overflow-auto [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
+    'group/select-content bg-gray-2 border-gray-6 flex flex-col gap-2 rounded border outline-none select-none',
 
     'exiting:duration-0 entering:opacity-0 origin-(--trigger-anchor-point) motion-safe:transition-all',
 
     'placement-bottom:entering:-translate-y-1 placement-top:entering:translate-y-1',
     'placement-left:entering:translate-x-1 placement-right:entering:-translate-x-1',
+
+    'slot-[searchfield]:mt-2 slot-[searchfield]:mx-2 slot-[searchfield]:w-auto',
   ],
   defaultVariants: { width: 'trigger' },
   variants: { width: { trigger: 'w-(--trigger-width)', auto: 'w-auto' } },
 });
 
 export const selectItemsVariants = tv({
-  base: 'max-h-96 outline-none',
+  base: 'max-h-96 overflow-auto outline-none [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
   defaultVariants: { itemOrientation: 'vertical' },
   variants: {
     itemOrientation: {
-      vertical: 'slot-[select-item]:flex-col',
-      horizontal: 'slot-[select-item]:flex-row slot-[select-item]:gap-2 slot-[select-item]:items-center',
+      vertical: 'slot-[select-item]:flex-col has-slot-[select-item-description]:slot-[select-item]:h-14',
+      horizontal: 'slot-[select-item]:gap-2 slot-[select-item]:items-center slot-[select-item]:justify-start',
     },
   },
 });
@@ -130,26 +141,43 @@ export function Trigger({
   );
 }
 
-export function Content<T extends object>({ className, width, filterProps, ...props }: SelectContentProps<T>) {
-  const classNameInternal = useMemo(() => selectContentVariants({ width, className }), [width, className]);
+function Popover<T extends object>({ className, width, ...props }: Omit<SelectContentProps<T>, 'filterProps'>) {
+  return (
+    <PopoverPrimitive data-slot="select-content" className={selectContentVariants({ width, className })} {...props} />
+  );
+}
 
-  if (!filterProps) return <Popover data-slot="select-popover" className={classNameInternal} {...props} />;
-
+export function Content<T extends object>({ filterProps, ...props }: SelectContentProps<T>) {
+  if (!filterProps) return <Popover {...props} />;
   return (
     <Autocomplete<T> data-slot="select-autocomplete" {...filterProps}>
-      <Popover data-slot="select-popover" className={classNameInternal} {...props} />
+      <Popover {...props} />
     </Autocomplete>
   );
 }
 
-export function Items<T extends object>({ className, itemOrientation, ...props }: SelectItemsProps<T>) {
+function ListBox<T extends object>({ className, itemOrientation, ...props }: SelectItemsProps<T>) {
   return (
-    <ListBox<T>
+    <ListBoxPrimitive<T>
       data-slot="select-items"
       renderEmptyState={() => <ItemNotFound />}
       className={selectItemsVariants({ itemOrientation, className })}
       {...props}
     />
+  );
+}
+
+export function Items<T extends object>({ itemsVirtualized, virtualizerProps, ...props }: SelectItemsProps<T>) {
+  if (!itemsVirtualized) return <ListBox<T> {...props} />;
+  return (
+    <Virtualizer<ListLayoutOptions>
+      data-slot="select-items-virtualizer"
+      layout={ListLayout}
+      layoutOptions={SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS}
+      {...virtualizerProps}
+    >
+      <ListBox<T> items={itemsVirtualized} {...props} />
+    </Virtualizer>
   );
 }
 
@@ -165,7 +193,8 @@ export function Item<T extends object>({ children, className, href, icon, ...pro
       target={externalLink ? '_blank' : undefined}
       rel={externalLink ? 'noopener noreferrer' : undefined}
       className={twMerge(
-        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
+        'focus:bg-gray-4 relative flex h-9 justify-center rounded pr-4 pl-7 outline-none',
+        'group-has-slot-[searchfield]/select-content:first:mt-0 mx-2 first:mt-2 last:mb-2',
 
         'selected:text-accent-9 selected:font-medium selected:*:text-accent-9 selected:*:font-medium',
         'disabled:text-gray-11/50 disabled:*:text-gray-11/50 disabled:cursor-default',
