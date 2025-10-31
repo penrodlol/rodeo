@@ -1,9 +1,10 @@
 'use client';
 
 import { composeChildren } from '@/libs/primitive';
-import { CheckIcon, ChevronDownIcon } from 'lucide-react';
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import {
+  Autocomplete,
   Button,
   Header as HeaderPrimitive,
   ListBox,
@@ -22,32 +23,29 @@ import Spinner from './spinner';
 import * as TextField from './textfield';
 import { Text } from './typography';
 
-export type SelectRootProps = React.PrimitiveComponentProps<typeof Select>;
 export type SelectTriggerProps = React.PrimitiveComponentProps<typeof Button> &
   SelectTriggerVariants & {
-    valueProps?: React.ComponentProps<typeof SelectValue>;
-    prefix?: string | React.ComponentProps<typeof Icon>;
-    suffix?: string | React.ComponentProps<typeof Icon>;
+    valueProps?: React.PrimitiveComponentProps<typeof SelectValue>;
+    prefix?: React.ComponentProps<typeof TextField.InputAffix>['affix'];
+    suffix?: React.ComponentProps<typeof TextField.InputAffix>['affix'];
   };
-export type SelectOptionsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> &
-  SelectOptionsVariants;
-export type SelectOptionProps = React.PrimitiveComponentProps<typeof ListBoxItem> & {
+export type SelectContentProps<T extends object> = React.PrimitiveComponentProps<typeof Popover> &
+  SelectContentVariants & { filterProps?: Omit<React.PrimitiveComponentProps<typeof Autocomplete<T>>, 'children'> };
+export type SelectItemsProps<T extends object> = React.PrimitiveComponentProps<typeof ListBox<T>> & SelectItemsVariants;
+export type SelectItemProps<T extends object> = React.PrimitiveComponentProps<typeof ListBoxItem<T>> & {
   icon?: React.ComponentProps<typeof Icon>;
 };
-export type SelectOptionLabelProps = React.ComponentProps<typeof Text>;
-export type SelectOptionDescriptionProps = React.ComponentProps<typeof Text>;
-export type SelectOptionGroupProps = React.PrimitiveComponentProps<typeof ListBoxSection>;
-export type SelectOptionGroupHeaderProps = React.ComponentProps<typeof Text>;
-export type SelectOptionLoadMoreProps = React.PrimitiveComponentProps<typeof ListBoxLoadMoreItem> & {
+export type SelectItemLoadMoreProps = React.PrimitiveComponentProps<typeof ListBoxLoadMoreItem> & {
   spinner?: React.ComponentProps<typeof Spinner>;
 };
 
 export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
-export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
+export type SelectContentVariants = VariantProps<typeof selectContentVariants>;
+export type SelectItemsVariants = VariantProps<typeof selectItemsVariants>;
 
 export const selectTriggerVariants = tv({
   base: [
-    'relative flex h-10 items-center justify-between gap-2 rounded px-4 outline-none',
+    'relative flex h-10 w-full items-center justify-between gap-2 rounded px-4 outline-none',
     'has-placeholder-shown:text-gray-11/70 motion-safe:transition-all',
     'border-gray-7 focus:border-accent-8 group-open/field:border-accent-8 border',
 
@@ -55,52 +53,46 @@ export const selectTriggerVariants = tv({
     'group-invalid/field:focus:border-danger-8',
     'group-invalid/field:group-open/field:border-danger-8',
 
-    'group-open/field:slot-[icon]:data-chevron:rotate-180',
-    'slot-[icon]:data-chevron:motion-safe:transition-transform',
+    'slot-[select-value]:truncate slot-[select-value]:relative',
+    'slot-[select-value]:has-slot-[icon]:pl-6',
+    'has-data-suffix:slot-[select-value]:pr-6',
 
-    'slot-[select-value-content]:truncate slot-[select-value-content]:relative',
-    'slot-[select-value-content]:has-slot-[icon]:pl-6',
-    'slot-[icon]:not-data-chevron:absolute slot-[icon]:not-data-chevron:left-0',
-    'slot-[icon]:not-data-chevron:top-1/2 slot-[icon]:not-data-chevron:-translate-y-1/2',
+    'slot-[select-value]:slot-[icon]:absolute slot-[select-value]:slot-[icon]:left-0',
+    'slot-[select-value]:slot-[icon]:top-1/2 slot-[select-value]:slot-[icon]:-translate-y-1/2',
 
-    'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:-translate-y-1/2',
-    'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-    '*:data-prefix:left-4 *:data-[suffix=object]:right-14 *:data-[suffix=string]:right-10',
-
-    'has-[[data-slot=select-value-content]_[data-slot=icon]:not([data-chevron])]:*:data-[prefix]:hidden',
-
-    'has-data-[prefix=object]:slot-[select-value-content]:pl-6',
-    'has-data-[suffix=object]:slot-[select-value-content]:pr-6',
-    'has-data-[prefix=string]:slot-[select-value-content]:pl-5',
-    'has-data-[suffix=string]:slot-[select-value-content]:pr-5',
+    'has-data-[prefix=object]:pl-11 has-data-[prefix=string]:pl-9',
+    'slot-[affix]:data-suffix:right-11',
   ],
-  defaultVariants: { variant: 'outline', descriptionVisible: false, iconVisible: true },
+  defaultVariants: { variant: 'outline', iconVisible: true, descriptionVisible: false },
   variants: {
     elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     variant: { soft: 'bg-gray-3 border-transparent', 'soft-outline': 'bg-gray-3', outline: 'bg-gray-1' },
-    iconVisible: { false: 'slot-[icon]:not-data-chevron:hidden' },
-    descriptionVisible: {
-      true: 'slot-[select-option-description]:ml-2',
-      false: 'slot-[select-option-description]:hidden',
-    },
+    iconVisible: { false: 'slot-[select-value]:slot-[icon]:hidden' },
+    descriptionVisible: { true: 'slot-[select-item-description]:ml-2', false: 'slot-[select-item-description]:hidden' },
   },
 });
 
-export const selectOptionsVariants = tv({
+export const selectContentVariants = tv({
   base: [
-    'bg-gray-2 border-gray-6 rounded border p-2 shadow-md select-none',
+    'bg-gray-2 border-gray-6 flex flex-col gap-2 rounded border p-2 outline-none select-none',
     'overflow-auto [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
-    'slot-[select-options-list]:max-h-96 slot-[select-options-list]:outline-none',
+
     'exiting:duration-0 entering:opacity-0 origin-(--trigger-anchor-point) motion-safe:transition-all',
+
     'placement-bottom:entering:-translate-y-1 placement-top:entering:translate-y-1',
     'placement-left:entering:translate-x-1 placement-right:entering:-translate-x-1',
   ],
-  defaultVariants: { width: 'trigger', optionOrientation: 'vertical' },
+  defaultVariants: { width: 'trigger' },
+  variants: { width: { trigger: 'w-(--trigger-width)', auto: 'w-auto' } },
+});
+
+export const selectItemsVariants = tv({
+  base: 'max-h-96 outline-none',
+  defaultVariants: { itemOrientation: 'vertical' },
   variants: {
-    width: { trigger: 'w-(--trigger-width)' },
-    optionOrientation: {
-      vertical: 'slot-[select-option]:flex-col',
-      horizontal: 'slot-[select-option]:flex-row slot-[select-option]:gap-2 slot-[select-option]:items-center',
+    itemOrientation: {
+      vertical: 'slot-[select-item]:flex-col',
+      horizontal: 'slot-[select-item]:flex-row slot-[select-item]:gap-2 slot-[select-item]:items-center',
     },
   },
 });
@@ -109,18 +101,8 @@ export const Label = TextField.Label;
 export const Description = TextField.Description;
 export const ErrorMessage = TextField.ErrorMessage;
 
-export function Root({ className, ...props }: SelectRootProps) {
-  return (
-    <Select
-      data-slot="select"
-      className={twMerge(
-        'group/field flex w-full flex-col gap-0.5',
-        'disabled:opacity-70 disabled:select-none',
-        className,
-      )}
-      {...props}
-    />
-  );
+export function Root({ className, ...props }: React.PrimitiveComponentProps<typeof Select>) {
+  return <Select data-slot="select" className={TextField.textFieldRootVariants({ className })} {...props} />;
 }
 
 export function Trigger({
@@ -140,48 +122,58 @@ export function Trigger({
       className={selectTriggerVariants({ elevation, variant, iconVisible, descriptionVisible, className })}
       {...props}
     >
-      {prefix && (
-        <div data-slot="affix" data-prefix={typeof prefix}>
-          {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
-        </div>
-      )}
-      <SelectValue data-slot="select-value-content" {...valueProps} />
-      {suffix && (
-        <div data-slot="affix" data-suffix={typeof suffix}>
-          {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
-        </div>
-      )}
-      <Icon data-chevron size="1" variant="soft" source={<ChevronDownIcon />} />
+      {prefix && <TextField.InputAffix position="prefix" affix={prefix} />}
+      <SelectValue data-slot="select-value" {...valueProps} />
+      {suffix && <TextField.InputAffix position="suffix" affix={suffix} />}
+      <Icon size="1" variant="soft" source={<ChevronsUpDownIcon />} />
     </Button>
   );
 }
 
-export function Options<T extends object>({ className, width, optionOrientation, ...props }: SelectOptionsProps<T>) {
+export function Content<T extends object>({ className, width, filterProps, ...props }: SelectContentProps<T>) {
+  const classNameInternal = useMemo(() => selectContentVariants({ width, className }), [width, className]);
+
+  if (!filterProps) return <Popover data-slot="select-popover" className={classNameInternal} {...props} />;
+
   return (
-    <Popover data-slot="select-options" className={selectOptionsVariants({ width, optionOrientation, className })}>
-      <ListBox data-slot="select-options-list" {...props} />
-    </Popover>
+    <Autocomplete<T> data-slot="select-autocomplete" {...filterProps}>
+      <Popover data-slot="select-popover" className={classNameInternal} {...props} />
+    </Autocomplete>
   );
 }
 
-export function Option({ children, className, icon, href, ...props }: SelectOptionProps) {
+export function Items<T extends object>({ className, itemOrientation, ...props }: SelectItemsProps<T>) {
+  return (
+    <ListBox<T>
+      data-slot="select-items"
+      renderEmptyState={() => <ItemNotFound />}
+      className={selectItemsVariants({ itemOrientation, className })}
+      {...props}
+    />
+  );
+}
+
+export function Item<T extends object>({ children, className, href, icon, ...props }: SelectItemProps<T>) {
   const textValue = useMemo(() => (typeof children === 'string' ? children.trim() : ''), [children]);
   const externalLink = useMemo(() => /^(?!\/|#).*/.test(href?.toString() ?? ''), [href]);
+
   return (
-    <ListBoxItem
-      data-slot="select-option"
+    <ListBoxItem<T>
+      data-slot="select-item"
       textValue={textValue}
       href={href}
       target={externalLink ? '_blank' : undefined}
       rel={externalLink ? 'noopener noreferrer' : undefined}
       className={twMerge(
-        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 outline-none',
+        'focus:bg-gray-4 relative flex rounded py-1.5 pr-4 pl-7 outline-none',
+
         'selected:text-accent-9 selected:font-medium selected:*:text-accent-9 selected:*:font-medium',
         'disabled:text-gray-11/50 disabled:*:text-gray-11/50 disabled:cursor-default',
-        'slot-[icon]:absolute slot-[icon]:left-1.5 slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
-        'slot-[icon]:not-data-check:size-3.5',
-        'has-slot-[select-option-description]:slot-[icon]:top-4.5',
-        icon ? 'slot-[icon]:data-check:right-1.5 slot-[icon]:data-check:left-[unset] pl-9' : 'pl-7',
+
+        'slot-[icon]:absolute slot-[icon]:top-1/2 slot-[icon]:-translate-y-1/2',
+        'has-slot-[select-item-description]:slot-[icon]:top-4.5 slot-[icon]:left-1.5',
+
+        icon ? 'selected:slot-[icon]:first:right-1.5 selected:slot-[icon]:first:left-[unset] pl-9' : 'pl-7',
         href && 'text-gray-11',
         className,
       )}
@@ -189,7 +181,7 @@ export function Option({ children, className, icon, href, ...props }: SelectOpti
     >
       {(renderProps) => (
         <>
-          {renderProps.isSelected && <Icon data-check size="1" variant="accent" source={<CheckIcon />} />}
+          {renderProps.isSelected && <Icon size="1" variant="accent" source={<CheckIcon />} />}
           {icon && <Icon size="1" variant="soft" {...icon} />}
           {composeChildren(children, renderProps)}
         </>
@@ -198,14 +190,14 @@ export function Option({ children, className, icon, href, ...props }: SelectOpti
   );
 }
 
-export function OptionLabel(props: SelectOptionLabelProps) {
-  return <Text data-slot="select-option-label" slot="label" as={TextPrimitive} {...props} />;
+export function ItemLabel(props: React.ComponentProps<typeof Text>) {
+  return <Text data-slot="select-item-label" slot="label" as={TextPrimitive} {...props} />;
 }
 
-export function OptionDescription(props: SelectOptionDescriptionProps) {
+export function ItemDescription(props: React.ComponentProps<typeof Text>) {
   return (
     <Text
-      data-slot="select-option-description"
+      data-slot="select-item-description"
       slot="description"
       size="2"
       variant="soft"
@@ -215,42 +207,61 @@ export function OptionDescription(props: SelectOptionDescriptionProps) {
   );
 }
 
-export function OptionGroup({ className, ...props }: SelectOptionGroupProps) {
+export function ItemLoadMore({ children, className, spinner, ...props }: SelectItemLoadMoreProps) {
   return (
-    <ListBoxSection data-slot="select-option-group" className={twMerge('group/select-group', className)} {...props} />
+    <ListBoxLoadMoreItem
+      data-slot="select-item-load-more"
+      className={twMerge('flex items-center gap-2 p-4 pb-5 pl-7', className)}
+      {...props}
+    >
+      <Spinner size="1" variant="soft" {...spinner} />
+      <Text variant="soft">{children ?? 'Loading more...'}</Text>
+    </ListBoxLoadMoreItem>
   );
 }
 
-export function OptionGroupHeader({ className, ...props }: SelectOptionGroupHeaderProps) {
+export function ItemNotFound({ children, className, ...props }: React.ComponentProps<typeof Text>) {
   return (
     <Text
-      data-slot="select-option-group-header"
+      data-slot="select-item-not-found"
       size="2"
       variant="soft"
-      weight="5"
-      className={twMerge(
-        'px-4 py-2',
-        'group-not-first-of-type/select-group:border-t',
-        'group-not-first-of-type/select-group:border-gray-6',
-        'group-not-first-of-type/select-group:mt-2',
-        'group-not-first-of-type/select-group:pt-4',
-        className,
-      )}
-      as={HeaderPrimitive}
+      className={twMerge('flex items-center justify-center py-3', className)}
+      as={TextPrimitive}
+      {...props}
+    >
+      {children ?? 'No results found'}
+    </Text>
+  );
+}
+
+export function ItemsGroup<T extends object>({ className, ...props }: React.ComponentProps<typeof ListBoxSection<T>>) {
+  return (
+    <ListBoxSection<T>
+      data-slot="select-items-group"
+      className={twMerge('group/select-items-group', className)}
       {...props}
     />
   );
 }
 
-export function OptionLoadMore({ children, className, spinner, ...props }: SelectOptionLoadMoreProps) {
+export function ItemsGroupHeader({ className, ...props }: React.ComponentProps<typeof Text>) {
   return (
-    <ListBoxLoadMoreItem
-      data-slot="select-option-load-more"
-      className={twMerge('text-gray-11 flex items-center gap-2 p-4 pb-5 pl-7 text-sm', className)}
+    <Text
+      data-slot="select-items-group-header"
+      size="2"
+      variant="soft"
+      weight="5"
+      as={HeaderPrimitive}
+      className={twMerge(
+        'px-4 py-2',
+        'group-not-first-of-type/select-items-group:border-t',
+        'group-not-first-of-type/select-items-group:border-gray-6',
+        'group-not-first-of-type/select-items-group:mt-2',
+        'group-not-first-of-type/select-items-group:pt-4',
+        className,
+      )}
       {...props}
-    >
-      <Spinner size="1" {...spinner} />
-      {children ?? 'Loading more...'}
-    </ListBoxLoadMoreItem>
+    />
   );
 }

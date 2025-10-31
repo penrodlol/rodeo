@@ -23,10 +23,12 @@ export type TextFieldLabelProps = Omit<React.ComponentProps<typeof Text<'label'>
 export type TextFieldInputGroupProps = React.PrimitiveComponentProps<typeof Group> & TextFieldInputSlotVariants;
 export type TextFieldInputGroupButtonProps = React.ComponentProps<typeof Button> & TextFieldInputGroupSlotVariants;
 export type TextFieldInputGroupTextProps = React.ComponentProps<typeof Text> & TextFieldInputGroupSlotVariants;
+export type TextFieldInputAffixProps = React.ComponentProps<'div'> &
+  TextFieldInputAffixVariants & { affix: string | React.ComponentProps<typeof Icon> };
 export type TextFieldInputProps = Omit<React.PrimitiveComponentProps<typeof InputPrimitive>, 'prefix'> &
   TextFieldInputSlotVariants & {
-    prefix?: string | React.ComponentProps<typeof Icon>;
-    suffix?: string | React.ComponentProps<typeof Icon>;
+    prefix?: TextFieldInputAffixProps['affix'];
+    suffix?: TextFieldInputAffixProps['affix'];
   };
 export type TextFieldErrorMessageProps = React.PrimitiveComponentProps<typeof FieldError> & TextVariants;
 export type TextFieldTextAreaProps = React.PrimitiveComponentProps<typeof TextAreaPrimitive> &
@@ -34,6 +36,7 @@ export type TextFieldTextAreaProps = React.PrimitiveComponentProps<typeof TextAr
 
 export type TextFieldInputSlotVariants = VariantProps<typeof textFieldInputVariants>;
 export type TextFieldInputGroupSlotVariants = VariantProps<typeof textFieldInputGroupSlotVariants>;
+export type TextFieldInputAffixVariants = VariantProps<typeof textFieldInputAffixVariants>;
 export type TextFieldTextAreaSlotVariants = VariantProps<typeof textFieldTextAreaVariants>;
 
 export const textFieldRootVariants = tv({
@@ -62,12 +65,8 @@ export const textFieldInputVariants = tv({
       'slot-[input]:rounded-[inherit] slot-[input]:px-4 slot-[input]:outline-none',
       'slot-[input]:placeholder:text-gray-11 slot-[input]:placeholder:opacity-70',
 
-      'slot-[affix]:absolute slot-[affix]:top-1/2 slot-[affix]:z-10 slot-[affix]:-translate-y-1/2',
-      'slot-[affix]:text-gray-11 slot-[affix]:opacity-70 has-disabled:[slot-affix]:opacity-50',
-      'slot-[affix]:data-prefix:left-3 slot-[affix]:data-suffix:right-3',
-
-      'has-data-[prefix=string]:slot-[input]:pl-8 has-data-[suffix=string]:slot-[input]:pr-8',
-      'has-data-[prefix=object]:slot-[input]:pl-10 has-data-[suffix=object]:slot-[input]:pr-10',
+      'has-data-[prefix=string]:slot-[input]:pl-9 has-data-[suffix=string]:slot-[input]:pr-9',
+      'has-data-[prefix=object]:slot-[input]:pl-11 has-data-[suffix=object]:slot-[input]:pr-11',
     ],
   },
   variants: { variant: { soft: {}, 'soft-outline': {}, outline: {} }, elevation: { '1': {}, '2': {}, '3': {} } },
@@ -80,6 +79,12 @@ export const textFieldInputVariants = tv({
     { slots: ['group', 'input'], elevation: '2', className: 'elevation-2' },
     { slots: ['group', 'input'], elevation: '3', className: 'elevation-3' },
   ],
+});
+
+export const textFieldInputAffixVariants = tv({
+  base: 'text-gray-11 absolute top-1/2 z-10 -translate-y-1/2 opacity-70 has-disabled:opacity-50',
+  defaultVariants: { position: 'prefix' },
+  variants: { position: { prefix: 'left-4', suffix: 'right-4' } },
 });
 
 export const textFieldInputGroupSlotVariants = tv({
@@ -161,21 +166,26 @@ export function InputGroupText({ className, position, ...props }: TextFieldInput
   );
 }
 
+export function InputAffix({ className, position, affix, ...props }: TextFieldInputAffixProps) {
+  return (
+    <div
+      data-slot="affix"
+      {...{ [`data-${position}`]: typeof affix }}
+      className={textFieldInputAffixVariants({ position, className })}
+      {...props}
+    >
+      {typeof affix === 'object' ? <Icon size="1" variant="soft" {...affix} /> : affix}
+    </div>
+  );
+}
+
 export function Input({ children, className, variant, elevation, prefix, suffix, ...props }: TextFieldInputProps) {
   const slots = useMemo(() => textFieldInputVariants({ variant, elevation }), [variant, elevation]);
   return (
     <div className={slots.input({ className })}>
-      {prefix && (
-        <div data-slot="affix" data-prefix={typeof prefix}>
-          {typeof prefix === 'object' ? <Icon size="1" variant="soft" {...prefix} /> : prefix}
-        </div>
-      )}
+      {prefix && <InputAffix position="prefix" affix={prefix} />}
       <InputPrimitive data-slot="input" {...props} />
-      {suffix && (
-        <div data-slot="affix" data-suffix={typeof suffix}>
-          {typeof suffix === 'object' ? <Icon size="1" variant="soft" {...suffix} /> : suffix}
-        </div>
-      )}
+      {suffix && <InputAffix position="suffix" affix={suffix} />}
       {children}
     </div>
   );
