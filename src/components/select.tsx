@@ -50,8 +50,8 @@ export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
 export type SelectContentVariants = VariantProps<typeof selectContentVariants>;
 export type SelectItemsVariants = VariantProps<typeof selectItemsVariants>;
 
-export const SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 36 };
-export const SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 56 };
+export const SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 36, padding: 8 };
+export const SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 56, padding: 8 };
 
 export const selectTriggerVariants = tv({
   base: [
@@ -98,7 +98,11 @@ export const selectContentVariants = tv({
 });
 
 export const selectItemsVariants = tv({
-  base: 'max-h-96 overflow-auto outline-none [scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
+  base: [
+    'max-h-96 overflow-auto outline-none',
+    'not-data-virtual:group-has-slot-[searchfield]/select-content:pt-0 not-data-virtual:p-2',
+    '[scrollbar-color:var(--gray-9)_transparent] [scrollbar-width:thin]',
+  ],
   defaultVariants: { itemOrientation: 'vertical' },
   variants: {
     itemOrientation: {
@@ -171,12 +175,11 @@ export function Items<T extends object>({ itemsVirtualized, virtualizerProps, ..
   if (!itemsVirtualized) return <ListBox<T> {...props} />;
   return (
     <Virtualizer<ListLayoutOptions>
-      data-slot="select-items-virtualizer"
       layout={ListLayout}
       layoutOptions={SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS}
       {...virtualizerProps}
     >
-      <ListBox<T> items={itemsVirtualized} {...props} />
+      <ListBox<T> data-virtual items={itemsVirtualized} {...props} />
     </Virtualizer>
   );
 }
@@ -194,7 +197,6 @@ export function Item<T extends object>({ children, className, href, icon, ...pro
       rel={externalLink ? 'noopener noreferrer' : undefined}
       className={twMerge(
         'focus:bg-gray-4 relative flex h-9 justify-center rounded pr-4 pl-7 outline-none',
-        'group-has-slot-[searchfield]/select-content:first:mt-0 mx-2 first:mt-2 last:mb-2',
 
         'selected:text-accent-9 selected:font-medium selected:*:text-accent-9 selected:*:font-medium',
         'disabled:text-gray-11/50 disabled:*:text-gray-11/50 disabled:cursor-default',
@@ -240,7 +242,7 @@ export function ItemLoadMore({ children, className, spinner, ...props }: SelectI
   return (
     <ListBoxLoadMoreItem
       data-slot="select-item-load-more"
-      className={twMerge('flex items-center gap-2 p-4 pb-5 pl-7', className)}
+      className={twMerge('flex items-center gap-2 p-4 pl-7', className)}
       {...props}
     >
       <Spinner size="1" variant="soft" {...spinner} />
