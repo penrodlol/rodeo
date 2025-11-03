@@ -50,8 +50,8 @@ export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
 export type SelectContentVariants = VariantProps<typeof selectContentVariants>;
 export type SelectItemsVariants = VariantProps<typeof selectItemsVariants>;
 
-export const SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 36, padding: 8 };
-export const SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 56, padding: 8 };
+export const SELECT_LAYOUT_OPTIONS: ListLayoutOptions = { rowHeight: 36, headingHeight: 32, padding: 8 };
+export const SELECT_MULTILINE_LAYOUT_OPTIONS: ListLayoutOptions = { ...SELECT_LAYOUT_OPTIONS, rowHeight: 56 };
 
 export const selectTriggerVariants = tv({
   base: [
@@ -174,11 +174,7 @@ function ListBox<T extends object>({ className, itemOrientation, ...props }: Sel
 export function Items<T extends object>({ itemsVirtualized, virtualizerProps, ...props }: SelectItemsProps<T>) {
   if (!itemsVirtualized) return <ListBox<T> {...props} />;
   return (
-    <Virtualizer<ListLayoutOptions>
-      layout={ListLayout}
-      layoutOptions={SELECT_VIRTUAL_ROW_LAYOUT_OPTIONS}
-      {...virtualizerProps}
-    >
+    <Virtualizer<ListLayoutOptions> layout={ListLayout} layoutOptions={SELECT_LAYOUT_OPTIONS} {...virtualizerProps}>
       <ListBox<T> data-virtual items={itemsVirtualized} {...props} />
     </Virtualizer>
   );
@@ -242,7 +238,7 @@ export function ItemLoadMore({ children, className, spinner, ...props }: SelectI
   return (
     <ListBoxLoadMoreItem
       data-slot="select-item-load-more"
-      className={twMerge('flex items-center gap-2 p-4 pl-7', className)}
+      className={twMerge('flex h-12 items-center gap-2 pl-7', className)}
       {...props}
     >
       <Spinner size="1" variant="soft" {...spinner} />
@@ -270,7 +266,11 @@ export function ItemsGroup<T extends object>({ className, ...props }: React.Comp
   return (
     <ListBoxSection<T>
       data-slot="select-items-group"
-      className={twMerge('group/select-items-group', className)}
+      className={twMerge(
+        'not-last-of-type:border-gray-6 not-last-of-type:border-b',
+        'not-last-of-type:mb-2 not-last-of-type:pb-2',
+        className,
+      )}
       {...props}
     />
   );
@@ -284,14 +284,7 @@ export function ItemsGroupHeader({ className, ...props }: React.ComponentProps<t
       variant="soft"
       weight="5"
       as={HeaderPrimitive}
-      className={twMerge(
-        'px-4 py-2',
-        'group-not-first-of-type/select-items-group:border-t',
-        'group-not-first-of-type/select-items-group:border-gray-6',
-        'group-not-first-of-type/select-items-group:mt-2',
-        'group-not-first-of-type/select-items-group:pt-4',
-        className,
-      )}
+      className={twMerge('flex h-8 items-center px-4', className)}
       {...props}
     />
   );

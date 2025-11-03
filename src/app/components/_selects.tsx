@@ -418,7 +418,7 @@ export default function Selects() {
           <Select.Content>
             <Select.Items
               itemsVirtualized={LARGE_COUNTRIES}
-              virtualizerProps={{ layoutOptions: Select.SELECT_VIRTUAL_ROW_MULTILINE_LAYOUT_OPTIONS }}
+              virtualizerProps={{ layoutOptions: Select.SELECT_MULTILINE_LAYOUT_OPTIONS }}
             >
               {({ name, description }) => (
                 <Select.Item id={name} textValue={name}>
