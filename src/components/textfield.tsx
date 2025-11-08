@@ -40,7 +40,7 @@ export type TextFieldInputAffixVariants = VariantProps<typeof textFieldInputAffi
 export type TextFieldTextAreaSlotVariants = VariantProps<typeof textFieldTextAreaVariants>;
 
 export const textFieldRootVariants = tv({
-  base: 'group/field flex w-full flex-col gap-0.5 disabled:opacity-70 disabled:select-none',
+  base: 'group/field flex flex-col gap-0.5 has-disabled:opacity-70 has-disabled:select-none',
 });
 
 export const textFieldInputVariants = tv({
