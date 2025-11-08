@@ -1,7 +1,7 @@
 'use client';
 
 import { composeChildren } from '@/libs/primitive';
-import { use, useEffect, useMemo, useState } from 'react';
+import { createContext, use, useEffect, useMemo, useState } from 'react';
 import { mergeProps, useId } from 'react-aria';
 import { GroupContext, SwitchContext, Switch as SwitchPrimitive } from 'react-aria-components';
 import { tv, VariantProps } from 'tailwind-variants';
@@ -14,11 +14,12 @@ export type SwitchFieldDescriptionProps = React.ComponentProps<typeof Text>;
 
 export type SwitchFieldSwitchVariants = VariantProps<typeof switchFieldSwitchVariants>;
 
-export type SwitchContextValue = React.ContextType<typeof SwitchContext> & { setDescribedBy: (id?: string) => void };
-export function useSwitch() {
-  const context = use(SwitchContext);
-  if (!context) throw new Error('useSwitch must be used within a SwitchField');
-  return context as SwitchContextValue;
+export type SwitchFieldContextValue = { setDescribedBy: (id?: string) => void };
+export const SwitchFieldContext = createContext<SwitchFieldContextValue | undefined>(undefined);
+export function useSwitchFieldContext() {
+  const context = use(SwitchFieldContext);
+  if (!context) throw new Error('useSwitchFieldContext must be used within a SwitchField.Root');
+  return context;
 }
 
 export const switchFieldSwitchVariants = tv({
@@ -70,11 +71,13 @@ export const switchFieldSwitchVariants = tv({
 export function Root({ children, className, ...props }: SwitchFieldRootProps) {
   const [describedBy, setDescribedBy] = useState<string>();
   return (
-    <SwitchContext value={{ 'aria-describedby': describedBy, setDescribedBy, ...props } as SwitchContextValue}>
-      <div data-slot="switchfield" className={textFieldRootVariants({ className })}>
-        {children}
-      </div>
-    </SwitchContext>
+    <SwitchFieldContext value={{ setDescribedBy }}>
+      <SwitchContext value={{ 'aria-describedby': describedBy, ...props }}>
+        <div data-slot="switchfield" className={textFieldRootVariants({ className })}>
+          {children}
+        </div>
+      </SwitchContext>
+    </SwitchFieldContext>
   );
 }
 
@@ -106,7 +109,7 @@ export function Switch({ children, className, elevation, size, variant, ...props
 }
 
 export function Description({ id, ...props }: SwitchFieldDescriptionProps) {
-  const { setDescribedBy } = useSwitch();
+  const { setDescribedBy } = useSwitchFieldContext();
   const internalId = id ?? useId();
   useEffect(() => (setDescribedBy(internalId), () => setDescribedBy(undefined)), [internalId, setDescribedBy]);
   return <Text data-slot="switchfield-description" size="2" variant="soft" id={internalId} {...props} />;
