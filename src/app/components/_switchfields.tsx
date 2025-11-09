@@ -82,6 +82,11 @@ export default function SwitchFields() {
         <SwitchField.Switch elevation="3" variant="danger-soft-outline" aria-label="Notifications" />
       </Box>
       <Box className="gap-6">
+        <SwitchField.Switch size="1" aria-label="Notifications" />
+        <SwitchField.Switch size="2" aria-label="Notifications" />
+        <SwitchField.Switch size="3" aria-label="Notifications" />
+      </Box>
+      <Box className="gap-6">
         <SwitchField.Root>
           <SwitchField.Switch>Notifications</SwitchField.Switch>
         </SwitchField.Root>

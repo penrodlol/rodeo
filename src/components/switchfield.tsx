@@ -42,7 +42,7 @@ export const switchFieldSwitchVariants = tv({
       '3': { control: 'elevation-3 before:elevation-1' },
     },
     size: {
-      '1': { control: 'h-4 w-7 before:size-2' },
+      '1': { control: 'h-4 w-7 before:size-2.5' },
       '2': { control: 'h-5 w-8 before:size-3' },
       '3': { control: 'h-6 w-10 before:size-4' },
     },
