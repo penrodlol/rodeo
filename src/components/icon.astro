@@ -1,0 +1,29 @@
+---
+import { Icon as IconPrimitive } from 'astro-icon/components';
+import { type ComponentProps } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof IconPrimitive> & IconVariants & { library?: IconLibrary | undefined };
+
+export type IconLibrary = 'lucide' | 'local';
+export type IconVariants = VariantProps<typeof iconVariants>;
+
+export const iconVariants = tv({
+  base: 'shrink-0',
+  defaultVariants: { size: '2' },
+  variants: {
+    variant: { soft: 'text-gray-11', accent: 'text-accent-11', warn: 'text-warn-11', danger: 'text-danger-11' },
+    size: { '1': 'size-4', '2': 'size-5', '3': 'size-6' },
+  },
+});
+
+const { class: className, 'aria-hidden': ariaHidden, name, variant, size, library, ...props } = Astro.props;
+---
+
+<IconPrimitive
+  data-slot="icon"
+  aria-hidden={ariaHidden ?? true}
+  name={library === 'local' ? name : `${library ?? 'lucide'}:${name}`}
+  class={iconVariants({ variant, size, className })}
+  {...props}
+/>

@@ -1,0 +1,51 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = Omit<HTMLAttributes<'input'>, 'type' | 'name'> & RadioGroupRadioVariants;
+
+export type RadioGroupRadioVariants = VariantProps<typeof radioGroupRadioVariants>;
+
+export const radioGroupRadioVariants = tv({
+  slots: {
+    base: 'flex max-w-max items-center gap-2.5 select-none has-disabled:pointer-events-none has-disabled:opacity-50',
+    control: [
+      'relative flex shrink-0 appearance-none items-center justify-center overflow-hidden rounded-full border',
+      'disabled:pointer-events-none disabled:opacity-50',
+      'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
+      'checked:bg-accent-9 checked:border-transparent not-checked:active:scale-[0.95]',
+      'before:absolute before:inset-0 before:rounded-[inherit]',
+      'before:from-accent-contrast before:to-accent-contrast/60 before:bg-linear-to-br',
+      'not-checked:before:scale-0 checked:before:scale-40',
+      'motion-safe:transition-all motion-safe:before:transition-all',
+    ],
+  },
+  defaultVariants: { size: '2', variant: 'soft-outline' },
+  variants: {
+    elevation: { '1': { control: 'elevation-1' }, '2': { control: 'elevation-2' }, '3': { control: 'elevation-3' } },
+    size: {
+      '1': { base: 'slot-sibling-[field-description]:ml-6 text-sm', control: 'size-3.5' },
+      '2': { base: 'slot-sibling-[field-description]:ml-6.5 text-base', control: 'size-4' },
+      '3': { base: 'slot-sibling-[field-description]:ml-7 text-lg', control: 'size-4.5' },
+      '4': { base: 'slot-sibling-[field-description]:ml-7.5 text-xl', control: 'size-5' },
+      '5': { base: 'slot-sibling-[field-description]:ml-8 text-2xl', control: 'size-5.5' },
+    },
+    variant: {
+      solid: { control: 'bg-gray-1 border-transparent' },
+      'solid-outline': { control: 'bg-gray-1 border-gray-7' },
+      soft: { control: 'bg-gray-3 border-transparent' },
+      'soft-outline': { control: 'bg-gray-3 border-gray-7' },
+      outline: { control: 'border-gray-7' },
+    },
+  },
+});
+
+const { class: className, elevation, size, variant, ...props } = Astro.props;
+const slots = radioGroupRadioVariants({ elevation, size, variant });
+const Tag = Astro.slots.has('default') ? 'label' : Fragment;
+---
+
+<Tag data-slot="radio-group-radio" class={slots.base({ className })}>
+  <input data-slot="field-control" type="radio" class={slots.control()} {...props} />
+  <slot />
+</Tag>

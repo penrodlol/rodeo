@@ -1,0 +1,63 @@
+---
+import Box from '@/components/box.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid" />
+      <Box variant="soft" />
+      <Box variant="solid-outline" />
+      <Box variant="soft-outline" />
+      <Box variant="solid-gradient" />
+      <Box variant="transparent-outline" />
+      <Box variant="soft-gradient" />
+      <Box variant="solid-outline-gradient" />
+      <Box variant="soft-outline-gradient" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid" rounded />
+      <Box variant="soft" rounded />
+      <Box variant="solid-outline" rounded />
+      <Box variant="soft-outline" rounded />
+      <Box variant="solid-gradient" rounded />
+      <Box variant="transparent-outline" rounded />
+      <Box variant="soft-gradient" rounded />
+      <Box variant="solid-outline-gradient" rounded />
+      <Box variant="soft-outline-gradient" rounded />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid" rounded elevation="1" />
+      <Box variant="solid" rounded elevation="2" />
+      <Box variant="solid" rounded elevation="3" />
+      <Box variant="soft" rounded elevation="1" />
+      <Box variant="soft" rounded elevation="2" />
+      <Box variant="soft" rounded elevation="3" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid-outline" rounded elevation="1" />
+      <Box variant="solid-outline" rounded elevation="2" />
+      <Box variant="solid-outline" rounded elevation="3" />
+      <Box variant="soft-outline" rounded elevation="1" />
+      <Box variant="soft-outline" rounded elevation="2" />
+      <Box variant="soft-outline" rounded elevation="3" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid-gradient" rounded elevation="1" />
+      <Box variant="solid-gradient" rounded elevation="2" />
+      <Box variant="solid-gradient" rounded elevation="3" />
+      <Box variant="soft-gradient" rounded elevation="1" />
+      <Box variant="soft-gradient" rounded elevation="2" />
+      <Box variant="soft-gradient" rounded elevation="3" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6 *:size-20">
+      <Box variant="solid-outline-gradient" rounded elevation="1" />
+      <Box variant="solid-outline-gradient" rounded elevation="2" />
+      <Box variant="solid-outline-gradient" rounded elevation="3" />
+      <Box variant="soft-outline-gradient" rounded elevation="1" />
+      <Box variant="soft-outline-gradient" rounded elevation="2" />
+      <Box variant="soft-outline-gradient" rounded elevation="3" />
+    </Box>
+  </Box>
+</Layout>

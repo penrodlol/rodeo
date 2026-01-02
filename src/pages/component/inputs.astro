@@ -1,0 +1,269 @@
+---
+import Box from '@/components/box.astro';
+import Button from '@/components/button.astro';
+import * as Field from '@/components/field';
+import * as InputGroup from '@/components/input-group';
+import Input from '@/components/input.astro';
+import { Text } from '@/components/typography';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Input variant="solid" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="solid-outline" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft-outline" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="outline" aria-label="Username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Input variant="solid" disabled aria-label="Username" placeholder="Enter your username" />
+      <Input variant="solid-outline" disabled aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft" disabled aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft-outline" disabled aria-label="Username" placeholder="Enter your username" />
+      <Input variant="outline" disabled aria-label="Username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Input variant="solid" elevation="1" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="solid-outline" elevation="1" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft" elevation="1" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft-outline" elevation="1" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="outline" elevation="1" aria-label="Username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Input variant="solid" elevation="2" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="solid-outline" elevation="2" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft" elevation="2" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft-outline" elevation="2" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="outline" elevation="2" aria-label="Username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Input variant="solid" elevation="3" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="solid-outline" elevation="3" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft" elevation="3" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="soft-outline" elevation="3" aria-label="Username" placeholder="Enter your username" />
+      <Input variant="outline" elevation="3" aria-label="Username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-5">
+      <Input size="1" aria-label="Enter your username" placeholder="Enter your username" />
+      <Input size="2" aria-label="Enter your username" placeholder="Enter your username" />
+      <Input size="3" aria-label="Enter your username" placeholder="Enter your username" />
+      <Input size="4" aria-label="Enter your username" placeholder="Enter your username" />
+      <Input size="5" aria-label="Enter your username" placeholder="Enter your username" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="solid" placeholder="Enter your username" />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="solid-outline" placeholder="Enter your username" />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft" placeholder="Enter your username" />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft-outline" placeholder="Enter your username" />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="outline" placeholder="Enter your username" />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="solid" placeholder="Enter your username" disabled />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="solid-outline" placeholder="Enter your username" disabled />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft" placeholder="Enter your username" disabled />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft-outline" placeholder="Enter your username" disabled />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="outline" placeholder="Enter your username" disabled />
+        <Field.Description>Enter your username</Field.Description>
+      </Field.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input placeholder="Enter your username" required minlength="2" pattern="[^0-9]*" />
+        <Field.Description>Enter your username</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="solid-outline" placeholder="Enter your username" required minlength="2" pattern="[^0-9]*" />
+        <Field.Description>Enter your username</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft" placeholder="Enter your username" required minlength="2" pattern="[^0-9]*" />
+        <Field.Description>Enter your username</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="soft-outline" placeholder="Enter your username" required minlength="2" pattern="[^0-9]*" />
+        <Field.Description>Enter your username</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Username</Field.Label>
+        <Input variant="outline" placeholder="Enter your username" required minlength="2" pattern="[^0-9]*" />
+        <Field.Description>Enter your username</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-3">
+      <Input aria-label="Username" placeholder="Enter your username" prefix="@" />
+      <Input aria-label="Username" placeholder="Enter your username" suffix="@" />
+      <Input aria-label="Username" placeholder="Enter your username" prefix="@" suffix="@" />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-3">
+      <Input aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+      <Input aria-label="Username" placeholder="Enter your username" suffix={{ name: 'user' }} />
+      <Input
+        aria-label="Username"
+        placeholder="Enter your username"
+        prefix={{ name: 'user' }}
+        suffix={{ name: 'user' }}
+      />
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-5">
+      <Input size="1" aria-label="Username" placeholder="Enter your username" prefix="@" />
+      <Input size="2" aria-label="Username" placeholder="Enter your username" prefix="@" />
+      <Input size="3" aria-label="Username" placeholder="Enter your username" prefix="@" />
+      <Input size="4" aria-label="Username" placeholder="Enter your username" prefix="@" />
+      <Input size="5" aria-label="Username" placeholder="Enter your username" prefix="@" />
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-5">
+      <Input size="1" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+      <Input size="2" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+      <Input size="3" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+      <Input size="4" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+      <Input size="5" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-4">
+      <InputGroup.Root>
+        <InputGroup.Section variant="soft">https://</InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="soft">.com</InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section variant="soft-outline">https://</InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="soft-outline">.com</InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section variant="outline">https://</InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="outline">.com</InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section>https://</InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section>.com</InputGroup.Section>
+      </InputGroup.Root>
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-4">
+      <InputGroup.Root>
+        <InputGroup.Section variant="soft"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="soft"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section variant="soft-outline">
+          <Button variant="gray-soft" size="1">Add</Button>
+        </InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="soft-outline">
+          <Button variant="gray-soft" size="1">Add</Button>
+        </InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section variant="outline"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section variant="outline"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
+      </InputGroup.Root>
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-4">
+      <InputGroup.Root>
+        <InputGroup.Section>
+          <Button variant="gray-soft" size="1">Add</Button>
+          <Text size="2">https://</Text>
+        </InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <InputGroup.Section>
+          <Text size="2">https://</Text>
+          <Button variant="gray-soft" size="1">Add</Button>
+        </InputGroup.Section>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section>
+          <Button variant="gray-soft" size="1">Add</Button>
+          <Text size="2">.com</Text>
+        </InputGroup.Section>
+      </InputGroup.Root>
+      <InputGroup.Root>
+        <Input aria-label="Domain" placeholder="Enter your domain" />
+        <InputGroup.Section>
+          <Text size="2">.com</Text>
+          <Button variant="gray-soft" size="1">Add</Button>
+        </InputGroup.Section>
+      </InputGroup.Root>
+    </Box>
+  </Box>
+</Layout>

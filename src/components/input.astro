@@ -1,0 +1,76 @@
+---
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Icon from './icon.astro';
+
+type Props = Omit<HTMLAttributes<'input'>, 'prefix'> & InputVariants & { prefix?: InputAffix; suffix?: InputAffix };
+
+export type InputAffix = string | ComponentProps<typeof Icon>;
+
+export type InputVariants = Omit<VariantProps<typeof inputVariants>, 'prefix' | 'suffix'>;
+
+export const inputVariants = tv({
+  slots: {
+    base: [
+      'group/input relative flex w-full items-center rounded border select-none',
+      'has-focus-visible:border-accent-8',
+      'has-disabled:pointer-events-none has-disabled:opacity-50',
+      'has-user-invalid:border-danger-7 has-user-invalid:has-focus-visible:border-danger-8',
+    ],
+    control: 'placeholder:text-gray-11/70 absolute inset-0 z-10 rounded-[inherit] px-4 focus-visible:outline-none',
+    prefix: 'text-gray-11/70 absolute left-3 z-0',
+    suffix: 'text-gray-11/70 absolute right-3 z-0',
+  },
+  defaultVariants: { size: '2', variant: 'outline' },
+  variants: {
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    size: {
+      '1': { base: 'h-8 text-sm', prefix: 'slot-[icon]:size-3 text-xs', suffix: 'slot-[icon]:size-3 text-xs' },
+      '2': { base: 'h-9 text-base', prefix: 'slot-[icon]:size-3.5 text-sm', suffix: 'slot-[icon]:size-3.5 text-sm' },
+      '3': { base: 'h-10 text-lg', prefix: 'slot-[icon]:size-4 text-base', suffix: 'slot-[icon]:size-4 text-base' },
+      '4': { base: 'h-11 text-xl', prefix: 'slot-[icon]:size-4.5 text-lg', suffix: 'slot-[icon]:size-4.5 text-lg' },
+      '5': { base: 'h-12 text-2xl', prefix: 'slot-[icon]:size-5 text-xl', suffix: 'slot-[icon]:size-5 text-xl' },
+    },
+    variant: {
+      solid: 'bg-gray-1 border-transparent',
+      'solid-outline': 'bg-gray-1 border-gray-7',
+      soft: 'bg-gray-3 border-transparent',
+      'soft-outline': 'bg-gray-3 border-gray-7',
+      outline: 'border-gray-7 bg-transparent',
+    },
+    prefix: { true: { control: 'pl-9' }, false: { control: 'pl-4' } },
+    suffix: { true: { control: 'pr-9' }, false: { control: 'pr-4' } },
+  },
+  compoundVariants: [
+    { size: '1', prefix: true, class: { control: 'pl-8.5' } },
+    { size: '1', suffix: true, class: { control: 'pr-8.5' } },
+    { size: '3', prefix: true, class: { control: 'pl-9.5' } },
+    { size: '3', suffix: true, class: { control: 'pr-9.5' } },
+    { size: '4', prefix: true, class: { control: 'pl-10' } },
+    { size: '4', suffix: true, class: { control: 'pr-10' } },
+    { size: '5', prefix: true, class: { control: 'pl-10.5' } },
+    { size: '5', suffix: true, class: { control: 'pr-10.5' } },
+  ],
+});
+
+const { class: className, elevation, size, variant, prefix, suffix, ...props } = Astro.props;
+const slots = inputVariants({ elevation, size, variant, prefix: !!prefix, suffix: !!suffix });
+---
+
+<div data-slot="input" class={slots.base({ className })}>
+  {
+    prefix && (
+      <div data-slot="input-prefix" aria-hidden="true" class={slots.prefix()}>
+        {typeof prefix === 'string' ? prefix : <Icon {...prefix} />}
+      </div>
+    )
+  }
+  <input data-slot="field-control" class={slots.control()} {...props} />
+  {
+    suffix && (
+      <div data-slot="input-suffix" aria-hidden="true" class={slots.suffix()}>
+        {typeof suffix === 'string' ? suffix : <Icon {...suffix} />}
+      </div>
+    )
+  }
+</div>

@@ -1,0 +1,8 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+
+type Props = ComponentProps<typeof Text>;
+---
+
+<Text data-slot="fieldset-description" variant="soft" size="2" {...Astro.props}><slot /></Text>

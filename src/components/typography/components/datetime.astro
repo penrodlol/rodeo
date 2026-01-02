@@ -1,0 +1,28 @@
+---
+import type { ComponentProps } from 'astro/types';
+import { z } from 'astro/zod';
+import Text from './text.astro';
+
+type Props = Omit<ComponentProps<typeof Text<'time'>>, 'as'> & {
+  locales?: Intl.LocalesArgument;
+  options?: Intl.DateTimeFormatOptions;
+  value?: string | number | Date;
+};
+
+const { value, locales, options, ...props } = Astro.props;
+const originalValue = value ?? (await Astro.slots.render('default'));
+const formattedLocales: Intl.LocalesArgument = locales ?? 'en-US';
+const formatterOptions: Intl.DateTimeFormatOptions = { month: '2-digit', day: '2-digit', year: 'numeric', ...options };
+const formatter = new Intl.DateTimeFormat(formattedLocales, formatterOptions);
+const formattedValue = z
+  .union([z.coerce.date(), z.coerce.number().transform((value) => new Date(value))])
+  .transform((date) => ({ value: formatter.format(date), iso: date.toISOString() }))
+  .safeParse(originalValue);
+---
+
+<Text
+  as="time"
+  datetime={formattedValue.data?.iso}
+  set:html={formattedValue.error ? originalValue : formattedValue.data.value}
+  {...props}
+/>

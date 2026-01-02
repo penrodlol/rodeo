@@ -1,0 +1,240 @@
+---
+import Box from '@/components/box.astro';
+import Button, { buttonVariants } from '@/components/button.astro';
+import Link from '@/components/link.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-solid">Button</Button>
+      <Button variant="gray-soft">Button</Button>
+      <Button variant="gray-soft-outline">Button</Button>
+      <Button variant="gray-outline">Button</Button>
+      <Button variant="gray-ghost">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-solid" elevation="1">Button</Button>
+      <Button variant="gray-soft" elevation="1">Button</Button>
+      <Button variant="gray-soft-outline" elevation="1">Button</Button>
+      <Button variant="gray-outline" elevation="1">Button</Button>
+      <Button variant="gray-ghost" elevation="1">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-solid" elevation="2">Button</Button>
+      <Button variant="gray-soft" elevation="2">Button</Button>
+      <Button variant="gray-soft-outline" elevation="2">Button</Button>
+      <Button variant="gray-outline" elevation="2">Button</Button>
+      <Button variant="gray-ghost" elevation="2">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-solid" elevation="3">Button</Button>
+      <Button variant="gray-soft" elevation="3">Button</Button>
+      <Button variant="gray-soft-outline" elevation="3">Button</Button>
+      <Button variant="gray-outline" elevation="3">Button</Button>
+      <Button variant="gray-ghost" elevation="3">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-solid" disabled>Button</Button>
+      <Button variant="gray-soft" disabled>Button</Button>
+      <Button variant="gray-soft-outline" disabled>Button</Button>
+      <Button variant="gray-outline" disabled>Button</Button>
+      <Button variant="gray-ghost" disabled>Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid">Button</Button>
+      <Button variant="accent-soft">Button</Button>
+      <Button variant="accent-soft-outline">Button</Button>
+      <Button variant="accent-outline">Button</Button>
+      <Button variant="accent-ghost">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" elevation="1">Button</Button>
+      <Button variant="accent-soft" elevation="1">Button</Button>
+      <Button variant="accent-soft-outline" elevation="1">Button</Button>
+      <Button variant="accent-outline" elevation="1">Button</Button>
+      <Button variant="accent-ghost" elevation="1">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" elevation="2">Button</Button>
+      <Button variant="accent-soft" elevation="2">Button</Button>
+      <Button variant="accent-soft-outline" elevation="2">Button</Button>
+      <Button variant="accent-outline" elevation="2">Button</Button>
+      <Button variant="accent-ghost" elevation="2">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" elevation="3">Button</Button>
+      <Button variant="accent-soft" elevation="3">Button</Button>
+      <Button variant="accent-soft-outline" elevation="3">Button</Button>
+      <Button variant="accent-outline" elevation="3">Button</Button>
+      <Button variant="accent-ghost" elevation="3">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" disabled>Button</Button>
+      <Button variant="accent-soft" disabled>Button</Button>
+      <Button variant="accent-soft-outline" disabled>Button</Button>
+      <Button variant="accent-outline" disabled>Button</Button>
+      <Button variant="accent-ghost" disabled>Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="warn-solid">Button</Button>
+      <Button variant="warn-soft">Button</Button>
+      <Button variant="warn-soft-outline">Button</Button>
+      <Button variant="warn-outline">Button</Button>
+      <Button variant="warn-ghost">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="warn-solid" elevation="1">Button</Button>
+      <Button variant="warn-soft" elevation="1">Button</Button>
+      <Button variant="warn-soft-outline" elevation="1">Button</Button>
+      <Button variant="warn-outline" elevation="1">Button</Button>
+      <Button variant="warn-ghost" elevation="1">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="warn-solid" elevation="2">Button</Button>
+      <Button variant="warn-soft" elevation="2">Button</Button>
+      <Button variant="warn-soft-outline" elevation="2">Button</Button>
+      <Button variant="warn-outline" elevation="2">Button</Button>
+      <Button variant="warn-ghost" elevation="2">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="warn-solid" elevation="3">Button</Button>
+      <Button variant="warn-soft" elevation="3">Button</Button>
+      <Button variant="warn-soft-outline" elevation="3">Button</Button>
+      <Button variant="warn-outline" elevation="3">Button</Button>
+      <Button variant="warn-ghost" elevation="3">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="warn-solid" disabled>Button</Button>
+      <Button variant="warn-soft" disabled>Button</Button>
+      <Button variant="warn-soft-outline" disabled>Button</Button>
+      <Button variant="warn-outline" disabled>Button</Button>
+      <Button variant="warn-ghost" disabled>Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="danger-solid">Button</Button>
+      <Button variant="danger-soft">Button</Button>
+      <Button variant="danger-soft-outline">Button</Button>
+      <Button variant="danger-outline">Button</Button>
+      <Button variant="danger-ghost">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="danger-solid" elevation="1">Button</Button>
+      <Button variant="danger-soft" elevation="1">Button</Button>
+      <Button variant="danger-soft-outline" elevation="1">Button</Button>
+      <Button variant="danger-outline" elevation="1">Button</Button>
+      <Button variant="danger-ghost" elevation="1">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="danger-solid" elevation="2">Button</Button>
+      <Button variant="danger-soft" elevation="2">Button</Button>
+      <Button variant="danger-soft-outline" elevation="2">Button</Button>
+      <Button variant="danger-outline" elevation="2">Button</Button>
+      <Button variant="danger-ghost" elevation="2">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="danger-solid" elevation="3">Button</Button>
+      <Button variant="danger-soft" elevation="3">Button</Button>
+      <Button variant="danger-soft-outline" elevation="3">Button</Button>
+      <Button variant="danger-outline" elevation="3">Button</Button>
+      <Button variant="danger-ghost" elevation="3">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="danger-solid" disabled>Button</Button>
+      <Button variant="danger-soft" disabled>Button</Button>
+      <Button variant="danger-soft-outline" disabled>Button</Button>
+      <Button variant="danger-outline" disabled>Button</Button>
+      <Button variant="danger-ghost" disabled>Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-accent-soft">Button</Button>
+      <Button variant="gray-accent-soft-outline">Button</Button>
+      <Button variant="gray-warn-soft">Button</Button>
+      <Button variant="gray-warn-soft-outline">Button</Button>
+      <Button variant="gray-danger-soft">Button</Button>
+      <Button variant="gray-danger-soft-outline">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-accent-soft" elevation="1">Button</Button>
+      <Button variant="gray-accent-soft-outline" elevation="1">Button</Button>
+      <Button variant="gray-warn-soft" elevation="1">Button</Button>
+      <Button variant="gray-warn-soft-outline" elevation="1">Button</Button>
+      <Button variant="gray-danger-soft" elevation="1">Button</Button>
+      <Button variant="gray-danger-soft-outline" elevation="1">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-accent-soft" elevation="2">Button</Button>
+      <Button variant="gray-accent-soft-outline" elevation="2">Button</Button>
+      <Button variant="gray-warn-soft" elevation="2">Button</Button>
+      <Button variant="gray-warn-soft-outline" elevation="2">Button</Button>
+      <Button variant="gray-danger-soft" elevation="2">Button</Button>
+      <Button variant="gray-danger-soft-outline" elevation="2">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-accent-soft" elevation="3">Button</Button>
+      <Button variant="gray-accent-soft-outline" elevation="3">Button</Button>
+      <Button variant="gray-warn-soft" elevation="3">Button</Button>
+      <Button variant="gray-warn-soft-outline" elevation="3">Button</Button>
+      <Button variant="gray-danger-soft" elevation="3">Button</Button>
+      <Button variant="gray-danger-soft-outline" elevation="3">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="gray-accent-soft" disabled>Button</Button>
+      <Button variant="gray-accent-soft-outline" disabled>Button</Button>
+      <Button variant="gray-warn-soft" disabled>Button</Button>
+      <Button variant="gray-warn-soft-outline" disabled>Button</Button>
+      <Button variant="gray-danger-soft" disabled>Button</Button>
+      <Button variant="gray-danger-soft-outline" disabled>Button</Button>
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Button size="1">Button</Button>
+      <Button size="2">Button</Button>
+      <Button size="3">Button</Button>
+      <Button size="4">Button</Button>
+      <Button size="5">Button</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="accent-soft" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="accent-soft-outline" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="accent-outline" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="accent-ghost" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="gray-accent-soft" size="2-icon" icon={{ name: 'plus' }} />
+      <Button variant="gray-accent-soft-outline" size="2-icon" icon={{ name: 'plus' }} />
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Button variant="accent-solid" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="accent-soft" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="accent-soft-outline" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="accent-outline" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="accent-ghost" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="gray-accent-soft" size="2-icon" icon={{ name: 'plus' }} disabled />
+      <Button variant="gray-accent-soft-outline" size="2-icon" icon={{ name: 'plus' }} disabled />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Button size="1-icon" icon={{ name: 'plus' }} />
+      <Button size="2-icon" icon={{ name: 'plus' }} />
+      <Button size="3-icon" icon={{ name: 'plus' }} />
+      <Button size="4-icon" icon={{ name: 'plus' }} />
+      <Button size="5-icon" icon={{ name: 'plus' }} />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Button size="1" icon={{ name: 'twitter' }}>Twitter</Button>
+      <Button size="2" icon={{ name: 'twitter' }}>Twitter</Button>
+      <Button size="3" icon={{ name: 'twitter' }}>Twitter</Button>
+      <Button size="4" icon={{ name: 'twitter' }}>Twitter</Button>
+      <Button size="5" icon={{ name: 'twitter' }}>Twitter</Button>
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Link href="/" class={buttonVariants({ variant: 'gray-ghost' })}>Internal Link</Link>
+      <Link href="http://" class={buttonVariants({ variant: 'accent-ghost' })}>External Link</Link>
+      <Link href="/" icon={{ name: 'link' }} class={buttonVariants({ variant: 'gray-ghost', size: '2-icon' })} />
+      <Link
+        href="http://"
+        icon={{ name: 'link' }}
+        class={buttonVariants({ variant: 'accent-ghost', size: '2-icon' })}
+      />
+    </Box>
+  </Box>
+</Layout>

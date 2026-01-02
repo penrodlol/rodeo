@@ -1,0 +1,35 @@
+---
+import Icon from '@/components/icon.astro';
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'option'> & SelectOptionVariants & { icon?: ComponentProps<typeof Icon> };
+
+export type SelectOptionVariants = VariantProps<typeof selectOptionVariants>;
+
+const selectOptionVariants = tv({
+  slots: {
+    base: [
+      'group/select-option relative pr-4 pl-9 [&::checkmark]:hidden',
+      'disabled:text-gray-11/50 disabled:*:text-gray-11/50',
+      'hover:bg-gray-4 focus:outlines-none',
+      'checked:text-accent-11 checked:font-medium',
+      'checked:*:text-accent-11 checked:*:font-medium',
+    ],
+    icon: [
+      'absolute top-1/2 left-2.5 -translate-y-1/2',
+      'group-not-checked/select-option:last-of-type:hidden',
+      'slot-sibling-[icon]:right-2.5 slot-sibling-[icon]:left-auto',
+    ],
+  },
+});
+
+const { class: className, icon, ...props } = Astro.props;
+const slots = selectOptionVariants();
+---
+
+<option data-slot="select-option" class={slots.base({ className })} {...props}>
+  <!-- {icon && <Icon variant="soft" size="1" class={slots.icon()} {...icon} />} -->
+  <!-- <Icon name="check" variant="accent" size="1" class={slots.icon()} /> -->
+  <slot />
+</option>

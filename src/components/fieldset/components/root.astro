@@ -1,0 +1,21 @@
+---
+import { componentProvider } from '@/libs/component';
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'fieldset'>;
+
+const { class: className, ...props } = Astro.props;
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+const descriptionId = provider.hasSlot('fieldset-description') ? provider.generateId() : null;
+provider.provideContext({ 'fieldset-description': () => ({ id: descriptionId }) });
+---
+
+<fieldset
+  data-slot="fieldset"
+  aria-describedby={descriptionId}
+  set:html={provider.render()}
+  class={cn('group/fieldset', className)}
+  {...props}
+/>

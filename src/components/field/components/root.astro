@@ -1,0 +1,43 @@
+---
+import { componentProvider } from '@/libs/component';
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }>;
+
+const { as: Tag = 'div', class: className, ...props } = Astro.props;
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+
+const controlId = provider.generateId();
+const descriptionId = provider.hasSlot('field-description') ? provider.generateId() : null;
+const errorMessagesId = provider.hasSlot('field-error-messages') ? provider.generateId() : null;
+const errorMessageId = !errorMessagesId && provider.hasSlot('field-error-message') ? provider.generateId() : null;
+const errorMessagesExist = errorMessagesId || errorMessageId;
+
+provider.provideContext({
+  'field-label': () => ({ for: controlId }),
+  'field-description': () => ({ id: descriptionId }),
+  'field-error-messages': () => ({ id: errorMessagesId, 'x-show': '!state.valid' }),
+  'field-error-message': () => ({
+    id: errorMessageId,
+    'aria-live': errorMessageId ? 'polite' : null,
+    'x-show': '!$el.hasAttribute("data-state") || state[$el.getAttribute("data-state")]',
+  }),
+  'field-control': () => ({
+    id: controlId,
+    'aria-describedby': descriptionId,
+    ':aria-invalid': errorMessagesExist ? '!state.valid' : null,
+    ':aria-errormessage': errorMessagesExist ? `!state.valid ? "${errorMessagesId ?? errorMessageId}" : null` : null,
+    '@input': errorMessagesExist ? 'setState($event.target.validity)' : null,
+  }),
+});
+---
+
+<Tag
+  data-slot="field"
+  set:html={provider.render()}
+  class={cn('group/field flex flex-col gap-0.5 has-disabled:opacity-70 has-disabled:select-none', className)}
+  {...errorMessagesExist && { 'x-data': '{state:{valid:true},setState(s){for(let k in s){this.state[k]=s[k]}}}' }}
+  {...props}
+/>

@@ -1,0 +1,225 @@
+---
+import Box from '@/components/box.astro';
+import Button from '@/components/button.astro';
+import * as Field from '@/components/field';
+import * as FieldGroup from '@/components/field-group';
+import Textarea from '@/components/textarea.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Textarea variant="solid" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="solid-outline" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft-outline" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="outline" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Textarea variant="solid" disabled aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="solid-outline" disabled aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft" disabled aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft-outline" disabled aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="outline" disabled aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Textarea variant="solid" elevation="1" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="solid-outline" elevation="1" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft" elevation="1" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft-outline" elevation="1" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="outline" elevation="1" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Textarea variant="solid" elevation="2" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="solid-outline" elevation="2" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft" elevation="2" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft-outline" elevation="2" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="outline" elevation="2" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Textarea variant="solid" elevation="3" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="solid-outline" elevation="3" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft" elevation="3" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="soft-outline" elevation="3" aria-label="Message" placeholder="Type your message..." />
+      <Textarea variant="outline" elevation="3" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-5">
+      <Textarea size="1" aria-label="Message" placeholder="Type your message..." />
+      <Textarea size="2" aria-label="Message" placeholder="Type your message..." />
+      <Textarea size="3" aria-label="Message" placeholder="Type your message..." />
+      <Textarea size="4" aria-label="Message" placeholder="Type your message..." />
+      <Textarea size="5" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-3">
+      <Textarea resize={true} aria-label="Message" placeholder="Type your message..." />
+      <Textarea resize={false} aria-label="Message" placeholder="Type your message..." />
+      <Textarea resize="auto" aria-label="Message" placeholder="Type your message..." />
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid" placeholder="Type your message..." />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid-outline" placeholder="Type your message..." />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft" placeholder="Type your message..." />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft-outline" placeholder="Type your message..." />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="outline" placeholder="Type your message..." />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid" placeholder="Type your message..." disabled />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid-outline" placeholder="Type your message..." disabled />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft" placeholder="Type your message..." disabled />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft-outline" placeholder="Type your message..." disabled />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="outline" placeholder="Type your message..." disabled />
+        <Field.Description>Enter your message</Field.Description>
+      </Field.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid" placeholder="Type your message..." required minlength="2" />
+        <Field.Description>Enter your message</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="solid-outline" placeholder="Type your message..." required minlength="2" />
+        <Field.Description>Enter your message</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft" placeholder="Type your message..." required minlength="2" />
+        <Field.Description>Enter your message</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="soft-outline" placeholder="Type your message..." required minlength="2" />
+        <Field.Description>Enter your message</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+      <Field.Root>
+        <Field.Label>Message</Field.Label>
+        <Textarea variant="outline" placeholder="Type your message..." required minlength="2" />
+        <Field.Description>Enter your message</Field.Description>
+        <Field.ErrorMessages>
+          <Field.ErrorMessage as="li" state="valueMissing">Must not be empty</Field.ErrorMessage>
+          <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
+        </Field.ErrorMessages>
+      </Field.Root>
+    </Box>
+    <Box class="mt-12 grid gap-4 lg:grid-cols-3">
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Section variant="soft">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+      </FieldGroup.Root>
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Section variant="soft-outline">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+      </FieldGroup.Root>
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Section variant="ghost">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+      </FieldGroup.Root>
+    </Box>
+    <Box class="mb-12 grid gap-4 lg:grid-cols-3">
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+        <FieldGroup.Section variant="soft">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+      </FieldGroup.Root>
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+        <FieldGroup.Section variant="soft-outline">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+      </FieldGroup.Root>
+      <FieldGroup.Root elevation="3">
+        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
+        <FieldGroup.Section variant="ghost">
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
+          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
+          <Button variant="gray-soft" size="1" class="ml-auto">Send</Button>
+        </FieldGroup.Section>
+      </FieldGroup.Root>
+    </Box>
+  </Box>
+</Layout>

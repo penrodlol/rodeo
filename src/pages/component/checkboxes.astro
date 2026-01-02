@@ -1,0 +1,199 @@
+---
+import Box from '@/components/box.astro';
+import Checkbox from '@/components/checkbox.astro';
+import * as Field from '@/components/field';
+import * as Fieldset from '@/components/fieldset';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-wrap items-center gap-6">
+      <Checkbox variant="solid" aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" aria-label="Product Updates" />
+      <Checkbox variant="soft" aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="outline" aria-label="Product Updates" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Checkbox variant="solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="outline" elevation="1" aria-label="Product Updates" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Checkbox variant="solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="outline" elevation="2" aria-label="Product Updates" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Checkbox variant="solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="outline" elevation="3" aria-label="Product Updates" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Checkbox variant="solid" disabled aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" disabled aria-label="Product Updates" />
+      <Checkbox variant="soft" disabled aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" disabled aria-label="Product Updates" />
+      <Checkbox variant="outline" disabled aria-label="Product Updates" />
+    </Box>
+    <Box
+      x-data
+      x-init="$el.querySelectorAll('input').forEach((el) => el.indeterminate = true)"
+      class="flex flex-wrap items-center gap-6"
+    >
+      <Checkbox variant="solid" aria-label="Product Updates" />
+      <Checkbox variant="solid-outline" aria-label="Product Updates" />
+      <Checkbox variant="soft" aria-label="Product Updates" />
+      <Checkbox variant="soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="outline" aria-label="Product Updates" />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Checkbox size="1" aria-label="Product Updates" />
+      <Checkbox size="2" aria-label="Product Updates" />
+      <Checkbox size="3" aria-label="Product Updates" />
+      <Checkbox size="4" aria-label="Product Updates" />
+      <Checkbox size="5" aria-label="Product Updates" />
+    </Box>
+    <Box class="my-12 flex flex-wrap items-start gap-12">
+      <Checkbox>Product Updates</Checkbox>
+      <Checkbox disabled>Product Updates</Checkbox>
+      <Field.Root>
+        <Checkbox>Product Updates</Checkbox>
+        <Field.Description>Get the latest updates about our products</Field.Description>
+      </Field.Root>
+      <Field.Root>
+        <Checkbox disabled>Product Updates</Checkbox>
+        <Field.Description>Get the latest updates about our products</Field.Description>
+      </Field.Root>
+    </Box>
+    <Box class="mb-12 flex flex-wrap items-start gap-12">
+      <Fieldset.Root>
+        <Fieldset.Legend>Notifications</Fieldset.Legend>
+        <Fieldset.Controls>
+          <Checkbox>Product Updates</Checkbox>
+          <Checkbox>Marketing Emails</Checkbox>
+          <Checkbox>Newsletter Subscription</Checkbox>
+        </Fieldset.Controls>
+      </Fieldset.Root>
+      <Fieldset.Root>
+        <Fieldset.Legend>Notifications</Fieldset.Legend>
+        <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+        <Fieldset.Controls>
+          <Checkbox>Product Updates</Checkbox>
+          <Checkbox>Marketing Emails</Checkbox>
+          <Checkbox>Newsletter Subscription</Checkbox>
+        </Fieldset.Controls>
+      </Fieldset.Root>
+      <Fieldset.Root>
+        <Fieldset.Legend>Notifications</Fieldset.Legend>
+        <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+        <Fieldset.Controls>
+          <Field.Root>
+            <Checkbox>Product Updates</Checkbox>
+            <Field.Description>Get the latest updates about our products</Field.Description>
+          </Field.Root>
+          <Field.Root>
+            <Checkbox>Marketing Emails</Checkbox>
+            <Field.Description>Receive promotional content and offers</Field.Description>
+          </Field.Root>
+          <Field.Root>
+            <Checkbox>Newsletter Subscription</Checkbox>
+            <Field.Description>Stay informed with our monthly newsletter</Field.Description>
+          </Field.Root>
+        </Fieldset.Controls>
+      </Fieldset.Root>
+    </Box>
+    <Box class="mb-12 flex flex-wrap items-start gap-12">
+      <Fieldset.Root>
+        <Fieldset.Legend>Notifications</Fieldset.Legend>
+        <Fieldset.Controls orientation="horizontal">
+          <Checkbox>Product Updates</Checkbox>
+          <Checkbox>Marketing Emails</Checkbox>
+          <Checkbox>Newsletter Subscription</Checkbox>
+        </Fieldset.Controls>
+      </Fieldset.Root>
+      <Fieldset.Root>
+        <Fieldset.Legend>Notifications</Fieldset.Legend>
+        <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+        <Fieldset.Controls orientation="horizontal">
+          <Checkbox>Product Updates</Checkbox>
+          <Checkbox>Marketing Emails</Checkbox>
+          <Checkbox>Newsletter Subscription</Checkbox>
+        </Fieldset.Controls>
+      </Fieldset.Root>
+    </Box>
+    <Box class="mb-12 flex flex-wrap items-start gap-12">
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <Fieldset.Root>
+          <Fieldset.Legend>Notifications</Fieldset.Legend>
+          <Fieldset.Controls>
+            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+          </Fieldset.Controls>
+        </Fieldset.Root>
+      </Box>
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <Fieldset.Root>
+          <Fieldset.Legend>Notifications</Fieldset.Legend>
+          <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+          <Fieldset.Controls>
+            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+          </Fieldset.Controls>
+        </Fieldset.Root>
+      </Box>
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <Fieldset.Root>
+          <Fieldset.Legend>Notifications</Fieldset.Legend>
+          <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+          <Fieldset.Controls>
+            <Field.Root>
+              <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+              <Field.Description>Get the latest updates about our products</Field.Description>
+            </Field.Root>
+            <Field.Root>
+              <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+              <Field.Description>Receive promotional content and offers</Field.Description>
+            </Field.Root>
+            <Field.Root>
+              <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+              <Field.Description>Stay informed with our monthly newsletter</Field.Description>
+            </Field.Root>
+          </Fieldset.Controls>
+        </Fieldset.Root>
+      </Box>
+    </Box>
+    <Box class="flex flex-wrap items-start gap-12">
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <Fieldset.Root>
+          <Fieldset.Legend>Notifications</Fieldset.Legend>
+          <Fieldset.Controls orientation="horizontal">
+            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+          </Fieldset.Controls>
+        </Fieldset.Root>
+      </Box>
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <Fieldset.Root>
+          <Fieldset.Legend>Notifications</Fieldset.Legend>
+          <Fieldset.Description>Select your notification preferences</Fieldset.Description>
+          <Fieldset.Controls orientation="horizontal">
+            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+          </Fieldset.Controls>
+        </Fieldset.Root>
+      </Box>
+    </Box>
+  </Box>
+</Layout>

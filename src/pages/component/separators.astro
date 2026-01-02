@@ -1,0 +1,20 @@
+---
+import Box from '@/components/box.astro';
+import Separator from '@/components/separator.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-col gap-6">
+      <Separator orientation="horizontal" class="lg:w-1/3" />
+      <Separator orientation="horizontal" class="lg:w-1/2" />
+      <Separator orientation="horizontal" />
+    </Box>
+    <Box class="flex items-end gap-6">
+      <Separator orientation="vertical" class="h-24" />
+      <Separator orientation="vertical" class="h-32" />
+      <Separator orientation="vertical" class="h-40" />
+    </Box>
+  </Box>
+</Layout>

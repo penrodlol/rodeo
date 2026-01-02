@@ -1,0 +1,41 @@
+---
+import type { ComponentProps } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Icon from './icon.astro';
+import Text, { textVariants } from './typography/components/text.astro';
+
+type Props = Omit<ComponentProps<typeof Text<'a'>>, 'as'> & LinkVariants & { icon?: ComponentProps<typeof Icon> };
+
+export type LinkVariants = VariantProps<typeof linkVariants>;
+
+export const linkVariants = tv({
+  extend: textVariants,
+  base: [
+    'slot-[icon]:size-3 inline-flex items-center gap-1.5 rounded',
+    'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
+    'motion-safe:transition-colors',
+  ],
+  compoundVariants: [
+    { variant: 'soft', class: 'hover:text-gray-12' },
+    { variant: 'accent', class: 'hover:text-accent-12' },
+    { variant: 'warn', class: 'hover:text-warn-12 focus-visible:ring-warn-8' },
+    { variant: 'danger', class: 'hover:text-danger-12 focus-visible:ring-danger-8' },
+  ],
+});
+
+const { class: className, href, icon, ...props } = Astro.props;
+const external = /^(?!\/|#).*/.test(href?.toString() ?? '');
+---
+
+<Text
+  {href}
+  as="a"
+  data-slot="link"
+  target={external ? '_blank' : null}
+  rel={external ? 'noopener noreferrer' : null}
+  class={linkVariants({ ...props, className })}
+  {...props}
+>
+  <slot />
+  {icon && <Icon {...icon} />}
+</Text>

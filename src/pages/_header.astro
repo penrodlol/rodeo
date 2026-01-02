@@ -1,0 +1,24 @@
+---
+import Box from '@/components/box.astro';
+import Icon from '@/components/icon.astro';
+import Link from '@/components/link.astro';
+import { Text } from '@/components/typography';
+import { Toggle } from 'astro-theme-toggle';
+---
+
+<Box as="header" rounded elevation="3" variant="solid" class="flex items-center justify-between px-6 py-2">
+  <Link href="/" class="flex items-center gap-3">
+    <Icon name="logo" library="local" class="size-8!" />
+    <Box>
+      <Text weight="6">Rodeo Design System</Text>
+      <Text size="2" variant="soft">Composible Astro Components</Text>
+    </Box>
+  </Link>
+  <Box class="flex items-center gap-4">
+    <Icon variant="soft" size="1" name="github" />
+    <Toggle>
+      <Fragment slot="icon-light"><Icon variant="soft" size="1" name="moon" /></Fragment>
+      <Fragment slot="icon-dark"><Icon variant="soft" size="1" name="sun" /></Fragment>
+    </Toggle>
+  </Box>
+</Box>

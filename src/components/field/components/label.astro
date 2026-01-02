@@ -1,0 +1,23 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof Text<'label'>>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<Text
+  data-slot="field-label"
+  as="label"
+  class={cn(
+    'flex max-w-max gap-1 pb-1 select-none',
+    'group-has-required/field:after:content-["*"]',
+    'group-has-required/field:after:text-danger-11',
+    className,
+  )}
+  {...props}
+>
+  <slot />
+</Text>

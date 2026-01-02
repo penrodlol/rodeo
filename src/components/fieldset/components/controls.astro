@@ -1,0 +1,23 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }> & FieldsetControlsVariants;
+
+export type FieldsetControlsVariants = VariantProps<typeof fieldsetControlsVariants>;
+
+export const fieldsetControlsVariants = tv({
+  base: 'flex flex-wrap gap-x-6 gap-y-4',
+  defaultVariants: { orientation: 'vertical' },
+  variants: {
+    orientation: {
+      vertical: 'group-has-slot-[fieldset-description]/fieldset:mt-5 mt-4 flex-col',
+      horizontal: 'group-has-slot-[fieldset-description]/fieldset:mt-4 mt-3 items-center',
+    },
+  },
+});
+
+const { as: Tag = 'div', class: className, orientation, ...props } = Astro.props;
+---
+
+<Tag class={fieldsetControlsVariants({ orientation, className })} {...props}><slot /></Tag>

@@ -1,16 +1,19 @@
 ---
-
+import Link from '@/components/link.astro';
+import Layout from '@/layouts/index.astro';
+import { readdir } from 'fs/promises';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <ul class="flex flex-col">
+    {
+      (await readdir(new URL('./component/', import.meta.url))).map((component) => (
+        <li>
+          <Link size="6" href={`/component/${component.replace('.astro', '')}`} class="py-2 capitalize">
+            {component.replace(/\.astro|-/g, ' ')}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

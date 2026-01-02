@@ -1,0 +1,101 @@
+---
+import Box from '@/components/box.astro';
+import * as Select from '@/components/select';
+import Layout from '@/layouts/index.astro';
+
+const COUNTRIES = [
+  { name: 'United States', description: '19 shipping options' },
+  { name: 'Canada', description: '10 shipping options' },
+  { name: 'Mexico', description: '5 shipping options' },
+  { name: 'Germany', description: '8 shipping options' },
+  { name: 'France', description: '12 shipping options' },
+  { name: 'Japan', description: '18 shipping options' },
+];
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Select.Root variant="solid"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="solid-outline"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft-outline"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="outline"><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Select.Root variant="solid" elevation="1"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="solid-outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft" elevation="1"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft-outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Select.Root variant="solid" elevation="2"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="solid-outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft" elevation="2"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft-outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Select.Root variant="solid" elevation="3"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="solid-outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft" elevation="3"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft-outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid gap-4 lg:grid-cols-5">
+      <Select.Root variant="solid" disabled><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="solid-outline" disabled><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft" disabled><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="soft-outline" disabled><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root variant="outline" disabled><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid items-end gap-4 lg:grid-cols-5">
+      <Select.Root size="1"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root size="2"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root size="3"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root size="4"><Select.Value /><Select.Options /></Select.Root>
+      <Select.Root size="5"><Select.Value /><Select.Options /></Select.Root>
+    </Box>
+    <Box class="grid items-center gap-4 lg:grid-cols-3">
+      <Select.Root>
+        <Select.Value prefix="@" />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+      <Select.Root>
+        <Select.Value suffix="@" />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+      <Select.Root>
+        <Select.Value prefix="@" suffix="@" />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+    </Box>
+    <Box class="grid items-center gap-4 lg:grid-cols-3">
+      <Select.Root>
+        <Select.Value prefix={{ name: 'flag' }} />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+      <Select.Root>
+        <Select.Value suffix={{ name: 'flag' }} />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+      <Select.Root>
+        <Select.Value prefix={{ name: 'flag' }} suffix={{ name: 'flag' }} />
+        <Select.Options placeholder="Select your shipping country">
+          {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
+        </Select.Options>
+      </Select.Root>
+    </Box>
+  </Box>
+</Layout>

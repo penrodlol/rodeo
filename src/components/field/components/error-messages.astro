@@ -1,0 +1,23 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props<Tag extends HTMLTag = 'ul'> = Polymorphic<{ as: Tag }>;
+
+const { as: Tag = 'ul', class: className, ...props } = Astro.props;
+---
+
+<Tag
+  data-slot="field-error-messages"
+  aria-live="polite"
+  class={cn(
+    'group/field-error-messages',
+    'group-not-has-user-invalid/field:hidden',
+    'starting:-translate-y-1 starting:opacity-0',
+    'motion-safe:transition-[opacity,translate]',
+    className,
+  )}
+  {...props}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,8 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+
+type Props = Omit<ComponentProps<typeof Text<'legend'>>, 'as'>;
+---
+
+<Text as="legend" data-slot="select-option-group-header" variant="soft" size="2" {...Astro.props}><slot /></Text>

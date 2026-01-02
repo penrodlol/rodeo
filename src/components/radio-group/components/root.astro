@@ -1,0 +1,14 @@
+---
+import { componentProvider } from '@/libs/component';
+import type { ComponentProps } from 'astro/types';
+import { Root as FieldsetRoot } from '../../fieldset';
+
+type Props = ComponentProps<typeof FieldsetRoot> & { name: string };
+
+const { name, ...props } = Astro.props;
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+provider.provideContext({ 'field-control': () => ({ name }) });
+---
+
+<FieldsetRoot set:html={provider.render()} {...props}><slot /></FieldsetRoot>

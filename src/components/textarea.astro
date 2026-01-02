@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'textarea'> & TextAreaVariants;
+
+export type TextAreaVariants = VariantProps<typeof textareaVariants>;
+
+export const textareaVariants = tv({
+  base: [
+    'placeholder:text-gray-11/70 w-full rounded border px-4 py-2 select-none',
+    'focus-visible:border-accent-8 focus-visible:outline-none',
+    'disabled:pointer-events-none disabled:opacity-50',
+    'user-invalid:border-danger-7 user-invalid:focus-visible:border-danger-8',
+  ],
+  defaultVariants: { resize: 'auto', size: '2', variant: 'outline' },
+  variants: {
+    resize: { true: 'resize-y', false: 'resize-none', auto: 'field-sizing-content resize-none' },
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    size: {
+      '1': 'min-h-12 text-sm',
+      '2': 'min-h-16 text-base',
+      '3': 'min-h-20 text-lg',
+      '4': 'min-h-24 text-xl',
+      '5': 'min-h-28 text-2xl',
+    },
+    variant: {
+      solid: 'bg-gray-1 border-transparent',
+      'solid-outline': 'bg-gray-1 border-gray-7',
+      soft: 'bg-gray-3 border-transparent',
+      'soft-outline': 'bg-gray-3 border-gray-7',
+      outline: 'border-gray-7 bg-transparent',
+    },
+  },
+});
+
+const { class: className, resize, elevation, size, variant, ...props } = Astro.props;
+---
+
+<textarea
+  data-slot="field-control"
+  class={textareaVariants({ resize, elevation, size, variant, className })}
+  {...props}
+>
+</textarea>

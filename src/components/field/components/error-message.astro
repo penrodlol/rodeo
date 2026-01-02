@@ -1,0 +1,26 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof Text> & { state?: Exclude<keyof (typeof ValidityState)['prototype'], 'valid'> };
+
+const { class: className, state, ...props } = Astro.props;
+---
+
+<Text
+  data-slot="field-error-message"
+  data-state={state}
+  size="2"
+  variant="danger"
+  class={cn(
+    'group-not-has-user-invalid/field:hidden',
+    'not-group-[*]/field-error-messages:starting:opacity-0',
+    'not-group-[*]/field-error-messages:starting:-translate-y-1',
+    'not-group-[*]/field-error-messages:motion-safe:transition-[opacity,translate]',
+    className,
+  )}
+  {...props}
+>
+  <slot />
+</Text>

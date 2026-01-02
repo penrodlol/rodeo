@@ -1,0 +1,31 @@
+---
+import type { ComponentProps } from 'astro/types';
+import { z } from 'astro/zod';
+import Text from './text.astro';
+
+type Props = ComponentProps<typeof Text> & {
+  locales?: Intl.LocalesArgument;
+  options?: Intl.NumberFormatOptions;
+  format?: keyof typeof numericVariants;
+  value?: number | string;
+};
+
+export const numericVariants: Record<'number' | 'percentage' | 'currency' | 'unit', Intl.NumberFormatOptions> = {
+  number: { notation: 'compact', maximumFractionDigits: 1 },
+  percentage: { notation: 'compact', maximumFractionDigits: 1, style: 'percent' },
+  currency: { style: 'currency', currency: 'USD' },
+  unit: { style: 'unit' },
+};
+
+const { locales, options, format, value, ...props } = Astro.props;
+const originalValue = value ?? (await Astro.slots.render('default'));
+const formatterLocales: Intl.LocalesArgument = locales ?? 'en-US';
+const formatterOptions: Intl.NumberFormatOptions = { ...numericVariants[format ?? 'number'], ...options };
+const formatter = new Intl.NumberFormat(formatterLocales, formatterOptions);
+const formattedValue = z.coerce
+  .number()
+  .transform((value) => formatter.format(value))
+  .safeParse(originalValue);
+---
+
+<Text set:html={formattedValue.error ? originalValue : formattedValue.data} {...props} />

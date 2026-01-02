@@ -1,0 +1,42 @@
+---
+import '@/index.css';
+import Footer from '@/pages/_footer.astro';
+import Header from '@/pages/_header.astro';
+import { ThemeScript } from 'astro-theme-toggle';
+import type { HTMLAttributes } from 'astro/types';
+import { Font } from 'astro:assets';
+import { cn } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'main'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<html lang="en" class="overflow-y-scroll">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/icons/logo.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Rodeo</title>
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-serif" preload />
+    <Font cssVariable="--font-mono" preload />
+    <ThemeScript />
+  </head>
+  <body
+    class:list={[
+      'from-gray-1 to-gray-2 text-gray-12 flex min-h-svh flex-col bg-linear-to-t from-60% bg-fixed antialiased',
+      '*:col-start-2 *:grid *:grid-cols-[auto_minmax(0,var(--container-6xl))_auto]',
+      'xl:*:before:border-r xl:*:after:border-l *:[[role=presentation]]:h-8 *:[[role=presentation]]:select-none',
+      '*:border-gray-6 *:before:border-gray-6 *:after:border-gray-6',
+      '*:border-dashed *:before:border-dashed *:after:border-dashed',
+    ]}
+  >
+    <div role="presentation" class="border-b not-xl:hidden">&nbsp;</div>
+    <div class="border-b"><div class="p-6 not-xl:p-4"><Header /></div></div>
+    <div class="flex-1"><main class={cn('px-14 py-10 not-xl:p-8', className)} {...props}><slot /></main></div>
+    <div class="border-t"><div class="p-6"><Footer /></div></div>
+    <div role="presentation" class="border-t not-xl:hidden">&nbsp;</div>
+  </body>
+</html>

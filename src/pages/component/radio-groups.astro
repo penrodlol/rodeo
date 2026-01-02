@@ -1,0 +1,175 @@
+---
+import Box from '@/components/box.astro';
+import * as Field from '@/components/field';
+import * as RadioGroup from '@/components/radio-group';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-wrap items-center gap-6">
+      <RadioGroup.Radio variant="solid" aria-label="Notifications" />
+      <RadioGroup.Radio variant="solid-outline" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft-outline" aria-label="Notifications" />
+      <RadioGroup.Radio variant="outline" aria-label="Notifications" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <RadioGroup.Radio variant="solid" elevation="1" aria-label="Notifications" />
+      <RadioGroup.Radio variant="solid-outline" elevation="1" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft" elevation="1" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft-outline" elevation="1" aria-label="Notifications" />
+      <RadioGroup.Radio variant="outline" elevation="1" aria-label="Notifications" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <RadioGroup.Radio variant="solid" elevation="2" aria-label="Notifications" />
+      <RadioGroup.Radio variant="solid-outline" elevation="2" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft" elevation="2" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft-outline" elevation="2" aria-label="Notifications" />
+      <RadioGroup.Radio variant="outline" elevation="2" aria-label="Notifications" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <RadioGroup.Radio variant="solid" elevation="3" aria-label="Notifications" />
+      <RadioGroup.Radio variant="solid-outline" elevation="3" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft" elevation="3" aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft-outline" elevation="3" aria-label="Notifications" />
+      <RadioGroup.Radio variant="outline" elevation="3" aria-label="Notifications" />
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <RadioGroup.Radio variant="solid" disabled aria-label="Notifications" />
+      <RadioGroup.Radio variant="solid-outline" disabled aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft" disabled aria-label="Notifications" />
+      <RadioGroup.Radio variant="soft-outline" disabled aria-label="Notifications" />
+      <RadioGroup.Radio variant="outline" disabled aria-label="Notifications" />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <RadioGroup.Radio size="1" aria-label="Notifications" />
+      <RadioGroup.Radio size="2" aria-label="Notifications" />
+      <RadioGroup.Radio size="3" aria-label="Notifications" />
+      <RadioGroup.Radio size="4" aria-label="Notifications" />
+      <RadioGroup.Radio size="5" aria-label="Notifications" />
+    </Box>
+    <Box class="my-12 flex flex-wrap items-start gap-12">
+      <RadioGroup.Root name="os-1">
+        <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+        <RadioGroup.Controls>
+          <RadioGroup.Radio value="windows">Windows</RadioGroup.Radio>
+          <RadioGroup.Radio value="macos">MacOS</RadioGroup.Radio>
+          <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
+        </RadioGroup.Controls>
+      </RadioGroup.Root>
+      <RadioGroup.Root name="os-2">
+        <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
+        <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+        <RadioGroup.Controls>
+          <RadioGroup.Radio value="windows">Windows</RadioGroup.Radio>
+          <RadioGroup.Radio value="macos">MacOS</RadioGroup.Radio>
+          <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
+        </RadioGroup.Controls>
+      </RadioGroup.Root>
+      <RadioGroup.Root name="os-3">
+        <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
+        <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+        <RadioGroup.Controls>
+          <Field.Root>
+            <RadioGroup.Radio value="windows">Windows</RadioGroup.Radio>
+            <Field.Description>Supports .exe and .msi files</Field.Description>
+          </Field.Root>
+          <Field.Root>
+            <RadioGroup.Radio value="macos">MacOS</RadioGroup.Radio>
+            <Field.Description>Supports .dmg and .pkg files</Field.Description>
+          </Field.Root>
+          <Field.Root>
+            <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
+            <Field.Description>Supports .deb and .rpm files</Field.Description>
+          </Field.Root>
+        </RadioGroup.Controls>
+      </RadioGroup.Root>
+    </Box>
+    <Box class="mb-12 flex flex-wrap items-start gap-12">
+      <RadioGroup.Root name="os-4">
+        <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+        <RadioGroup.Controls orientation="horizontal">
+          <RadioGroup.Radio value="windows">Windows</RadioGroup.Radio>
+          <RadioGroup.Radio value="macos">MacOS</RadioGroup.Radio>
+          <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
+        </RadioGroup.Controls>
+      </RadioGroup.Root>
+      <RadioGroup.Root name="os-5">
+        <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+        <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+        <RadioGroup.Controls orientation="horizontal">
+          <RadioGroup.Radio value="windows">Windows</RadioGroup.Radio>
+          <RadioGroup.Radio value="macos">MacOS</RadioGroup.Radio>
+          <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
+        </RadioGroup.Controls>
+      </RadioGroup.Root>
+    </Box>
+    <Box class="mb-12 flex flex-wrap items-start gap-12">
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <RadioGroup.Root name="os-8">
+          <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+          <RadioGroup.Controls>
+            <RadioGroup.Radio value="windows" elevation="1" variant="solid-outline">Windows</RadioGroup.Radio>
+            <RadioGroup.Radio value="macos" elevation="1" variant="solid-outline">MacOS</RadioGroup.Radio>
+            <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
+          </RadioGroup.Controls>
+        </RadioGroup.Root>
+      </Box>
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <RadioGroup.Root name="os-9">
+          <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
+          <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+          <RadioGroup.Controls>
+            <RadioGroup.Radio value="windows" elevation="1" variant="solid-outline">Windows</RadioGroup.Radio>
+            <RadioGroup.Radio value="macos" elevation="1" variant="solid-outline">MacOS</RadioGroup.Radio>
+            <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
+          </RadioGroup.Controls>
+        </RadioGroup.Root>
+      </Box>
+      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        <RadioGroup.Root name="os-10">
+          <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
+          <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+          <RadioGroup.Controls>
+            <Field.Root>
+              <RadioGroup.Radio value="windows" elevation="1" variant="solid-outline">Windows</RadioGroup.Radio>
+              <Field.Description>Supports .exe and .msi files</Field.Description>
+            </Field.Root>
+            <Field.Root>
+              <RadioGroup.Radio value="macos" elevation="1" variant="solid-outline">MacOS</RadioGroup.Radio>
+              <Field.Description>Supports .dmg and .pkg files</Field.Description>
+            </Field.Root>
+            <Field.Root>
+              <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
+              <Field.Description>Supports .deb and .rpm files</Field.Description>
+            </Field.Root>
+          </RadioGroup.Controls>
+        </RadioGroup.Root>
+      </Box>
+      <Box class="flex flex-wrap items-start gap-12">
+        <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+          <RadioGroup.Root name="os-6">
+            <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+            <RadioGroup.Controls orientation="horizontal">
+              <RadioGroup.Radio value="windows" elevation="1" variant="solid-outline">Windows</RadioGroup.Radio>
+              <RadioGroup.Radio value="macos" elevation="1" variant="solid-outline">MacOS</RadioGroup.Radio>
+              <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
+            </RadioGroup.Controls>
+          </RadioGroup.Root>
+        </Box>
+        <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+          <RadioGroup.Root name="os-7">
+            <RadioGroup.Legend>Operating System</RadioGroup.Legend>
+            <RadioGroup.Description> Select an operating system</RadioGroup.Description>
+            <RadioGroup.Controls orientation="horizontal">
+              <RadioGroup.Radio value="windows" elevation="1" variant="solid-outline">Windows</RadioGroup.Radio>
+              <RadioGroup.Radio value="macos" elevation="1" variant="solid-outline">MacOS</RadioGroup.Radio>
+              <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
+            </RadioGroup.Controls>
+          </RadioGroup.Root>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+</Layout>

@@ -1,0 +1,45 @@
+---
+import Icon from '@/components/icon.astro';
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = Omit<HTMLAttributes<'button'>, 'prefix'> &
+  SelectTriggerVariants & {
+    prefix?: string | ComponentProps<typeof Icon>;
+    suffix?: string | ComponentProps<typeof Icon>;
+  };
+
+export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
+
+export const selectTriggerVariants = tv({
+  slots: {
+    base: 'group/select-value relative flex w-full flex-row-reverse items-center justify-between gap-2',
+    icon: [
+      'bg-gray-2 absolute right-2 flex items-center justify-center rounded-sm',
+      'group-open/select:scale-[0.95] motion-safe:transition-transform',
+    ],
+    affix: [
+      'text-gray-11/70 slot-[icon]:size-3.5 absolute top-1/2 -translate-y-1/2',
+      'slot-self-[select-value-prefix]:left-0 slot-self-[select-value-suffix]:right-10',
+    ],
+    content: [
+      'w-full overflow-hidden text-ellipsis',
+      'group-has-slot-[select-value-prefix]/select-value:pl-6',
+      'group-has-slot-[select-value-suffix]/select-value:pr-6',
+    ],
+  },
+  defaultVariants: { iconVisible: true },
+  variants: { iconVisible: { true: { base: '' }, false: { base: '' } } },
+});
+
+const { class: className, iconVisible, prefix, suffix, ...props } = Astro.props;
+const slots = selectTriggerVariants({ iconVisible });
+---
+
+<!-- prettier-ignore -->
+<button data-slot="select-value" class={slots.base({ className })} {...props}>
+  <div data-slot="select-value-icon" class={slots.icon()}><Icon name="chevron-down" variant="soft" /></div>
+  {prefix && <div  data-slot="select-value-prefix" aria-hidden="true" class={slots.affix()}>{typeof prefix === 'string' ? prefix : <Icon {...prefix} />}</div>}
+  {suffix && <div  data-slot="select-value-suffix" aria-hidden="true" class={slots.affix()}>{typeof suffix === 'string' ? suffix : <Icon {...suffix} />}</div>}
+  <selectedcontent data-slot="select-value-content" class={slots.content()}></selectedcontent>
+</button>

@@ -1,0 +1,25 @@
+---
+import type { ComponentProps } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Icon, { iconVariants } from './icon.astro';
+
+type Props<T extends ComponentProps<typeof Icon>> = Omit<T, 'name' | 'size'> & SpinnerVariants & { name?: T['name'] };
+
+export type SpinnerVariants = VariantProps<typeof spinnerVariants>;
+
+export const spinnerVariants = tv({
+  extend: iconVariants,
+  base: 'motion-safe:animate-spin',
+  variants: { size: { '1': 'size-4', '2': 'size-6', '3': 'size-8', '4': 'size-10', '5': 'size-12' } },
+});
+
+const { class: className, size, variant, ...props } = Astro.props;
+---
+
+<Icon
+  data-slot="spinner"
+  role="status"
+  name="loader"
+  class={spinnerVariants({ size, variant, className })}
+  {...props}
+/>

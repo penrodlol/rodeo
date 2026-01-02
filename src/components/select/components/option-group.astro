@@ -1,0 +1,10 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'optgroup'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<optgroup data-slot="select-option-group" class={cn('', className)} {...props}><slot /></optgroup>

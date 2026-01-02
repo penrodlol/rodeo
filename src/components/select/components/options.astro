@@ -1,0 +1,32 @@
+---
+import { componentProvider } from '@/libs/component';
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'div'> & SelectOptionsVariants & { defaultValue?: string; placeholder?: string };
+
+export type SelectOptionsVariants = VariantProps<typeof selectOptionsVariants>;
+
+export const selectOptionsVariants = tv({
+  slots: {
+    base: [
+      'bg-gray-2 border-gray-6 mt-2 rounded border',
+      'starting:-translate-y-0.5 starting:opacity-0',
+      'motion-safe:transition-[translate,opacity]',
+    ],
+    placeholder: 'text-gray-11/70',
+  },
+});
+
+const { class: className, defaultValue, placeholder, ...props } = Astro.props;
+const slots = selectOptionsVariants();
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+provider.provideContext({ 'select-option': ({ value }) => ({ selected: value === defaultValue }) });
+---
+
+<div data-slot="select-options" set:html={provider.render()} class={slots.base({ className })} {...props}>
+  <option value="" selected disabled hidden>
+    <div data-slot="select-options-placeholder" class={slots.placeholder()}>{placeholder ?? 'Select an option'}</div>
+  </option>
+</div>

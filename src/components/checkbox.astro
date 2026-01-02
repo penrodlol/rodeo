@@ -1,0 +1,64 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Icon from './icon.astro';
+
+type Props = Omit<HTMLAttributes<'input'>, 'type'> & CheckboxVariants;
+
+export type CheckboxVariants = VariantProps<typeof checkboxVariants>;
+
+export const checkboxVariants = tv({
+  slots: {
+    base: 'flex max-w-max items-center gap-2.5 select-none has-disabled:pointer-events-none has-disabled:opacity-50',
+    controlContainer: [
+      'group/checkbox-container relative shrink-0 overflow-hidden rounded-sm',
+      'has-disabled:pointer-events-none has-disabled:opacity-50',
+      'has-focus-visible:ring-accent-8 has-focus-visible:ring',
+      'has-checked:bg-accent-9 has-checked:text-accent-contrast has-checked:border-transparent',
+      'has-active:scale-[0.95] motion-safe:transition-all',
+    ],
+    control: 'absolute inset-0 appearance-none rounded-[inherit] focus-visible:outline-none',
+    icon: [
+      'absolute inset-0 top-1/2 left-1/2 hidden -translate-1/2',
+      'group-has-checked/checkbox-container:group-not-has-indeterminate/checkbox-container:first-of-type:block',
+      'group-not-has-checked/checkbox-container:group-has-indeterminate/checkbox-container:last-of-type:block',
+      'motion-safe:first-of-type:transition-transform starting:scale-0',
+    ],
+  },
+  defaultVariants: { size: '2', variant: 'soft-outline' },
+  variants: {
+    elevation: {
+      '1': { controlContainer: 'elevation-1' },
+      '2': { controlContainer: 'elevation-2' },
+      '3': { controlContainer: 'elevation-3' },
+    },
+    size: {
+      '1': { base: 'slot-sibling-[field-description]:ml-6 text-sm', controlContainer: 'size-3.5', icon: 'size-3' },
+      '2': { base: 'slot-sibling-[field-description]:ml-6.5 text-base', controlContainer: 'size-4', icon: 'size-3.5' },
+      '3': { base: 'slot-sibling-[field-description]:ml-7 text-lg', controlContainer: 'size-4.5', icon: 'size-4' },
+      '4': { base: 'slot-sibling-[field-description]:ml-7.5 text-xl', controlContainer: 'size-5', icon: 'size-4.5' },
+      '5': { base: 'slot-sibling-[field-description]:ml-8 text-2xl', controlContainer: 'size-5.5', icon: 'size-5' },
+    },
+    variant: {
+      solid: { controlContainer: 'bg-gray-1' },
+      'solid-outline': { controlContainer: 'bg-gray-1 border-gray-7 border' },
+      soft: { controlContainer: 'bg-gray-3' },
+      'soft-outline': { controlContainer: 'bg-gray-3 border-gray-7 border' },
+      outline: { controlContainer: 'border-gray-7 border' },
+    },
+  },
+});
+
+const { class: className, elevation, size, variant, ...props } = Astro.props;
+const slots = checkboxVariants({ elevation, size, variant });
+const Tag = Astro.slots.has('default') ? 'label' : Fragment;
+---
+
+<Tag data-slot="checkbox" class={slots.base({ className })}>
+  <div data-slot="checkbox-control-container" class={slots.controlContainer()}>
+    <Icon name="check" class={slots.icon()} />
+    <Icon name="minus" class={slots.icon()} />
+    <input data-slot="field-control" type="checkbox" class={slots.control()} {...props} />
+  </div>
+  <slot />
+</Tag>

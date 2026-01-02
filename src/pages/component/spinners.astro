@@ -1,0 +1,29 @@
+---
+import Box from '@/components/box.astro';
+import Spinner from '@/components/spinner.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col items-center gap-6">
+    <Box class="flex flex-wrap gap-6">
+      <Spinner />
+      <Spinner variant="soft" />
+      <Spinner variant="accent" />
+      <Spinner variant="warn" />
+      <Spinner variant="danger" />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Spinner size="1" />
+      <Spinner size="2" />
+      <Spinner size="3" />
+      <Spinner size="4" />
+      <Spinner size="5" />
+    </Box>
+    <Box class="flex flex-wrap gap-6">
+      <Spinner name="loader-circle" />
+      <Spinner name="loader-pinwheel" />
+      <Spinner name="shell" />
+    </Box>
+  </Box>
+</Layout>

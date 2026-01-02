@@ -1,0 +1,80 @@
+---
+import Box from '@/components/box.astro';
+import Link from '@/components/link.astro';
+import { DateTime, Numeric, Text } from '@/components/typography';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="flex flex-wrap items-center gap-6">
+      <Text font="sans">Sans</Text>
+      <Text font="serif">Serif</Text>
+      <Text font="mono">Mono</Text>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Text>Normal</Text>
+      <Text variant="soft">Soft</Text>
+      <Text variant="accent">Accent</Text>
+      <Text variant="warn">Warning</Text>
+      <Text variant="danger">Danger</Text>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Text weight="1">Thin</Text>
+      <Text weight="2">Extra Light</Text>
+      <Text weight="3">Light</Text>
+      <Text weight="4">Normal</Text>
+      <Text weight="5">Medium</Text>
+      <Text weight="6">Semi Bold</Text>
+      <Text weight="7">Bold</Text>
+      <Text weight="8">Extra Bold</Text>
+      <Text weight="9">Black</Text>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Text italic>Italic</Text>
+      <Text underline>Underline</Text>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Link href="/" variant="soft">Internal</Link>
+      <Link href="/" variant="accent">Internal</Link>
+      <Link href="/" variant="warn">Internal</Link>
+      <Link href="/" variant="danger">Internal</Link>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Link href="http://" variant="soft" icon={{ name: 'arrow-up-right' }}>External Link</Link>
+      <Link href="http://" variant="accent" icon={{ name: 'square-arrow-out-up-right' }}>External Link</Link>
+      <Link href="http://" variant="warn" icon={{ name: 'link' }}>External Link</Link>
+      <Link href="http://" variant="danger" icon={{ name: 'external-link' }}>External Link</Link>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Numeric value={123456} />
+      <Numeric value="123456" />
+      <Numeric>123456</Numeric>
+      <Numeric>{123456}</Numeric>
+      <Numeric format="percentage" value={0.42} />
+      <Numeric format="percentage" value="0.32" />
+      <Numeric format="percentage">0.78</Numeric>
+      <Numeric format="percentage">{0.91}</Numeric>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <Numeric format="currency" value={14.99} />
+      <Numeric format="currency" value="154.99" />
+      <Numeric format="currency">154.99</Numeric>
+      <Numeric format="currency">{14.99}</Numeric>
+      <Numeric format="unit" options={{ unit: 'kilobyte' }} value={100} />
+      <Numeric format="unit" options={{ unit: 'mile-per-hour' }} value="35" />
+      <Numeric format="unit" options={{ unit: 'liter' }}>5</Numeric>
+      <Numeric format="unit" options={{ unit: 'celsius' }}>{22}</Numeric>
+    </Box>
+    <Box class="flex flex-wrap items-center gap-6">
+      <DateTime value={new Date()} />
+      <DateTime value={new Date().getTime()} />
+      <DateTime value="09-21-2025" />
+      <DateTime value="2025-09-21T12:00:00.000Z" />
+      <DateTime>{new Date()}</DateTime>
+      <DateTime>{new Date().getTime()}</DateTime>
+      <DateTime>09-21-2025</DateTime>
+      <DateTime>2025-09-21T12:00:00.000Z</DateTime>
+    </Box>
+  </Box>
+</Layout>

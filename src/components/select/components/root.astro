@@ -1,0 +1,47 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'select'> & SelectTriggerVariants & { placeholder?: string; defaultValue?: string };
+
+export type SelectTriggerVariants = VariantProps<typeof selectTriggerVariants>;
+
+export const selectTriggerVariants = tv({
+  base: [
+    'group/select flex w-full items-center rounded border pl-3 select-none',
+    '[&,&::picker(select)]:[appearance:base-select] [&::picker-icon]:hidden',
+    '[&::picker(select)]:border-none [&::picker(select)]:bg-transparent',
+    'focus-visible:border-accent-8 focus-visible:outline-none',
+    'disabled:pointer-events-none disabled:opacity-50',
+    'user-invalid:border-danger-7 user-invalid:focus-visible:border-danger-8',
+  ],
+  defaultVariants: { size: '2', variant: 'outline' },
+  variants: {
+    elevation: {
+      '1': 'elevation-1 slot-[select-value-icon]:elevation-1',
+      '2': 'elevation-2 slot-[select-value-icon]:elevation-1',
+      '3': 'elevation-3 slot-[select-value-icon]:elevation-1',
+    },
+    size: {
+      '1': 'slot-[select-option]:h-8 slot-[select-value-icon]:size-4 slot-[select-value-icon]:*:size-3 h-8 text-sm',
+      '2': 'slot-[select-option]:h-9 slot-[select-value-icon]:size-5 slot-[select-value-icon]:*:size-3.5 h-9 text-base',
+      '3': 'slot-[select-option]:h-10 slot-[select-value-icon]:size-6 slot-[select-value-icon]:*:size-4 h-10 text-lg',
+      '4': 'slot-[select-option]:h-11 slot-[select-value-icon]:size-7 slot-[select-value-icon]:*:size-4.5 h-11 text-xl',
+      '5': 'slot-[select-option]:h-12 slot-[select-value-icon]:size-8 slot-[select-value-icon]:*:size-5 h-12 text-2xl',
+    },
+    variant: {
+      solid: 'bg-gray-1 border-transparent',
+      'solid-outline': 'bg-gray-1 border-gray-7',
+      soft: 'bg-gray-3 border-transparent',
+      'soft-outline': 'bg-gray-3 border-gray-7',
+      outline: 'border-gray-7 bg-transparent',
+    },
+  },
+});
+
+const { class: className, elevation, size, variant, placeholder, defaultValue, ...props } = Astro.props;
+---
+
+<select data-slot="field-control" class={selectTriggerVariants({ elevation, size, variant, className })} {...props}>
+  <slot />
+</select>

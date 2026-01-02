@@ -1,0 +1,21 @@
+---
+import Box from '@/components/box.astro';
+import Icon from '@/components/icon.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col items-center gap-6 self-center">
+    <Box class="flex flex-wrap items-end gap-6">
+      <Icon name="sparkles" size="1" />
+      <Icon name="sparkles" size="2" />
+      <Icon name="sparkles" size="3" />
+    </Box>
+    <Box class="flex flex-wrap items-end gap-6">
+      <Icon name="sparkles" variant="soft" />
+      <Icon name="sparkles" variant="accent" />
+      <Icon name="sparkles" variant="warn" />
+      <Icon name="sparkles" variant="danger" />
+    </Box>
+  </Box>
+</Layout>
