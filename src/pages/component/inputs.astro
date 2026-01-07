@@ -1,10 +1,7 @@
 ---
 import Box from '@/components/box.astro';
-import Button from '@/components/button.astro';
 import * as Field from '@/components/field';
-import * as InputGroup from '@/components/input-group';
 import Input from '@/components/input.astro';
-import { Text } from '@/components/typography';
 import Layout from '@/layouts/index.astro';
 ---
 
@@ -157,113 +154,6 @@ import Layout from '@/layouts/index.astro';
           <Field.ErrorMessage as="li" state="patternMismatch">Cannot contain numbers</Field.ErrorMessage>
         </Field.ErrorMessages>
       </Field.Root>
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-3">
-      <Input aria-label="Username" placeholder="Enter your username" prefix="@" />
-      <Input aria-label="Username" placeholder="Enter your username" suffix="@" />
-      <Input aria-label="Username" placeholder="Enter your username" prefix="@" suffix="@" />
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-3">
-      <Input aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-      <Input aria-label="Username" placeholder="Enter your username" suffix={{ name: 'user' }} />
-      <Input
-        aria-label="Username"
-        placeholder="Enter your username"
-        prefix={{ name: 'user' }}
-        suffix={{ name: 'user' }}
-      />
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-5">
-      <Input size="1" aria-label="Username" placeholder="Enter your username" prefix="@" />
-      <Input size="2" aria-label="Username" placeholder="Enter your username" prefix="@" />
-      <Input size="3" aria-label="Username" placeholder="Enter your username" prefix="@" />
-      <Input size="4" aria-label="Username" placeholder="Enter your username" prefix="@" />
-      <Input size="5" aria-label="Username" placeholder="Enter your username" prefix="@" />
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-5">
-      <Input size="1" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-      <Input size="2" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-      <Input size="3" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-      <Input size="4" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-      <Input size="5" aria-label="Username" placeholder="Enter your username" prefix={{ name: 'user' }} />
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-4">
-      <InputGroup.Root>
-        <InputGroup.Section variant="soft">https://</InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="soft">.com</InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section variant="soft-outline">https://</InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="soft-outline">.com</InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section variant="outline">https://</InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="outline">.com</InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section>https://</InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section>.com</InputGroup.Section>
-      </InputGroup.Root>
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-4">
-      <InputGroup.Root>
-        <InputGroup.Section variant="soft"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="soft"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section variant="soft-outline">
-          <Button variant="gray-soft" size="1">Add</Button>
-        </InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="soft-outline">
-          <Button variant="gray-soft" size="1">Add</Button>
-        </InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section variant="outline"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section variant="outline"><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section><Button variant="gray-soft" size="1">Add</Button></InputGroup.Section>
-      </InputGroup.Root>
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-4">
-      <InputGroup.Root>
-        <InputGroup.Section>
-          <Button variant="gray-soft" size="1">Add</Button>
-          <Text size="2">https://</Text>
-        </InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <InputGroup.Section>
-          <Text size="2">https://</Text>
-          <Button variant="gray-soft" size="1">Add</Button>
-        </InputGroup.Section>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section>
-          <Button variant="gray-soft" size="1">Add</Button>
-          <Text size="2">.com</Text>
-        </InputGroup.Section>
-      </InputGroup.Root>
-      <InputGroup.Root>
-        <Input aria-label="Domain" placeholder="Enter your domain" />
-        <InputGroup.Section>
-          <Text size="2">.com</Text>
-          <Button variant="gray-soft" size="1">Add</Button>
-        </InputGroup.Section>
-      </InputGroup.Root>
     </Box>
   </Box>
 </Layout>

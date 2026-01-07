@@ -1,8 +1,6 @@
 ---
 import Box from '@/components/box.astro';
-import Button from '@/components/button.astro';
 import * as Field from '@/components/field';
-import * as FieldGroup from '@/components/field-group';
 import Textarea from '@/components/textarea.astro';
 import Layout from '@/layouts/index.astro';
 ---
@@ -156,70 +154,6 @@ import Layout from '@/layouts/index.astro';
           <Field.ErrorMessage as="li" state="tooShort">Must be at least 2 characters</Field.ErrorMessage>
         </Field.ErrorMessages>
       </Field.Root>
-    </Box>
-    <Box class="mt-12 grid gap-4 lg:grid-cols-3">
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Section variant="soft">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-      </FieldGroup.Root>
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Section variant="soft-outline">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-      </FieldGroup.Root>
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Section variant="ghost">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-      </FieldGroup.Root>
-    </Box>
-    <Box class="mb-12 grid gap-4 lg:grid-cols-3">
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-        <FieldGroup.Section variant="soft">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-      </FieldGroup.Root>
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-        <FieldGroup.Section variant="soft-outline">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft-outline" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-      </FieldGroup.Root>
-      <FieldGroup.Root elevation="3">
-        <FieldGroup.Textarea aria-label="Message" placeholder="Type your message..." />
-        <FieldGroup.Section variant="ghost">
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'paperclip' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'rocket' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'sparkles' }} />
-          <Button variant="gray-ghost" size="2-icon" icon={{ name: 'flask-conical' }} />
-          <Button variant="gray-soft" size="1" class="ml-auto">Send</Button>
-        </FieldGroup.Section>
-      </FieldGroup.Root>
     </Box>
   </Box>
 </Layout>
