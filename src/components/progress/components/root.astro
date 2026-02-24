@@ -1,0 +1,45 @@
+---
+import { componentProvider } from '@/libs/component';
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'div'> & ProgressVariants;
+
+export type ProgressVariants = VariantProps<typeof progressVariants>;
+
+export const progressVariants = tv({
+  base: 'group/progress grid items-center gap-x-2.5 gap-y-0.5',
+  defaultVariants: { orientation: 'vertical' },
+  variants: {
+    orientation: {
+      horizontal: [
+        'grid-cols-[auto_1fr_auto]',
+        '[grid-template-areas:"label_bar_value"_"description_description_description"]',
+      ],
+      vertical: [
+        'slot-[progress-label]:pb-1 slot-[progress-value]:pb-1 grid-cols-[1fr_auto]',
+        '[grid-template-areas:"label_value"_"bar_bar"_"description_description"]',
+      ],
+    },
+  },
+});
+
+const { class: className, orientation, ...props } = Astro.props;
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+const controlId = provider.generateId();
+const descriptionId = provider.hasSlot('progress-description') ? provider.generateId() : null;
+
+provider.provideContext({
+  'progress-label': () => ({ for: controlId }),
+  'progress-description': () => ({ id: descriptionId }),
+  'progress-bar': () => ({ id: controlId, 'aria-describedby': descriptionId }),
+});
+---
+
+<div
+  data-slot="progress"
+  class={progressVariants({ orientation, className })}
+  set:html={provider.render()}
+  {...props}
+/>

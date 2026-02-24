@@ -1,0 +1,62 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+
+type Props = HTMLAttributes<'progress'> & ProgressBarVariants;
+
+export type ProgressBarVariants = VariantProps<typeof progressBarVariants>;
+
+export const progressBarVariants = tv({
+  slots: {
+    base: [
+      'relative w-full appearance-none rounded group-has-[*]/progress:[grid-area:bar]',
+      'before:absolute before:inset-y-0 before:rounded-[inherit]',
+      'before:w-(--progress-bar-value) has-rtl:before:right-0',
+    ],
+    progress: 'sr-only',
+  },
+  defaultVariants: { size: '2', variant: 'accent-solid-outline' },
+  variants: {
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    size: { '1': 'h-2', '2': 'h-2.5', '3': 'h-3', '4': 'h-3.5', '5': 'h-4' },
+    loading: { true: 'before:ease-in-out before:motion-safe:transition-[width] before:motion-safe:duration-1000' },
+    striped: { true: 'before:bg-[linear-gradient(to_right,#fff0,#fff4_20px,#fff0_40px)] before:bg-size-[40px_100%]' },
+    variant: {
+      'gray-solid': 'bg-gray-3 before:bg-gray-9',
+      'gray-soft': 'bg-gray-4 before:bg-gray-8',
+      'gray-solid-outline': 'bg-gray-3 border-gray-7 before:bg-gray-9 border',
+      'gray-soft-outline': 'bg-gray-4 border-gray-7 before:bg-gray-8 border',
+      'gray-outline': 'border-gray-7 before:bg-gray-9 border bg-transparent',
+      'accent-solid': 'bg-accent-3 before:bg-accent-9',
+      'accent-soft': 'bg-accent-4 before:bg-accent-8',
+      'accent-solid-outline': 'bg-accent-3 border-accent-7 before:bg-accent-9 border',
+      'accent-soft-outline': 'bg-accent-4 border-accent-7 before:bg-accent-8 border',
+      'accent-outline': 'border-accent-7 before:bg-accent-9 border bg-transparent',
+      'warn-solid': 'bg-warn-3 before:bg-warn-9',
+      'warn-soft': 'bg-warn-4 before:bg-warn-8',
+      'warn-solid-outline': 'bg-warn-3 border-warn-7 before:bg-warn-9 border',
+      'warn-soft-outline': 'bg-warn-4 border-warn-7 before:bg-warn-8 border',
+      'warn-outline': 'border-warn-7 before:bg-warn-9 border bg-transparent',
+      'danger-solid': 'bg-danger-3 before:bg-danger-9',
+      'danger-soft': 'bg-danger-4 before:bg-danger-8',
+      'danger-solid-outline': 'bg-danger-3 border-danger-7 before:bg-danger-9 border',
+      'danger-soft-outline': 'bg-danger-4 border-danger-7 before:bg-danger-8 border',
+      'danger-outline': 'border-danger-7 before:bg-danger-9 border bg-transparent',
+    },
+  },
+});
+
+const { class: className, value, max, elevation, size, striped, variant, loading, ...props } = Astro.props;
+const slots = progressBarVariants({ elevation, size, striped, variant, loading });
+const valuePercentage = `${(Number(value ?? 0) / Number(max ?? 1)) * 100}%`;
+---
+
+<div
+  data-slot="progress-bar-root"
+  style={{ '--progress-bar-value': valuePercentage }}
+  class={slots.base({ className })}
+>
+  <progress data-slot="progress-bar" value={value} max={max} aria-busy={loading} class={slots.progress()} {...props}>
+    {Astro.slots.has('default') ? <slot /> : valuePercentage}
+  </progress>
+</div>

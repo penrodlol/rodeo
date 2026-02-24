@@ -177,12 +177,8 @@
   --danger-contrast: oklch(1 0 0);
 }
 
-@custom-variant theme-light (&:where([data-theme="light"] *));
-@custom-variant theme-dark (&:where([data-theme="dark"] *));
-
-@utility rounded-inner-* {
-  border-radius: calc(var(--radius) - (var(--spacing) * --value([integer])));
-}
+@custom-variant theme-light ([data-theme="light"] &);
+@custom-variant theme-dark ([data-theme="dark"] &);
 
 @utility elevation-1 {
   @apply theme-light:shadow-sm theme-light:inset-shadow-2xs theme-light:shadow-black/15 theme-light:inset-shadow-black/10;

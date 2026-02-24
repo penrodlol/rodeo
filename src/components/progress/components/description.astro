@@ -1,0 +1,19 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof Text>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<Text
+  data-slot="progress-description"
+  size="2"
+  variant="soft"
+  class={cn('[grid-area:description]', className)}
+  {...props}
+>
+  <slot />
+</Text>

@@ -1,0 +1,11 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof Text<'label'>>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<Text data-slot="progress-label" as="label" class={cn('[grid-area:label]', className)} {...props}><slot /></Text>

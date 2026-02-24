@@ -1,0 +1,231 @@
+---
+import Box from '@/components/box.astro';
+import * as Progress from '@/components/progress';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Box class="flex flex-col gap-6">
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar variant="gray-solid" value={0.5} />
+      <Progress.Bar variant="gray-soft" value={0.5} />
+      <Progress.Bar variant="gray-solid-outline" value={0.5} />
+      <Progress.Bar variant="gray-soft-outline" value={0.5} />
+      <Progress.Bar variant="gray-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="1" variant="gray-solid" value={0.5} />
+      <Progress.Bar elevation="1" variant="gray-soft" value={0.5} />
+      <Progress.Bar elevation="1" variant="gray-solid-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="gray-soft-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="gray-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="2" variant="gray-solid" value={0.5} />
+      <Progress.Bar elevation="2" variant="gray-soft" value={0.5} />
+      <Progress.Bar elevation="2" variant="gray-solid-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="gray-soft-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="gray-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="3" variant="gray-solid" value={0.5} />
+      <Progress.Bar elevation="3" variant="gray-soft" value={0.5} />
+      <Progress.Bar elevation="3" variant="gray-solid-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="gray-soft-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="gray-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar variant="accent-solid" value={0.5} />
+      <Progress.Bar variant="accent-soft" value={0.5} />
+      <Progress.Bar variant="accent-solid-outline" value={0.5} />
+      <Progress.Bar variant="accent-soft-outline" value={0.5} />
+      <Progress.Bar variant="accent-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="1" variant="accent-solid" value={0.5} />
+      <Progress.Bar elevation="1" variant="accent-soft" value={0.5} />
+      <Progress.Bar elevation="1" variant="accent-solid-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="accent-soft-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="accent-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="2" variant="accent-solid" value={0.5} />
+      <Progress.Bar elevation="2" variant="accent-soft" value={0.5} />
+      <Progress.Bar elevation="2" variant="accent-solid-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="accent-soft-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="accent-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="3" variant="accent-solid" value={0.5} />
+      <Progress.Bar elevation="3" variant="accent-soft" value={0.5} />
+      <Progress.Bar elevation="3" variant="accent-solid-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="accent-soft-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="accent-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar variant="warn-solid" value={0.5} />
+      <Progress.Bar variant="warn-soft" value={0.5} />
+      <Progress.Bar variant="warn-solid-outline" value={0.5} />
+      <Progress.Bar variant="warn-soft-outline" value={0.5} />
+      <Progress.Bar variant="warn-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="1" variant="warn-solid" value={0.5} />
+      <Progress.Bar elevation="1" variant="warn-soft" value={0.5} />
+      <Progress.Bar elevation="1" variant="warn-solid-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="warn-soft-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="warn-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="2" variant="warn-solid" value={0.5} />
+      <Progress.Bar elevation="2" variant="warn-soft" value={0.5} />
+      <Progress.Bar elevation="2" variant="warn-solid-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="warn-soft-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="warn-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="3" variant="warn-solid" value={0.5} />
+      <Progress.Bar elevation="3" variant="warn-soft" value={0.5} />
+      <Progress.Bar elevation="3" variant="warn-solid-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="warn-soft-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="warn-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar variant="danger-solid" value={0.5} />
+      <Progress.Bar variant="danger-soft" value={0.5} />
+      <Progress.Bar variant="danger-solid-outline" value={0.5} />
+      <Progress.Bar variant="danger-soft-outline" value={0.5} />
+      <Progress.Bar variant="danger-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="1" variant="danger-solid" value={0.5} />
+      <Progress.Bar elevation="1" variant="danger-soft" value={0.5} />
+      <Progress.Bar elevation="1" variant="danger-solid-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="danger-soft-outline" value={0.5} />
+      <Progress.Bar elevation="1" variant="danger-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="2" variant="danger-solid" value={0.5} />
+      <Progress.Bar elevation="2" variant="danger-soft" value={0.5} />
+      <Progress.Bar elevation="2" variant="danger-solid-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="danger-soft-outline" value={0.5} />
+      <Progress.Bar elevation="2" variant="danger-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 gap-6">
+      <Progress.Bar elevation="3" variant="danger-solid" value={0.5} />
+      <Progress.Bar elevation="3" variant="danger-soft" value={0.5} />
+      <Progress.Bar elevation="3" variant="danger-solid-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="danger-soft-outline" value={0.5} />
+      <Progress.Bar elevation="3" variant="danger-outline" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-4 gap-6">
+      <Progress.Bar striped variant="gray-solid" value={0.5} />
+      <Progress.Bar striped variant="accent-solid" value={0.5} />
+      <Progress.Bar striped variant="warn-solid" value={0.5} />
+      <Progress.Bar striped variant="danger-solid" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-4 gap-6">
+      <Progress.Bar data-progress-loading loading variant="gray-solid" value={0.5} />
+      <Progress.Bar data-progress-loading loading variant="accent-solid" value={0.5} />
+      <Progress.Bar data-progress-loading loading variant="warn-solid" value={0.5} />
+      <Progress.Bar data-progress-loading loading variant="danger-solid" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-5 items-end gap-6">
+      <Progress.Bar size="1" value={0.5} />
+      <Progress.Bar size="2" value={0.5} />
+      <Progress.Bar size="3" value={0.5} />
+      <Progress.Bar size="4" value={0.5} />
+      <Progress.Bar size="5" value={0.5} />
+    </Box>
+    <Box class="grid grid-cols-4 gap-12">
+      <Progress.Root>
+        <Progress.Label>User Registrations</Progress.Label>
+        <Progress.Value format="number" value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Total user registrations in course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label>Course Completion</Progress.Label>
+        <Progress.Value format="percentage" value={0.5} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label>Donation Goal</Progress.Label>
+        <Progress.Value format="currency" options={{ minimumFractionDigits: 0 }} value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Donation goal progress for campaign</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label>Available Storage</Progress.Label>
+        <Progress.Value format="unit" options={{ unit: 'gigabyte' }} value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Available storage for this system</Progress.Description>
+      </Progress.Root>
+    </Box>
+    <Box class="grid grid-cols-4 gap-12">
+      <Progress.Root orientation="horizontal">
+        <Progress.Label>Registrations</Progress.Label>
+        <Progress.Value format="number" value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Total user registrations in course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root orientation="horizontal">
+        <Progress.Label>Completion</Progress.Label>
+        <Progress.Value format="percentage" value={0.5} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root orientation="horizontal">
+        <Progress.Label>Donations</Progress.Label>
+        <Progress.Value format="currency" options={{ minimumFractionDigits: 0 }} value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Donation goal progress for campaign</Progress.Description>
+      </Progress.Root>
+      <Progress.Root orientation="horizontal">
+        <Progress.Label>Storage</Progress.Label>
+        <Progress.Value format="unit" options={{ unit: 'gigabyte' }} value={50} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Available storage for this system</Progress.Description>
+      </Progress.Root>
+    </Box>
+    <Box class="flex flex-col gap-4">
+      <Progress.Root>
+        <Progress.Label size="2">Course Completion</Progress.Label>
+        <Progress.Value size="2" value={0.5} />
+        <Progress.Bar size="1" value={0.5} />
+        <Progress.Description size="1">Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label>Course Completion</Progress.Label>
+        <Progress.Value value={0.5} />
+        <Progress.Bar value={0.5} />
+        <Progress.Description>Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label size="4">Course Completion</Progress.Label>
+        <Progress.Value size="4" value={0.5} />
+        <Progress.Bar size="3" value={0.5} />
+        <Progress.Description size="3">Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label size="5">Course Completion</Progress.Label>
+        <Progress.Value size="5" value={0.5} />
+        <Progress.Bar size="4" value={0.5} />
+        <Progress.Description size="4">Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+      <Progress.Root>
+        <Progress.Label size="5">Course Completion</Progress.Label>
+        <Progress.Value size="5" value={0.5} />
+        <Progress.Bar size="4" value={0.5} />
+        <Progress.Description size="4">Completion percentage of this course</Progress.Description>
+      </Progress.Root>
+    </Box>
+  </Box>
+</Layout>
+
+<script>
+  (document.querySelectorAll('[data-progress-loading]') as NodeListOf<HTMLProgressElement>).forEach(
+    (target) => ((target.value = 1), target.parentElement?.style.setProperty('--progress-bar-value', '100%')),
+  );
+</script>

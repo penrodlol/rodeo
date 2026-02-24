@@ -1,0 +1,18 @@
+---
+import { Numeric } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = ComponentProps<typeof Numeric>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<Numeric
+  data-slot="progress-value"
+  aria-hidden="true"
+  variant="soft"
+  format="percentage"
+  class={cn('[grid-area:value]', className)}
+  {...props}
+/>
