@@ -1,0 +1,71 @@
+---
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Icon from './icon.astro';
+
+type Props = Omit<HTMLAttributes<'span'>, 'prefix'> & BadgeVariants & { icon?: ComponentProps<typeof Icon> };
+
+export type BadgeVariants = VariantProps<typeof badgeVariants>;
+
+export const badgeVariants = tv({
+  slots: {
+    base: 'flex shrink-0 items-center justify-center font-medium whitespace-nowrap select-none',
+    text: '[text-box:trim-both_cap_alphabetic]',
+    icon: '',
+  },
+  defaultVariants: { iconPosition: 'prefix', size: '2', variant: 'accent-soft-outline' },
+  variants: {
+    iconPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    size: {
+      '1-icon': { base: 'size-4 rounded-full', icon: 'size-2.5' },
+      '2-icon': { base: 'size-5 rounded-full', icon: 'size-3' },
+      '3-icon': { base: 'size-6 rounded-full', icon: 'size-3.5' },
+      '4-icon': { base: 'size-7 rounded-full', icon: 'size-4' },
+      '5-icon': { base: 'size-8 rounded-full', icon: 'size-4.5' },
+      '1': { base: 'h-5 gap-1 rounded px-2 text-xs', icon: 'size-2.5 opacity-80' },
+      '2': { base: 'h-5.5 gap-1 rounded px-2.5 text-xs', icon: 'size-3 opacity-80' },
+      '3': { base: 'h-6 gap-1 rounded px-3 text-sm', icon: 'size-3.5 opacity-80' },
+      '4': { base: 'h-6.5 gap-1 rounded px-3.5 text-base', icon: 'size-3.5 opacity-80' },
+      '5': { base: 'h-7 gap-1 rounded px-4 text-lg', icon: 'size-4 opacity-80' },
+    },
+    variant: {
+      'gray-solid': 'bg-gray-9 text-gray-contrast',
+      'gray-soft': 'bg-gray-3 text-gray-11',
+      'gray-soft-outline': 'bg-gray-3 text-gray-11 border-gray-7 border',
+      'gray-outline': 'text-gray-11 border-gray-8 border',
+      'gray-ghost': 'text-gray-11',
+      'gray-accent-soft': 'bg-gray-3 text-accent-11',
+      'gray-warn-soft': 'bg-gray-3 text-warn-11',
+      'gray-danger-soft': 'bg-gray-3 text-danger-11',
+      'gray-accent-soft-outline': 'bg-gray-3 text-accent-11 border-gray-7 border',
+      'gray-warn-soft-outline': 'bg-gray-3 text-warn-11 border-gray-7 border',
+      'gray-danger-soft-outline': 'bg-gray-3 text-danger-11 border-gray-7 border',
+      'accent-solid': 'bg-accent-9 text-accent-contrast',
+      'accent-soft': 'bg-accent-3 text-accent-11',
+      'accent-soft-outline': 'bg-accent-3 text-accent-11 border-accent-7 border',
+      'accent-outline': 'text-accent-11 border-accent-8 border',
+      'accent-ghost': 'text-accent-11',
+      'warn-solid': 'bg-warn-9 text-warn-contrast',
+      'warn-soft': 'bg-warn-3 text-warn-11',
+      'warn-soft-outline': 'bg-warn-3 text-warn-11 border-warn-7 border',
+      'warn-outline': 'text-warn-11 border-warn-8 border',
+      'warn-ghost': 'text-warn-11',
+      'danger-solid': 'bg-danger-9 text-danger-contrast',
+      'danger-soft': 'bg-danger-3 text-danger-11',
+      'danger-soft-outline': 'bg-danger-3 text-danger-11 border-danger-7 border',
+      'danger-outline': 'text-danger-11 border-danger-8 border',
+      'danger-ghost': 'text-danger-11',
+    },
+  },
+});
+
+const { class: className, elevation, size, variant, icon, iconPosition, ...props } = Astro.props;
+const text = await Astro.slots.render('default');
+const slots = badgeVariants({ iconPosition, elevation, size, variant });
+---
+
+<div data-slot="badge" role="presentation" class={slots.base({ className })} {...props}>
+  {icon && <Icon class={slots.icon()} {...icon} />}
+  {text && <span data-slot="badge-text" set:html={text} class={slots.text()} />}
+</div>
