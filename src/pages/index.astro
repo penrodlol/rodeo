@@ -9,7 +9,7 @@ import { readdir } from 'fs/promises';
     {
       (await readdir(new URL('./component/', import.meta.url))).map((component) => (
         <li>
-          <Link size="6" href={`/component/${component.replace(/\.astro|\.mjs|-/g, '')}`} class="py-2 capitalize">
+          <Link size="6" href={`/component/${component.replace(/\.astro|\.mjs/g, '')}`} class="py-2 capitalize">
             {component.replace(/\.astro|\.mjs|-/g, ' ')}
           </Link>
         </li>
