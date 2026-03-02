@@ -1,0 +1,11 @@
+---
+import { Text } from '@/components/typography';
+import type { ComponentProps } from 'astro/types';
+import { cn } from 'tailwind-variants';
+
+type Props = Omit<ComponentProps<typeof Text<'h4'>>, 'as'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<Text data-slot="note-title" as="h4" class={cn('[grid-area:title]', className)} {...props}><slot /></Text>

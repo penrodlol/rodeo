@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from 'tailwind-variants';
+type Props = HTMLAttributes<'section'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<section data-slot="note-content" class={cn('[grid-area:content]', className)} {...props}><slot /></section>

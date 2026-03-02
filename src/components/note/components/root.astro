@@ -1,0 +1,80 @@
+---
+import Icon from '@/components/icon.astro';
+import { componentProvider } from '@/libs/component';
+import type { ComponentProps } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Box, { boxVariants } from '../../box.astro';
+
+type Props = Omit<ComponentProps<typeof Box<'aside'>>, 'as'> & NoteVariants & { icon?: ComponentProps<typeof Icon> };
+
+export type NoteVariants = VariantProps<typeof noteVariants>;
+
+export const noteVariants = tv({
+  extend: boxVariants,
+  base: [
+    'text-gray-11 grid max-w-prose grid-cols-[auto_1fr] items-center rounded p-2',
+    '[grid-template-areas:"icon_title"_"content_content"]',
+    'slot-[icon]:[grid-area:icon] slot-[note-content]:text-gray-12',
+    'has-slot-[note-content]:gap-y-1.5 has-slot-[note-content]:p-4',
+    'has-slot-[note-content]:slot-[note-title]:font-semibold',
+  ],
+  defaultVariants: { variant: 'gray-soft-outline', size: '2' },
+  variants: {
+    iconHidden: { false: 'gap-x-2' },
+    size: {
+      '1': 'slot-[note-content]:[&,*]:text-xs slot-[note-title]:text-sm slot-[icon]:size-3.5',
+      '2': 'slot-[note-content]:[&,*]:text-sm slot-[note-title]:text-base slot-[icon]:size-4',
+      '3': 'slot-[note-content]:[&,*]:text-base slot-[note-title]:text-lg slot-[icon]:size-4.5',
+      '4': 'slot-[note-content]:[&,*]:text-lg slot-[note-title]:text-xl slot-[icon]:size-5',
+      '5': 'slot-[note-content]:[&,*]:text-xl slot-[note-title]:text-2xl slot-[icon]:size-5.5',
+    },
+    variant: {
+      'accent-solid': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-soft': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-solid-gradient': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-soft-gradient': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-solid-outline': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-soft-outline': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-solid-outline-gradient': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-soft-outline-gradient': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'accent-transparent-outline': 'text-accent-11 slot-[note-content]:text-accent-12',
+      'warn-solid': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-soft': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-solid-gradient': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-soft-gradient': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-solid-outline': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-soft-outline': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-solid-outline-gradient': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-soft-outline-gradient': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'warn-transparent-outline': 'text-warn-11 slot-[note-content]:text-warn-12',
+      'danger-solid': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-soft': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-solid-gradient': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-soft-gradient': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-solid-outline': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-soft-outline': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-solid-outline-gradient': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-soft-outline-gradient': 'text-danger-11 slot-[note-content]:text-danger-12',
+      'danger-transparent-outline': 'text-danger-11 slot-[note-content]:text-danger-12',
+    },
+  },
+});
+
+const { class: className, iconHidden, elevation, size, variant, icon, ...props } = Astro.props;
+const iconMapper = { gray: 'info', accent: 'lightbulb', warn: 'alert-triangle', danger: 'alert-octagon' };
+
+const provider = componentProvider.create(await Astro.slots.render('default'));
+const titleId = provider.generateId();
+provider.provideContext({ 'note-title': () => ({ id: titleId }) });
+---
+
+<Box
+  data-slot="note"
+  aria-labelledby={titleId}
+  rounded
+  class={noteVariants({ iconHidden, elevation, size, variant, className })}
+  set:html={provider.render()}
+  {...props}
+>
+  {!iconHidden && <Icon name={iconMapper[(variant?.split('-')[0] as keyof typeof iconMapper) ?? 'gray']} {...icon} />}
+</Box>
