@@ -21,6 +21,7 @@ export const buttonVariants = tv({
   },
   defaultVariants: { size: '2', variant: 'accent-solid' },
   variants: {
+    iconPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
     elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     size: {
       '1': { base: 'h-7.5 px-3 text-sm', icon: 'size-3 opacity-80' },
@@ -74,9 +75,9 @@ export const buttonVariants = tv({
   },
 });
 
-const { class: className, elevation, size, variant, icon, ...props } = Astro.props;
+const { class: className, iconPosition, elevation, size, variant, icon, ...props } = Astro.props;
 const html = await Astro.slots.render('default');
-const slots = buttonVariants({ elevation, size, variant });
+const slots = buttonVariants({ iconPosition, elevation, size, variant });
 ---
 
 <button data-slot="button" type="button" class={slots.base({ className })} {...props}>

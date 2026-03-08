@@ -264,11 +264,18 @@ import Layout from '@/layouts/index.astro';
       <Button size="5-icon" icon={{ name: 'plus' }} />
     </Surface>
     <Surface class="flex flex-wrap items-end gap-6">
-      <Button size="1" icon={{ name: 'twitter' }}>Twitter</Button>
-      <Button size="2" icon={{ name: 'twitter' }}>Twitter</Button>
-      <Button size="3" icon={{ name: 'twitter' }}>Twitter</Button>
-      <Button size="4" icon={{ name: 'twitter' }}>Twitter</Button>
-      <Button size="5" icon={{ name: 'twitter' }}>Twitter</Button>
+      <Button size="1" icon={{ name: 'sparkles' }} iconPosition="prefix">Generate</Button>
+      <Button size="2" icon={{ name: 'sparkles' }} iconPosition="prefix">Generate</Button>
+      <Button size="3" icon={{ name: 'sparkles' }} iconPosition="prefix">Generate</Button>
+      <Button size="4" icon={{ name: 'sparkles' }} iconPosition="prefix">Generate</Button>
+      <Button size="5" icon={{ name: 'sparkles' }} iconPosition="prefix">Generate</Button>
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-6">
+      <Button size="1" icon={{ name: 'sparkles' }} iconPosition="suffix">Generate</Button>
+      <Button size="2" icon={{ name: 'sparkles' }} iconPosition="suffix">Generate</Button>
+      <Button size="3" icon={{ name: 'sparkles' }} iconPosition="suffix">Generate</Button>
+      <Button size="4" icon={{ name: 'sparkles' }} iconPosition="suffix">Generate</Button>
+      <Button size="5" icon={{ name: 'sparkles' }} iconPosition="suffix">Generate</Button>
     </Surface>
     <Surface class="flex flex-wrap gap-6">
       <Link href="/" class={buttonVariants({ variant: 'gray-ghost' }).base()}>Internal Link</Link>
