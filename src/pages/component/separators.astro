@@ -5,16 +5,18 @@ import Layout from '@/layouts/index.astro';
 ---
 
 <Layout>
-  <Surface class="flex flex-col gap-6">
+  <Surface class="flex flex-col gap-12">
     <Surface class="flex flex-col gap-6">
-      <Separator orientation="horizontal" class="lg:w-1/3" />
-      <Separator orientation="horizontal" class="lg:w-1/2" />
-      <Separator orientation="horizontal" />
+      <Separator orientation="horizontal" variant="gray" />
+      <Separator orientation="horizontal" variant="accent" />
+      <Separator orientation="horizontal" variant="warn" />
+      <Separator orientation="horizontal" variant="danger" />
     </Surface>
-    <Surface class="flex items-end gap-6">
-      <Separator orientation="vertical" class="h-24" />
-      <Separator orientation="vertical" class="h-32" />
-      <Separator orientation="vertical" class="h-40" />
+    <Surface class="flex gap-6 *:h-60">
+      <Separator orientation="vertical" variant="gray" />
+      <Separator orientation="vertical" variant="accent" />
+      <Separator orientation="vertical" variant="warn" />
+      <Separator orientation="vertical" variant="danger" />
     </Surface>
   </Surface>
 </Layout>

@@ -8,18 +8,21 @@ export type SeparatorVariants = VariantProps<typeof separatorVariants>;
 
 export const separatorVariants = tv({
   base: 'bg-gray-6 rounded',
-  defaultVariants: { orientation: 'horizontal' },
-  variants: { orientation: { horizontal: 'h-px w-full', vertical: 'h-full w-px' } },
+  defaultVariants: { orientation: 'horizontal', variant: 'gray' },
+  variants: {
+    orientation: { horizontal: 'h-px w-full', vertical: 'h-full w-px' },
+    variant: { gray: 'bg-gray-6', accent: 'bg-accent-6', warn: 'bg-warn-6', danger: 'bg-danger-6' },
+  },
 });
 
-const { class: className, orientation, ...props } = Astro.props;
+const { class: className, orientation, variant, ...props } = Astro.props;
 ---
 
 <div
   data-slot="separator"
   role="separator"
   aria-orientation={orientation}
-  class={separatorVariants({ orientation, className })}
+  class={separatorVariants({ orientation, variant, className })}
   {...props}
 >
 </div>
