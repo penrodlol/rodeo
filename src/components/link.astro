@@ -10,11 +10,15 @@ export type LinkVariants = VariantProps<typeof linkVariants>;
 
 export const linkVariants = tv({
   extend: textVariants,
-  base: [
-    'slot-[icon]:size-3 inline-flex items-center gap-1.5 rounded',
-    'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
-    'motion-safe:transition-colors',
-  ],
+  slots: {
+    base: [
+      'inline-flex items-center gap-1.5 rounded',
+      'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
+      'motion-safe:transition-colors',
+    ],
+    text: '[text-box:trim-both_cap_alphabetic]',
+    icon: 'size-[inherit] scale-75',
+  },
   compoundVariants: [
     { variant: 'soft', class: 'hover:text-gray-12' },
     { variant: 'accent', class: 'hover:text-accent-12' },
@@ -24,6 +28,8 @@ export const linkVariants = tv({
 });
 
 const { class: className, href, icon, ...props } = Astro.props;
+const html = await Astro.slots.render('default');
+const slots = linkVariants(props);
 const external = /^(?!\/|#).*/.test(href?.toString() ?? '');
 ---
 
@@ -33,9 +39,9 @@ const external = /^(?!\/|#).*/.test(href?.toString() ?? '');
   data-slot="link"
   target={external ? '_blank' : null}
   rel={external ? 'noopener noreferrer' : null}
-  class={linkVariants({ ...props, className })}
+  class={slots.base({ className })}
   {...props}
 >
-  <slot />
-  {icon && <Icon {...icon} />}
+  {!!html && !!icon ? <span class={slots.text()} set:html={html} /> : <Fragment set:html={html} />}
+  {icon && <Icon class={slots.icon()} {...icon} />}
 </Text>
