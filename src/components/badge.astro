@@ -2,17 +2,14 @@
 import type { ComponentProps, HTMLAttributes } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Icon from './icon.astro';
+import { Text } from './typography';
 
 type Props = Omit<HTMLAttributes<'span'>, 'prefix'> & BadgeVariants & { icon?: ComponentProps<typeof Icon> };
 
 export type BadgeVariants = VariantProps<typeof badgeVariants>;
 
 export const badgeVariants = tv({
-  slots: {
-    base: 'flex shrink-0 items-center justify-center font-medium whitespace-nowrap select-none',
-    text: '[text-box:trim-both_cap_alphabetic]',
-    icon: '',
-  },
+  slots: { base: 'flex shrink-0 items-center justify-center font-medium whitespace-nowrap select-none', icon: '' },
   defaultVariants: { iconPosition: 'prefix', size: '2', variant: 'accent-soft-outline' },
   variants: {
     iconPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
@@ -64,12 +61,11 @@ export const badgeVariants = tv({
   },
 });
 
-const { class: className, elevation, size, variant, icon, iconPosition, ...props } = Astro.props;
-const html = await Astro.slots.render('default');
+const { class: className, iconPosition, elevation, size, variant, icon, ...props } = Astro.props;
 const slots = badgeVariants({ iconPosition, elevation, size, variant });
 ---
 
 <div data-slot="badge" role="presentation" class={slots.base({ className })} {...props}>
   {icon && <Icon class={slots.icon()} {...icon} />}
-  {!!html && !!icon ? <span class={slots.text()} set:html={html} /> : <Fragment set:html={html} />}
+  <Text as={Astro.slots.has('default') && !!icon ? 'span' : Fragment} trim size="inherit"><slot /></Text>
 </div>
