@@ -1,16 +1,17 @@
 ---
 import Icon from '@/components/icon.astro';
+import Surface, { surfaceVariants } from '@/components/surface.astro';
 import { componentProvider } from '@/libs/component';
 import type { ComponentProps } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
-import Box, { boxVariants } from '../../box.astro';
 
-type Props = Omit<ComponentProps<typeof Box<'aside'>>, 'as'> & NoteVariants & { icon?: ComponentProps<typeof Icon> };
+type Props = Omit<ComponentProps<typeof Surface<'aside'>>, 'as'> &
+  NoteVariants & { icon?: ComponentProps<typeof Icon> };
 
 export type NoteVariants = VariantProps<typeof noteVariants>;
 
 export const noteVariants = tv({
-  extend: boxVariants,
+  extend: surfaceVariants,
   base: [
     'text-gray-11 grid max-w-prose grid-cols-[auto_1fr] items-center rounded p-2',
     '[grid-template-areas:"icon_title"_"content_content"]',
@@ -68,7 +69,7 @@ const titleId = provider.generateId();
 provider.provideContext({ 'note-title': () => ({ id: titleId }) });
 ---
 
-<Box
+<Surface
   data-slot="note"
   aria-labelledby={titleId}
   rounded
@@ -77,4 +78,4 @@ provider.provideContext({ 'note-title': () => ({ id: titleId }) });
   {...props}
 >
   {!iconHidden && <Icon name={iconMapper[(variant?.split('-')[0] as keyof typeof iconMapper) ?? 'gray']} {...icon} />}
-</Box>
+</Surface>

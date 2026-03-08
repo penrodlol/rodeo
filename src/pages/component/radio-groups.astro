@@ -1,55 +1,55 @@
 ---
-import Box from '@/components/box.astro';
 import * as Field from '@/components/field';
 import * as RadioGroup from '@/components/radio-group';
+import Surface from '@/components/surface.astro';
 import Layout from '@/layouts/index.astro';
 ---
 
 <Layout>
-  <Box class="flex flex-col gap-6">
-    <Box class="flex flex-wrap items-center gap-6">
+  <Surface class="flex flex-col gap-6">
+    <Surface class="flex flex-wrap items-center gap-6">
       <RadioGroup.Radio variant="solid" aria-label="Notifications" />
       <RadioGroup.Radio variant="solid-outline" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft-outline" aria-label="Notifications" />
       <RadioGroup.Radio variant="outline" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <RadioGroup.Radio variant="solid" elevation="1" aria-label="Notifications" />
       <RadioGroup.Radio variant="solid-outline" elevation="1" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft" elevation="1" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft-outline" elevation="1" aria-label="Notifications" />
       <RadioGroup.Radio variant="outline" elevation="1" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <RadioGroup.Radio variant="solid" elevation="2" aria-label="Notifications" />
       <RadioGroup.Radio variant="solid-outline" elevation="2" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft" elevation="2" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft-outline" elevation="2" aria-label="Notifications" />
       <RadioGroup.Radio variant="outline" elevation="2" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <RadioGroup.Radio variant="solid" elevation="3" aria-label="Notifications" />
       <RadioGroup.Radio variant="solid-outline" elevation="3" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft" elevation="3" aria-label="Notifications" />
       <RadioGroup.Radio variant="soft-outline" elevation="3" aria-label="Notifications" />
       <RadioGroup.Radio variant="outline" elevation="3" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <RadioGroup.Radio variant="solid" disabled aria-label="Notifications" />
       <RadioGroup.Radio variant="solid-outline" disabled aria-label="Notifications" />
       <RadioGroup.Radio variant="soft" disabled aria-label="Notifications" />
       <RadioGroup.Radio variant="soft-outline" disabled aria-label="Notifications" />
       <RadioGroup.Radio variant="outline" disabled aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-end gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-6">
       <RadioGroup.Radio size="1" aria-label="Notifications" />
       <RadioGroup.Radio size="2" aria-label="Notifications" />
       <RadioGroup.Radio size="3" aria-label="Notifications" />
       <RadioGroup.Radio size="4" aria-label="Notifications" />
       <RadioGroup.Radio size="5" aria-label="Notifications" />
-    </Box>
-    <Box class="my-12 flex flex-wrap items-start gap-12">
+    </Surface>
+    <Surface class="my-12 flex flex-wrap items-start gap-12">
       <RadioGroup.Root name="os-1">
         <RadioGroup.Legend>Operating System</RadioGroup.Legend>
         <RadioGroup.Controls>
@@ -85,8 +85,8 @@ import Layout from '@/layouts/index.astro';
           </Field.Root>
         </RadioGroup.Controls>
       </RadioGroup.Root>
-    </Box>
-    <Box class="mb-12 flex flex-wrap items-start gap-12">
+    </Surface>
+    <Surface class="mb-12 flex flex-wrap items-start gap-12">
       <RadioGroup.Root name="os-4">
         <RadioGroup.Legend>Operating System</RadioGroup.Legend>
         <RadioGroup.Controls orientation="horizontal">
@@ -104,9 +104,9 @@ import Layout from '@/layouts/index.astro';
           <RadioGroup.Radio value="linux">Linux</RadioGroup.Radio>
         </RadioGroup.Controls>
       </RadioGroup.Root>
-    </Box>
-    <Box class="mb-12 flex flex-wrap items-start gap-12">
-      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+    </Surface>
+    <Surface class="mb-12 flex flex-wrap items-start gap-12">
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
         <RadioGroup.Root name="os-8">
           <RadioGroup.Legend>Operating System</RadioGroup.Legend>
           <RadioGroup.Controls>
@@ -115,8 +115,8 @@ import Layout from '@/layouts/index.astro';
             <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
           </RadioGroup.Controls>
         </RadioGroup.Root>
-      </Box>
-      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+      </Surface>
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
         <RadioGroup.Root name="os-9">
           <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
           <RadioGroup.Description> Select an operating system</RadioGroup.Description>
@@ -126,8 +126,8 @@ import Layout from '@/layouts/index.astro';
             <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
           </RadioGroup.Controls>
         </RadioGroup.Root>
-      </Box>
-      <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+      </Surface>
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
         <RadioGroup.Root name="os-10">
           <RadioGroup.Legend weight="5">Operating System</RadioGroup.Legend>
           <RadioGroup.Description> Select an operating system</RadioGroup.Description>
@@ -146,9 +146,9 @@ import Layout from '@/layouts/index.astro';
             </Field.Root>
           </RadioGroup.Controls>
         </RadioGroup.Root>
-      </Box>
-      <Box class="flex flex-wrap items-start gap-12">
-        <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+      </Surface>
+      <Surface class="flex flex-wrap items-start gap-12">
+        <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
           <RadioGroup.Root name="os-6">
             <RadioGroup.Legend>Operating System</RadioGroup.Legend>
             <RadioGroup.Controls orientation="horizontal">
@@ -157,8 +157,8 @@ import Layout from '@/layouts/index.astro';
               <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
             </RadioGroup.Controls>
           </RadioGroup.Root>
-        </Box>
-        <Box rounded elevation="3" variant="soft-outline" class="px-6 py-4">
+        </Surface>
+        <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
           <RadioGroup.Root name="os-7">
             <RadioGroup.Legend>Operating System</RadioGroup.Legend>
             <RadioGroup.Description> Select an operating system</RadioGroup.Description>
@@ -168,8 +168,8 @@ import Layout from '@/layouts/index.astro';
               <RadioGroup.Radio value="linux" elevation="1" variant="solid-outline">Linux</RadioGroup.Radio>
             </RadioGroup.Controls>
           </RadioGroup.Root>
-        </Box>
-      </Box>
-    </Box>
-  </Box>
+        </Surface>
+      </Surface>
+    </Surface>
+  </Surface>
 </Layout>

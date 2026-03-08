@@ -1,7 +1,7 @@
 ---
-import Box from '@/components/box.astro';
 import Link from '@/components/link.astro';
 import * as Note from '@/components/note';
+import Surface from '@/components/surface.astro';
 import Layout from '@/layouts/index.astro';
 
 const title = 'Information';
@@ -9,8 +9,8 @@ const description = 'More information about this feature can be found in the doc
 ---
 
 <Layout>
-  <Box class="flex flex-col gap-24">
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
+  <Surface class="flex flex-col gap-24">
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
       <Note.Root variant="gray-solid">
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -155,8 +155,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
       <Note.Root variant="accent-solid">
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -301,8 +301,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
       <Note.Root variant="warn-solid">
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -447,8 +447,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[40ch]">
       <Note.Root variant="danger-solid">
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -593,8 +593,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-col gap-6 *:max-w-none">
+    </Surface>
+    <Surface class="flex flex-col gap-6 *:max-w-none">
       <Note.Root size="1">
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -615,8 +615,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[30ch]">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[30ch]">
       <Note.Root variant="gray-soft-outline" iconHidden>
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
@@ -649,8 +649,8 @@ const description = 'More information about this feature can be found in the doc
         <Note.Title>{title}</Note.Title>
         <Note.Content>{description}</Note.Content>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <Note.Root variant="gray-soft-outline">
         <Note.Title>Please read the instructions carefully before proceeding.</Note.Title>
       </Note.Root>
@@ -663,8 +663,8 @@ const description = 'More information about this feature can be found in the doc
       <Note.Root variant="danger-soft-outline">
         <Note.Title>Immediate action is required to prevent data loss.</Note.Title>
       </Note.Root>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6 *:max-w-[30ch]">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:max-w-[30ch]">
       <Note.Root variant="gray-soft-outline">
         <Note.Title>{title}</Note.Title>
         <Note.Content>
@@ -693,6 +693,6 @@ const description = 'More information about this feature can be found in the doc
           <Link href="#" variant="danger">documentation</Link>.
         </Note.Content>
       </Note.Root>
-    </Box>
-  </Box>
+    </Surface>
+  </Surface>
 </Layout>

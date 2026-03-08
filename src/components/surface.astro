@@ -2,11 +2,11 @@
 import type { HTMLTag, Polymorphic } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
 
-type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }> & BoxVariants;
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }> & SurfaceVariants;
 
-export type BoxVariants = VariantProps<typeof boxVariants>;
+export type SurfaceVariants = VariantProps<typeof surfaceVariants>;
 
-export const boxVariants = tv({
+export const surfaceVariants = tv({
   variants: {
     rounded: { true: 'rounded' },
     elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
@@ -54,4 +54,4 @@ export const boxVariants = tv({
 const { as: Tag = 'div', class: className, rounded, elevation, variant, ...props } = Astro.props;
 ---
 
-<Tag class={boxVariants({ rounded, elevation, variant, className })} {...props}><slot /></Tag>
+<Tag class={surfaceVariants({ rounded, elevation, variant, className })} {...props}><slot /></Tag>

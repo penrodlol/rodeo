@@ -1,56 +1,56 @@
 ---
-import Box from '@/components/box.astro';
 import * as Field from '@/components/field';
 import * as Fieldset from '@/components/fieldset';
+import Surface from '@/components/surface.astro';
 import Switch from '@/components/switch.astro';
 import Layout from '@/layouts/index.astro';
 ---
 
 <Layout>
-  <Box class="flex flex-col gap-6">
-    <Box class="flex flex-wrap items-center gap-6">
+  <Surface class="flex flex-col gap-6">
+    <Surface class="flex flex-wrap items-center gap-6">
       <Switch variant="solid" aria-label="Notifications" />
       <Switch variant="solid-outline" aria-label="Notifications" />
       <Switch variant="soft" aria-label="Notifications" />
       <Switch variant="soft-outline" aria-label="Notifications" />
       <Switch variant="outline" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <Switch variant="solid" elevation="1" aria-label="Notifications" />
       <Switch variant="solid-outline" elevation="1" aria-label="Notifications" />
       <Switch variant="soft" elevation="1" aria-label="Notifications" />
       <Switch variant="soft-outline" elevation="1" aria-label="Notifications" />
       <Switch variant="outline" elevation="1" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <Switch variant="solid" elevation="2" aria-label="Notifications" />
       <Switch variant="solid-outline" elevation="2" aria-label="Notifications" />
       <Switch variant="soft" elevation="2" aria-label="Notifications" />
       <Switch variant="soft-outline" elevation="2" aria-label="Notifications" />
       <Switch variant="outline" elevation="2" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <Switch variant="solid" elevation="3" aria-label="Notifications" />
       <Switch variant="solid-outline" elevation="3" aria-label="Notifications" />
       <Switch variant="soft" elevation="3" aria-label="Notifications" />
       <Switch variant="soft-outline" elevation="3" aria-label="Notifications" />
       <Switch variant="outline" elevation="3" aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
       <Switch variant="solid" disabled aria-label="Notifications" />
       <Switch variant="solid-outline" disabled aria-label="Notifications" />
       <Switch variant="soft" disabled aria-label="Notifications" />
       <Switch variant="soft-outline" disabled aria-label="Notifications" />
       <Switch variant="outline" disabled aria-label="Notifications" />
-    </Box>
-    <Box class="flex flex-wrap items-end gap-6">
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-6">
       <Switch size="1" aria-label="Notifications" />
       <Switch size="2" aria-label="Notifications" />
       <Switch size="3" aria-label="Notifications" />
       <Switch size="4" aria-label="Notifications" />
       <Switch size="5" aria-label="Notifications" />
-    </Box>
-    <Box class="my-12 flex flex-wrap items-start gap-6">
+    </Surface>
+    <Surface class="my-12 flex flex-wrap items-start gap-6">
       <Switch>Enable notifications</Switch>
       <Switch disabled>Enable notifications</Switch>
       <Field.Root>
@@ -61,9 +61,9 @@ import Layout from '@/layouts/index.astro';
         <Switch disabled>Enable notifications</Switch>
         <Field.Description>Receive email notification updates</Field.Description>
       </Field.Root>
-    </Box>
-    <Box class="mb-12 flex flex-wrap items-start gap-6">
-      <Box rounded class="p-6">
+    </Surface>
+    <Surface class="mb-12 flex flex-wrap items-start gap-6">
+      <Surface rounded class="p-6">
         <Fieldset.Root class="slot-[switch]:w-60 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Controls>
@@ -72,8 +72,8 @@ import Layout from '@/layouts/index.astro';
             <Switch>Enable SMS alerts</Switch>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-      <Box rounded class="p-6">
+      </Surface>
+      <Surface rounded class="p-6">
         <Fieldset.Root class="slot-[switch]:w-70 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Controls>
@@ -91,8 +91,8 @@ import Layout from '@/layouts/index.astro';
             </Field.Root>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-      <Box rounded class="p-6">
+      </Surface>
+      <Surface rounded class="p-6">
         <Fieldset.Root class="slot-[switch]:w-70 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Description>Manage your notification preferences below</Fieldset.Description>
@@ -111,10 +111,10 @@ import Layout from '@/layouts/index.astro';
             </Field.Root>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-    </Box>
-    <Box class="mb-12 flex flex-wrap items-start gap-6">
-      <Box rounded elevation="3" variant="soft-outline" class="p-6">
+      </Surface>
+    </Surface>
+    <Surface class="mb-12 flex flex-wrap items-start gap-6">
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="p-6">
         <Fieldset.Root class="slot-[switch]:w-60 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Controls>
@@ -123,8 +123,8 @@ import Layout from '@/layouts/index.astro';
             <Switch elevation="1" variant="solid-outline">Enable SMS alerts</Switch>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-      <Box rounded elevation="3" variant="soft-outline" class="p-6">
+      </Surface>
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="p-6">
         <Fieldset.Root class="slot-[switch]:w-70 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Controls>
@@ -142,8 +142,8 @@ import Layout from '@/layouts/index.astro';
             </Field.Root>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-      <Box rounded elevation="3" variant="soft-outline" class="p-6">
+      </Surface>
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="p-6">
         <Fieldset.Root class="slot-[switch]:w-70 slot-[switch]:justify-between">
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Description>Manage your notification preferences below</Fieldset.Description>
@@ -162,10 +162,10 @@ import Layout from '@/layouts/index.astro';
             </Field.Root>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-    </Box>
-    <Box class="flex flex-wrap items-center gap-6">
-      <Box rounded elevation="3" variant="soft-outline" class="p-6">
+      </Surface>
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6">
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="p-6">
         <Fieldset.Root>
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Controls orientation="horizontal">
@@ -174,8 +174,8 @@ import Layout from '@/layouts/index.astro';
             <Switch elevation="1" variant="solid-outline">Enable SMS alerts</Switch>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-      <Box rounded elevation="3" variant="soft-outline" class="p-6">
+      </Surface>
+      <Surface rounded elevation="3" variant="gray-soft-outline" class="p-6">
         <Fieldset.Root>
           <Fieldset.Legend>Notification Settings</Fieldset.Legend>
           <Fieldset.Description>Manage your notification preferences below</Fieldset.Description>
@@ -185,7 +185,7 @@ import Layout from '@/layouts/index.astro';
             <Switch elevation="1" variant="solid-outline">Enable SMS alerts</Switch>
           </Fieldset.Controls>
         </Fieldset.Root>
-      </Box>
-    </Box>
-  </Box>
+      </Surface>
+    </Surface>
+  </Surface>
 </Layout>

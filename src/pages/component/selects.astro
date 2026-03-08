@@ -1,6 +1,6 @@
 ---
-import Box from '@/components/box.astro';
 import * as Select from '@/components/select';
+import Surface from '@/components/surface.astro';
 import Layout from '@/layouts/index.astro';
 
 const COUNTRIES = [
@@ -14,50 +14,50 @@ const COUNTRIES = [
 ---
 
 <Layout>
-  <Box class="flex flex-col gap-6">
-    <Box class="grid gap-4 lg:grid-cols-5">
+  <Surface class="flex flex-col gap-6">
+    <Surface class="grid gap-4 lg:grid-cols-5">
       <Select.Root variant="solid"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="solid-outline"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft-outline"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="outline"><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-5">
+    </Surface>
+    <Surface class="grid gap-4 lg:grid-cols-5">
       <Select.Root variant="solid" elevation="1"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="solid-outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft" elevation="1"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft-outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="outline" elevation="1"><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-5">
+    </Surface>
+    <Surface class="grid gap-4 lg:grid-cols-5">
       <Select.Root variant="solid" elevation="2"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="solid-outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft" elevation="2"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft-outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="outline" elevation="2"><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-5">
+    </Surface>
+    <Surface class="grid gap-4 lg:grid-cols-5">
       <Select.Root variant="solid" elevation="3"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="solid-outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft" elevation="3"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft-outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="outline" elevation="3"><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid gap-4 lg:grid-cols-5">
+    </Surface>
+    <Surface class="grid gap-4 lg:grid-cols-5">
       <Select.Root variant="solid" disabled><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="solid-outline" disabled><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft" disabled><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="soft-outline" disabled><Select.Value /><Select.Options /></Select.Root>
       <Select.Root variant="outline" disabled><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid items-end gap-4 lg:grid-cols-5">
+    </Surface>
+    <Surface class="grid items-end gap-4 lg:grid-cols-5">
       <Select.Root size="1"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root size="2"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root size="3"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root size="4"><Select.Value /><Select.Options /></Select.Root>
       <Select.Root size="5"><Select.Value /><Select.Options /></Select.Root>
-    </Box>
-    <Box class="grid items-center gap-4 lg:grid-cols-3">
+    </Surface>
+    <Surface class="grid items-center gap-4 lg:grid-cols-3">
       <Select.Root>
         <Select.Value prefix="@" />
         <Select.Options placeholder="Select your shipping country">
@@ -76,8 +76,8 @@ const COUNTRIES = [
           {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
         </Select.Options>
       </Select.Root>
-    </Box>
-    <Box class="grid items-center gap-4 lg:grid-cols-3">
+    </Surface>
+    <Surface class="grid items-center gap-4 lg:grid-cols-3">
       <Select.Root>
         <Select.Value prefix={{ name: 'flag' }} />
         <Select.Options placeholder="Select your shipping country">
@@ -96,6 +96,6 @@ const COUNTRIES = [
           {COUNTRIES.map(({ name }) => <Select.Option value={name}>{name}</Select.Option>)}
         </Select.Options>
       </Select.Root>
-    </Box>
-  </Box>
+    </Surface>
+  </Surface>
 </Layout>
