@@ -13,11 +13,14 @@ import Layout from '@/layouts/index.astro';
       <Text font="mono">Mono</Text>
     </Surface>
     <Surface class="flex flex-wrap items-center gap-6">
-      <Text>Normal</Text>
-      <Text variant="soft">Soft</Text>
+      <Text variant="gray">Gray</Text>
+      <Text variant="gray-soft">Gray Soft</Text>
       <Text variant="accent">Accent</Text>
+      <Text variant="accent-soft">Accent Soft</Text>
       <Text variant="warn">Warning</Text>
+      <Text variant="warn-soft">Warning Soft</Text>
       <Text variant="danger">Danger</Text>
+      <Text variant="danger-soft">Danger Soft</Text>
     </Surface>
     <Surface class="flex flex-wrap items-center gap-6">
       <Text weight="1">Thin</Text>
@@ -35,16 +38,24 @@ import Layout from '@/layouts/index.astro';
       <Text underline>Underline</Text>
     </Surface>
     <Surface class="flex flex-wrap items-center gap-6">
-      <Link href="/" variant="soft">Internal</Link>
+      <Link href="/" variant="gray">Internal</Link>
+      <Link href="/" variant="gray-soft">Internal</Link>
       <Link href="/" variant="accent">Internal</Link>
+      <Link href="/" variant="accent-soft">Internal</Link>
       <Link href="/" variant="warn">Internal</Link>
+      <Link href="/" variant="warn-soft">Internal</Link>
       <Link href="/" variant="danger">Internal</Link>
+      <Link href="/" variant="danger-soft">Internal</Link>
     </Surface>
     <Surface class="flex flex-wrap items-center gap-6">
-      <Link href="http://" variant="soft" icon={{ name: 'arrow-up-right' }}>External Link</Link>
+      <Link href="http://" variant="gray" icon={{ name: 'arrow-up-right' }}>External Link</Link>
+      <Link href="http://" variant="gray-soft" icon={{ name: 'arrow-up-right' }}>External Link</Link>
       <Link href="http://" variant="accent" icon={{ name: 'square-arrow-out-up-right' }}>External Link</Link>
+      <Link href="http://" variant="accent-soft" icon={{ name: 'square-arrow-out-up-right' }}>External Link</Link>
       <Link href="http://" variant="warn" icon={{ name: 'link' }}>External Link</Link>
+      <Link href="http://" variant="warn-soft" icon={{ name: 'link' }}>External Link</Link>
       <Link href="http://" variant="danger" icon={{ name: 'external-link' }}>External Link</Link>
+      <Link href="http://" variant="danger-soft" icon={{ name: 'external-link' }}>External Link</Link>
     </Surface>
     <Surface class="flex flex-wrap items-center gap-6">
       <Numeric value={123456} />
