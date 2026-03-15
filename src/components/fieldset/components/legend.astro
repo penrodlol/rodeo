@@ -5,4 +5,4 @@ import type { ComponentProps } from 'astro/types';
 type Props = Omit<ComponentProps<typeof Text<'legend'>>, 'as'>;
 ---
 
-<Text as="legend" data-slot="fieldset-legend" weight="5" {...Astro.props}><slot /></Text>
+<Text as="legend" data-slot="fieldset-legend" size="4" weight="5" {...Astro.props}><slot /></Text>

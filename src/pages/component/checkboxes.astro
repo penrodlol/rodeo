@@ -1,79 +1,234 @@
 ---
 import Checkbox from '@/components/checkbox.astro';
-import * as Field from '@/components/field';
-import * as Fieldset from '@/components/fieldset';
 import Surface from '@/components/surface.astro';
 import Layout from '@/layouts/index.astro';
+import * as Fieldset from '@/components/fieldset';
+import * as Field from '@/components/field';
 ---
 
 <Layout>
   <Surface class="flex flex-col gap-6">
-    <Surface class="flex flex-wrap items-center gap-6">
-      <Checkbox variant="solid" aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" aria-label="Product Updates" />
-      <Checkbox variant="soft" aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" aria-label="Product Updates" />
-      <Checkbox variant="outline" aria-label="Product Updates" />
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="gray-surface" aria-label="Product Updates" />
+      <Checkbox variant="gray-solid" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-ghost-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-ghost-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-ghost-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-solid" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-soft" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-soft-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-surface-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-ghost-outline" aria-label="Product Updates" disabled />
     </Surface>
-    <Surface class="flex flex-wrap items-center gap-6">
-      <Checkbox variant="solid" elevation="1" aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" elevation="1" aria-label="Product Updates" />
-      <Checkbox variant="soft" elevation="1" aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" elevation="1" aria-label="Product Updates" />
-      <Checkbox variant="outline" elevation="1" aria-label="Product Updates" />
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="gray-accent-surface" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-solid" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-ghost-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-ghost-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-ghost-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-accent-solid" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-accent-soft" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-accent-soft-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-accent-surface-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="gray-accent-ghost-outline" aria-label="Product Updates" disabled />
     </Surface>
-    <Surface class="flex flex-wrap items-center gap-6">
-      <Checkbox variant="solid" elevation="2" aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" elevation="2" aria-label="Product Updates" />
-      <Checkbox variant="soft" elevation="2" aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" elevation="2" aria-label="Product Updates" />
-      <Checkbox variant="outline" elevation="2" aria-label="Product Updates" />
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="accent-surface" aria-label="Product Updates" />
+      <Checkbox variant="accent-solid" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-ghost-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-ghost-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-ghost-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface" aria-label="Product Updates" disabled />
+      <Checkbox variant="accent-solid" aria-label="Product Updates" disabled />
+      <Checkbox variant="accent-soft" aria-label="Product Updates" disabled />
+      <Checkbox variant="accent-soft-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="accent-surface-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="accent-ghost-outline" aria-label="Product Updates" disabled />
     </Surface>
-    <Surface class="flex flex-wrap items-center gap-6">
-      <Checkbox variant="solid" elevation="3" aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" elevation="3" aria-label="Product Updates" />
-      <Checkbox variant="soft" elevation="3" aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" elevation="3" aria-label="Product Updates" />
-      <Checkbox variant="outline" elevation="3" aria-label="Product Updates" />
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="warn-surface" aria-label="Product Updates" />
+      <Checkbox variant="warn-solid" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-ghost-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-ghost-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-ghost-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface" aria-label="Product Updates" disabled />
+      <Checkbox variant="warn-solid" aria-label="Product Updates" disabled />
+      <Checkbox variant="warn-soft" aria-label="Product Updates" disabled />
+      <Checkbox variant="warn-soft-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="warn-surface-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="warn-ghost-outline" aria-label="Product Updates" disabled />
     </Surface>
-    <Surface class="flex flex-wrap items-center gap-6">
-      <Checkbox variant="solid" disabled aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" disabled aria-label="Product Updates" />
-      <Checkbox variant="soft" disabled aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" disabled aria-label="Product Updates" />
-      <Checkbox variant="outline" disabled aria-label="Product Updates" />
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="danger-surface" aria-label="Product Updates" />
+      <Checkbox variant="danger-solid" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-solid" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-ghost-outline" elevation="1" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-solid" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-ghost-outline" elevation="2" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-solid" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-ghost-outline" elevation="3" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface" aria-label="Product Updates" disabled />
+      <Checkbox variant="danger-solid" aria-label="Product Updates" disabled />
+      <Checkbox variant="danger-soft" aria-label="Product Updates" disabled />
+      <Checkbox variant="danger-soft-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="danger-surface-outline" aria-label="Product Updates" disabled />
+      <Checkbox variant="danger-ghost-outline" aria-label="Product Updates" disabled />
     </Surface>
-    <Surface
-      x-data
-      x-init="$el.querySelectorAll('input').forEach((el) => el.indeterminate = true)"
-      class="flex flex-wrap items-center gap-6"
-    >
-      <Checkbox variant="solid" aria-label="Product Updates" />
-      <Checkbox variant="solid-outline" aria-label="Product Updates" />
-      <Checkbox variant="soft" aria-label="Product Updates" />
-      <Checkbox variant="soft-outline" aria-label="Product Updates" />
-      <Checkbox variant="outline" aria-label="Product Updates" />
+    <Surface data-slot="checkboxes-indeterminate" class="flex flex-wrap items-center gap-4">
+      <Checkbox variant="gray-surface" aria-label="Product Updates" />
+      <Checkbox variant="gray-solid" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft" aria-label="Product Updates" />
+      <Checkbox variant="gray-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-solid" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="gray-accent-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface" aria-label="Product Updates" />
+      <Checkbox variant="accent-solid" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft" aria-label="Product Updates" />
+      <Checkbox variant="accent-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="accent-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface" aria-label="Product Updates" />
+      <Checkbox variant="warn-solid" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft" aria-label="Product Updates" />
+      <Checkbox variant="warn-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="warn-ghost-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface" aria-label="Product Updates" />
+      <Checkbox variant="danger-solid" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft" aria-label="Product Updates" />
+      <Checkbox variant="danger-soft-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-surface-outline" aria-label="Product Updates" />
+      <Checkbox variant="danger-ghost-outline" aria-label="Product Updates" />
     </Surface>
-    <Surface class="flex flex-wrap items-end gap-6">
+    <Surface class="flex flex-wrap items-end gap-4">
       <Checkbox size="1" aria-label="Product Updates" />
       <Checkbox size="2" aria-label="Product Updates" />
       <Checkbox size="3" aria-label="Product Updates" />
       <Checkbox size="4" aria-label="Product Updates" />
       <Checkbox size="5" aria-label="Product Updates" />
     </Surface>
-    <Surface class="my-12 flex flex-wrap items-start gap-12">
-      <Checkbox>Product Updates</Checkbox>
-      <Checkbox disabled>Product Updates</Checkbox>
-      <Field.Root>
-        <Checkbox>Product Updates</Checkbox>
-        <Field.Description>Get the latest updates about our products</Field.Description>
-      </Field.Root>
-      <Field.Root>
-        <Checkbox disabled>Product Updates</Checkbox>
-        <Field.Description>Get the latest updates about our products</Field.Description>
-      </Field.Root>
+    <Surface class="flex flex-wrap items-center gap-12">
+      <Checkbox variant="gray-soft-outline">Product Updates</Checkbox>
+      <Checkbox variant="gray-accent-soft-outline">Product Updates</Checkbox>
+      <Checkbox variant="accent-soft-outline" textVariants={{ variant: 'accent' }}>Product Updates</Checkbox>
+      <Checkbox variant="warn-soft-outline" textVariants={{ variant: 'warn' }}>Product Updates</Checkbox>
+      <Checkbox variant="danger-soft-outline" textVariants={{ variant: 'danger' }}>Product Updates</Checkbox>
     </Surface>
-    <Surface class="mb-12 flex flex-wrap items-start gap-12">
+    <Surface class="flex flex-wrap items-center gap-12">
+      <Checkbox variant="gray-soft-outline" disabled>Product Updates</Checkbox>
+      <Checkbox variant="gray-accent-soft-outline" disabled>Product Updates</Checkbox>
+      <Checkbox variant="accent-soft-outline" textVariants={{ variant: 'accent' }} disabled>Product Updates</Checkbox>
+      <Checkbox variant="warn-soft-outline" textVariants={{ variant: 'warn' }} disabled>Product Updates</Checkbox>
+      <Checkbox variant="danger-soft-outline" textVariants={{ variant: 'danger' }} disabled>Product Updates</Checkbox>
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-12">
+      <Checkbox size="1">Product Updates</Checkbox>
+      <Checkbox size="2">Product Updates</Checkbox>
+      <Checkbox size="3">Product Updates</Checkbox>
+      <Checkbox size="4">Product Updates</Checkbox>
+      <Checkbox size="5">Product Updates</Checkbox>
+    </Surface>
+    <Surface class="flex flex-wrap items-start gap-x-24 gap-y-12">
       <Fieldset.Root>
         <Fieldset.Legend>Notifications</Fieldset.Legend>
         <Fieldset.Controls>
@@ -110,7 +265,7 @@ import Layout from '@/layouts/index.astro';
         </Fieldset.Controls>
       </Fieldset.Root>
     </Surface>
-    <Surface class="mb-12 flex flex-wrap items-start gap-12">
+    <Surface class="flex flex-wrap items-start gap-12">
       <Fieldset.Root>
         <Fieldset.Legend>Notifications</Fieldset.Legend>
         <Fieldset.Controls orientation="horizontal">
@@ -129,14 +284,14 @@ import Layout from '@/layouts/index.astro';
         </Fieldset.Controls>
       </Fieldset.Root>
     </Surface>
-    <Surface class="mb-12 flex flex-wrap items-start gap-12">
+    <Surface class="mt-12 flex flex-wrap items-start gap-12">
       <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
         <Fieldset.Root>
           <Fieldset.Legend>Notifications</Fieldset.Legend>
           <Fieldset.Controls>
-            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Newsletter Subscription</Checkbox>
           </Fieldset.Controls>
         </Fieldset.Root>
       </Surface>
@@ -145,9 +300,9 @@ import Layout from '@/layouts/index.astro';
           <Fieldset.Legend>Notifications</Fieldset.Legend>
           <Fieldset.Description>Select your notification preferences</Fieldset.Description>
           <Fieldset.Controls>
-            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Newsletter Subscription</Checkbox>
           </Fieldset.Controls>
         </Fieldset.Root>
       </Surface>
@@ -157,29 +312,29 @@ import Layout from '@/layouts/index.astro';
           <Fieldset.Description>Select your notification preferences</Fieldset.Description>
           <Fieldset.Controls>
             <Field.Root>
-              <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
+              <Checkbox elevation="1" variant="gray-accent-surface-outline">Product Updates</Checkbox>
               <Field.Description>Get the latest updates about our products</Field.Description>
             </Field.Root>
             <Field.Root>
-              <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
+              <Checkbox elevation="1" variant="gray-accent-surface-outline">Marketing Emails</Checkbox>
               <Field.Description>Receive promotional content and offers</Field.Description>
             </Field.Root>
             <Field.Root>
-              <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+              <Checkbox elevation="1" variant="gray-accent-surface-outline">Newsletter Subscription</Checkbox>
               <Field.Description>Stay informed with our monthly newsletter</Field.Description>
             </Field.Root>
           </Fieldset.Controls>
         </Fieldset.Root>
       </Surface>
     </Surface>
-    <Surface class="flex flex-wrap items-start gap-12">
+    <Surface class="mt-12 flex flex-wrap items-start gap-12">
       <Surface rounded elevation="3" variant="gray-soft-outline" class="px-6 py-4">
         <Fieldset.Root>
           <Fieldset.Legend>Notifications</Fieldset.Legend>
           <Fieldset.Controls orientation="horizontal">
-            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Newsletter Subscription</Checkbox>
           </Fieldset.Controls>
         </Fieldset.Root>
       </Surface>
@@ -188,12 +343,18 @@ import Layout from '@/layouts/index.astro';
           <Fieldset.Legend>Notifications</Fieldset.Legend>
           <Fieldset.Description>Select your notification preferences</Fieldset.Description>
           <Fieldset.Controls orientation="horizontal">
-            <Checkbox elevation="1" variant="solid-outline">Product Updates</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Marketing Emails</Checkbox>
-            <Checkbox elevation="1" variant="solid-outline">Newsletter Subscription</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Product Updates</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Marketing Emails</Checkbox>
+            <Checkbox elevation="1" variant="gray-accent-surface-outline">Newsletter Subscription</Checkbox>
           </Fieldset.Controls>
         </Fieldset.Root>
       </Surface>
     </Surface>
   </Surface>
 </Layout>
+
+<script>
+  document
+    .querySelectorAll<HTMLInputElement>('[data-slot="checkboxes-indeterminate"] input')
+    .forEach((el) => (el.indeterminate = true));
+</script>
