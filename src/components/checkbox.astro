@@ -31,11 +31,11 @@ export const checkboxVariants = tv({
     checkboxPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
     elevation: { '1': { control: 'elevation-1' }, '2': { control: 'elevation-2' }, '3': { control: 'elevation-3' } },
     size: {
-      '1': { base: 'text-sm', control: 'size-3.5', icon: 'size-3' },
-      '2': { base: 'text-base', control: 'size-4', icon: 'size-3.5' },
-      '3': { base: 'text-lg', control: 'size-4.5', icon: 'size-4' },
-      '4': { base: 'text-xl', control: 'size-5', icon: 'size-4.5' },
-      '5': { base: 'text-2xl', control: 'size-5.5', icon: 'size-5' },
+      '1': { base: 'text-sm [&+[data-slot="field-description"]]:ml-6', control: 'size-3.5', icon: 'size-3' },
+      '2': { base: 'text-base [&+[data-slot="field-description"]]:ml-6.5', control: 'size-4', icon: 'size-3.5' },
+      '3': { base: 'text-lg [&+[data-slot="field-description"]]:ml-7', control: 'size-4.5', icon: 'size-4' },
+      '4': { base: 'text-xl [&+[data-slot="field-description"]]:ml-7.5', control: 'size-5', icon: 'size-4.5' },
+      '5': { base: 'text-2xl [&+[data-slot="field-description"]]:ml-8', control: 'size-5.5', icon: 'size-5' },
     },
     // prettier-ignore
     variant: {
