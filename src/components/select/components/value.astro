@@ -38,7 +38,7 @@ const slots = selectTriggerVariants({ iconVisible });
 
 <!-- prettier-ignore -->
 <button data-slot="select-value" class={slots.base({ className })} {...props}>
-  <div data-slot="select-value-icon" class={slots.icon()}><Icon name="chevron-down" variant="soft" /></div>
+  <div data-slot="select-value-icon" class={slots.icon()}><Icon name="chevron-down" variant="gray-soft" /></div>
   {prefix && <div  data-slot="select-value-prefix" aria-hidden="true" class={slots.affix()}>{typeof prefix === 'string' ? prefix : <Icon {...prefix} />}</div>}
   {suffix && <div  data-slot="select-value-suffix" aria-hidden="true" class={slots.affix()}>{typeof suffix === 'string' ? suffix : <Icon {...suffix} />}</div>}
   <selectedcontent data-slot="select-value-content" class={slots.content()}></selectedcontent>
