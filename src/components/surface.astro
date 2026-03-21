@@ -5,6 +5,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }> & SurfaceVariants;
 
 export type SurfaceVariants = VariantProps<typeof surfaceVariants>;
+export type SurfaceVariantsVariantKey = NonNullable<SurfaceVariants['variant']>;
 
 export const surfaceVariants = tv({
   variants: {
@@ -50,6 +51,14 @@ export const surfaceVariants = tv({
     },
   },
 });
+
+export const surfaceVariantsVariantKeysAll = Object.keys(surfaceVariants.variants.variant);
+export const surfaceVariantsVariantKeys = {
+  gray: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('gray-')) as Array<SurfaceVariantsVariantKey>,
+  accent: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('accent-')) as Array<SurfaceVariantsVariantKey>,
+  warn: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('warn-')) as Array<SurfaceVariantsVariantKey>,
+  danger: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('danger-')) as Array<SurfaceVariantsVariantKey>,
+};
 
 const { as: Tag = 'div', class: className, rounded, elevation, variant, ...props } = Astro.props;
 ---

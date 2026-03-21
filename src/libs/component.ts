@@ -1,15 +1,18 @@
-import { parse, renderSync, type Node } from 'ultrahtml';
-import querySelectorAll from 'ultrahtml/selector';
+import { select, selectAll } from 'hast-util-select';
+import { rehype } from 'rehype';
+
+type Node = ReturnType<ReturnType<typeof rehype>['parse']>;
 
 export class componentProvider {
   private _html!: string;
   private _htmlParsed!: Node;
-  private _slots: Map<string, (props: any) => any> = new Map();
+  private _processor = this._createProcessor();
+  private _slots = new Map<string, (props: any) => any>();
 
   constructor(html: typeof this._html) {
     if (!html) return;
     this._html = html;
-    this._htmlParsed = parse(html);
+    this._htmlParsed = this._createProcessor().parse(this._html);
   }
 
   static create(html: string) {
@@ -21,7 +24,7 @@ export class componentProvider {
   }
 
   hasSlot(slot: string) {
-    return !!querySelectorAll(this._htmlParsed, `[data-slot="${slot}"]`).length;
+    return !!select(`[data-slot="${slot}"]`, this._htmlParsed);
   }
 
   provideContext(slots: Record<string, (props: any) => any>) {
@@ -35,21 +38,24 @@ export class componentProvider {
       .map((slot) => `[data-slot="${slot}"]`)
       .join(',');
 
-    querySelectorAll(this._htmlParsed, selector).forEach((node) => {
-      const slot = this._slots.get(node.attributes['data-slot']);
-      if (!slot) return;
+    this._processor.use(() => (root) => {
+      selectAll(selector, root as Node).forEach((node) => {
+        const slot = this._slots.get(String(node.properties.dataSlot));
+        if (!slot || !node.properties) return;
 
-      const attributes = Object.entries(slot(node.attributes))
-        .filter(([_, value]) => value != null)
-        .reduce((acc, [key, value]) => {
-          if (value == null || value === false) return acc;
-          else if (typeof value === 'string') return { ...acc, [key]: value.replace(/"/g, '&quot;') };
-          else return { ...acc, [key]: value === true ? '' : value };
-        }, {});
-
-      node.attributes = { ...attributes, ...node.attributes };
+        Object.entries(slot(node.properties))
+          .filter(([_, value]) => value != null)
+          .forEach(([key, value]) => {
+            if (typeof value === 'boolean') node.properties[key] = value === true ? '' : undefined;
+            else if (typeof value === 'string') node.properties[key] = value.replace(/"/g, '&quot;');
+          });
+      });
     });
 
-    return renderSync(this._htmlParsed);
+    return String(this._processor.processSync(this._html).value);
+  }
+
+  private _createProcessor() {
+    return rehype().data('settings', { fragment: true });
   }
 }
