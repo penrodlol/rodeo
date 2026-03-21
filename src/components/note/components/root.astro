@@ -49,13 +49,14 @@ const slots = noteVariants({ rounded, elevation, variant, iconHidden, size });
 const iconMapper = { info: 'info', tip: 'lightbulb', warn: 'alert-triangle', danger: 'alert-octagon' };
 
 const provider = componentProvider.create(await Astro.slots.render('default'));
+const id = String(provider.getSlotProps('note-title')?.id ?? provider.generateId());
 
 provider.provideContext({
-  'note-title': ({ className }) => ({ className: slots.title({ className }) }),
+  'note-title': ({ id: titleId, className }) => ({ id: titleId ?? id, className: slots.title({ className }) }),
   'note-content': ({ className }) => ({ className: slots.content({ className }) }),
 });
 ---
 
-<aside data-slot="note" class={slots.base({ className })} set:html={provider.render()} {...props}>
+<aside data-slot="note" aria-labelledby={id} class={slots.base({ className })} set:html={provider.render()} {...props}>
   {!iconHidden && <Icon name={iconMapper[type ?? 'info']} class={slots.icon()} {...icon} />}
 </aside>

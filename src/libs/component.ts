@@ -27,6 +27,10 @@ export class componentProvider {
     return !!select(`[data-slot="${slot}"]`, this._htmlParsed);
   }
 
+  getSlotProps(slot: string) {
+    return select(`[data-slot="${slot}"]`, this._htmlParsed)?.properties;
+  }
+
   provideContext(slots: Record<string, (props: any) => any>) {
     Object.entries(slots).forEach(([slot, callback]) => this._slots.set(slot, callback));
   }
@@ -44,7 +48,7 @@ export class componentProvider {
         if (!slot || !node.properties) return;
 
         Object.entries(slot(node.properties))
-          .filter(([_, value]) => value != null)
+          .filter(([, value]) => value != null)
           .forEach(([key, value]) => {
             if (typeof value === 'boolean') node.properties[key] = value === true ? '' : undefined;
             else if (typeof value === 'string') node.properties[key] = value.replace(/"/g, '&quot;');
