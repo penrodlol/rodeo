@@ -1,16 +1,18 @@
 ---
 import Link from '@/components/link.astro';
 import Layout from '@/layouts/index.astro';
-import { readdir } from 'fs/promises';
+
+const files = Object.values(import.meta.glob('./component/*.astro', { eager: true }));
+const components = files.map((file) => (file as { default: { name: string } }).default.name);
 ---
 
 <Layout>
   <ul class="flex flex-col">
     {
-      (await readdir(new URL('./component/', import.meta.url))).map((component) => (
+      components.map((component) => (
         <li>
-          <Link size="6" href={`/component/${component.replace(/\.astro|\.mjs/g, '')}`} class="py-2 capitalize">
-            {component.replace(/\.astro|\.mjs|-/g, ' ')}
+          <Link size="6" href={`/component/${component}`} class="py-2 capitalize">
+            {component.replace(/-/g, ' ')}
           </Link>
         </li>
       ))
