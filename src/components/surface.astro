@@ -5,12 +5,10 @@ import { tv, type VariantProps } from 'tailwind-variants';
 type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{ as: Tag }> & SurfaceVariants;
 
 export type SurfaceVariants = VariantProps<typeof surfaceVariants>;
-export type SurfaceVariantsVariantKey = NonNullable<SurfaceVariants['variant']>;
+export type SurfaceVariantsVariantKey = NonNullable<VariantProps<typeof surfaceVariantsVariant>['variant']>;
 
-export const surfaceVariants = tv({
+export const surfaceVariantsVariant = tv({
   variants: {
-    rounded: { true: 'rounded' },
-    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     variant: {
       'gray-surface': 'bg-gray-1',
       'gray-soft': 'bg-gray-2',
@@ -52,7 +50,7 @@ export const surfaceVariants = tv({
   },
 });
 
-export const surfaceVariantsVariantKeysAll = Object.keys(surfaceVariants.variants.variant);
+export const surfaceVariantsVariantKeysAll = Object.keys(surfaceVariantsVariant.variants.variant);
 export const surfaceVariantsVariantKeys = {
   gray: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('gray-')) as Array<SurfaceVariantsVariantKey>,
   accent: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('accent-')) as Array<SurfaceVariantsVariantKey>,
@@ -60,7 +58,30 @@ export const surfaceVariantsVariantKeys = {
   danger: surfaceVariantsVariantKeysAll.filter((key) => key.startsWith('danger-')) as Array<SurfaceVariantsVariantKey>,
 };
 
-const { as: Tag = 'div', class: className, rounded, elevation, variant, ...props } = Astro.props;
+export const surfaceVariants = tv({
+  variants: {
+    variant: surfaceVariantsVariant.variants.variant,
+    rounded: { true: 'rounded' },
+    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
+    loading: {
+      true: [
+        'relative overflow-hidden before:absolute before:inset-x-0 before:-inset-y-full',
+        'before:-translate-x-full before:rotate-4 before:rounded-[inherit]',
+        'before:bg-linear-to-r before:from-transparent before:to-transparent',
+        'before:motion-safe:motion-duration-2000 before:motion-safe:motion-ease-in-out',
+        'before:motion-safe:motion-translate-x-loop-[200%]/reset',
+      ],
+    },
+  },
+  compoundVariants: [
+    { loading: true, variant: surfaceVariantsVariantKeys.gray, class: 'before:via-gray-4' },
+    { loading: true, variant: surfaceVariantsVariantKeys.accent, class: 'before:via-accent-4' },
+    { loading: true, variant: surfaceVariantsVariantKeys.warn, class: 'before:via-warn-4' },
+    { loading: true, variant: surfaceVariantsVariantKeys.danger, class: 'before:via-danger-4' },
+  ],
+});
+
+const { as: Tag = 'div', class: className, variant, rounded, elevation, loading, ...props } = Astro.props;
 ---
 
-<Tag class={surfaceVariants({ rounded, elevation, variant, className })} {...props}><slot /></Tag>
+<Tag class={surfaceVariants({ variant, rounded, elevation, loading, className })} {...props}><slot /></Tag>
