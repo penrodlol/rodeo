@@ -1,0 +1,54 @@
+---
+import Skeleton from '@/components/skeleton.astro';
+import Surface from '@/components/surface.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Surface class="flex flex-col gap-12">
+    <Surface class="flex flex-wrap items-center gap-6 *:size-20">
+      <Skeleton variant="gray-surface" rounded />
+      <Skeleton variant="gray-soft" rounded />
+      <Skeleton variant="gray-surface-outline" rounded />
+      <Skeleton variant="gray-soft-outline" rounded />
+      <Skeleton variant="gray-surface-gradient" rounded />
+      <Skeleton variant="gray-ghost-outline" rounded />
+      <Skeleton variant="gray-soft-gradient" rounded />
+      <Skeleton variant="gray-surface-outline-gradient" rounded />
+      <Skeleton variant="gray-soft-outline-gradient" rounded />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:size-20">
+      <Skeleton variant="accent-surface" rounded />
+      <Skeleton variant="accent-soft" rounded />
+      <Skeleton variant="accent-surface-outline" rounded />
+      <Skeleton variant="accent-soft-outline" rounded />
+      <Skeleton variant="accent-surface-gradient" rounded />
+      <Skeleton variant="accent-ghost-outline" rounded />
+      <Skeleton variant="accent-soft-gradient" rounded />
+      <Skeleton variant="accent-surface-outline-gradient" rounded />
+      <Skeleton variant="accent-soft-outline-gradient" rounded />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:size-20">
+      <Skeleton variant="warn-surface" rounded />
+      <Skeleton variant="warn-soft" rounded />
+      <Skeleton variant="warn-surface-outline" rounded />
+      <Skeleton variant="warn-soft-outline" rounded />
+      <Skeleton variant="warn-surface-gradient" rounded />
+      <Skeleton variant="warn-ghost-outline" rounded />
+      <Skeleton variant="warn-soft-gradient" rounded />
+      <Skeleton variant="warn-surface-outline-gradient" rounded />
+      <Skeleton variant="warn-soft-outline-gradient" rounded />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-6 *:size-20">
+      <Skeleton variant="danger-surface" rounded />
+      <Skeleton variant="danger-soft" rounded />
+      <Skeleton variant="danger-surface-outline" rounded />
+      <Skeleton variant="danger-soft-outline" rounded />
+      <Skeleton variant="danger-surface-gradient" rounded />
+      <Skeleton variant="danger-ghost-outline" rounded />
+      <Skeleton variant="danger-soft-gradient" rounded />
+      <Skeleton variant="danger-surface-outline-gradient" rounded />
+      <Skeleton variant="danger-soft-outline-gradient" rounded />
+    </Surface>
+  </Surface>
+</Layout>

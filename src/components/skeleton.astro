@@ -1,0 +1,31 @@
+---
+import type { ComponentProps } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import Surface, { getSurfaceVariantKeys, surfaceVariants } from './surface.astro';
+
+type Props = ComponentProps<typeof Surface> & SkeletonVariants;
+
+export type SkeletonVariants = VariantProps<typeof skeletonVariants>;
+
+export const surfaceVariantKeys = getSurfaceVariantKeys();
+export const skeletonVariants = tv({
+  extend: surfaceVariants,
+  base: [
+    'relative overflow-hidden before:absolute before:inset-x-0 before:-inset-y-full',
+    'before:-translate-x-full before:rotate-4 before:rounded-[inherit]',
+    'before:bg-linear-to-r before:from-transparent before:to-transparent',
+    'before:motion-safe:motion-duration-2000 before:motion-safe:motion-ease-in-out',
+    'before:motion-safe:motion-translate-x-loop-[200%]/reset',
+  ],
+  compoundVariants: [
+    { variant: surfaceVariantKeys.gray, class: 'before:via-gray-4' },
+    { variant: surfaceVariantKeys.accent, class: 'before:via-accent-4' },
+    { variant: surfaceVariantKeys.warn, class: 'before:via-warn-4' },
+    { variant: surfaceVariantKeys.danger, class: 'before:via-danger-4' },
+  ],
+});
+
+const { class: className, rounded, elevation, variant, ...props } = Astro.props;
+---
+
+<Surface {...props} class={skeletonVariants({ rounded, elevation, variant, className })}><slot /></Surface>

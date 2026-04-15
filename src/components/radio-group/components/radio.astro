@@ -1,5 +1,6 @@
 ---
 import { Text, type TextVariants } from '@/components/typography';
+import { getComponentVariants } from '@/libs/variant';
 import type { HTMLAttributes } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
 
@@ -7,13 +8,15 @@ type Props = Omit<HTMLAttributes<'input'>, 'type' | 'name'> & RadioGroupRadioVar
 
 export type RadioGroupRadioVariants = VariantProps<typeof radioGroupRadioVariants>;
 
+export const componentVariants = getComponentVariants({ slot: 'control', focus: true });
 export const radioGroupRadioVariants = tv({
+  extend: componentVariants.variants,
   slots: {
     base: 'flex w-fit items-center gap-2.5 select-none has-disabled:pointer-events-none has-disabled:opacity-50',
     control: [
       'relative flex shrink-0 appearance-none items-center justify-center overflow-hidden rounded-full will-change-transform',
+      'focus-visible:ring focus-visible:outline-none',
       'disabled:pointer-events-none disabled:opacity-50',
-      'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
       'checked:border-transparent not-checked:active:scale-[0.95]',
       'before:absolute before:inset-0 before:rounded-[inherit] before:shadow-md',
       'not-checked:before:scale-0 checked:before:scale-40',
@@ -23,7 +26,6 @@ export const radioGroupRadioVariants = tv({
   defaultVariants: { size: '2', variant: 'gray-accent-soft-outline' },
   variants: {
     radioPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
-    elevation: { '1': { control: 'elevation-1' }, '2': { control: 'elevation-2' }, '3': { control: 'elevation-3' } },
     size: {
       '1': { base: 'text-sm [&+[data-slot="field-description"]]:ml-6', control: 'size-3.5' },
       '2': { base: 'text-base [&+[data-slot="field-description"]]:ml-6.5', control: 'size-4' },
@@ -31,45 +33,21 @@ export const radioGroupRadioVariants = tv({
       '4': { base: 'text-xl [&+[data-slot="field-description"]]:ml-7.5', control: 'size-5' },
       '5': { base: 'text-2xl [&+[data-slot="field-description"]]:ml-8', control: 'size-5.5' },
     },
-    // prettier-ignore
-    variant: {
-      'gray-surface': { control: 'bg-gray-1 checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-solid': { control: 'bg-gray-9 checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-soft': { control: 'bg-gray-3 checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-soft-outline': { control: 'bg-gray-3 border-gray-7 border checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-surface-outline': { control: 'bg-gray-1 border-gray-7 border checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-ghost-outline': { control: 'bg-transparent border-gray-7 border checked:bg-gray-9 checked:before:bg-gray-contrast' },
-      'gray-accent-surface': { control: 'bg-gray-1 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'gray-accent-solid': { control: 'bg-gray-9 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'gray-accent-soft': { control: 'bg-gray-3 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'gray-accent-soft-outline': { control: 'bg-gray-3 border-gray-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'gray-accent-surface-outline': { control: 'bg-gray-1 border-gray-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'gray-accent-ghost-outline': { control: 'bg-transparent border-gray-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-surface': { control: 'bg-accent-1 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-solid': { control: 'bg-accent-9 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-soft': { control: 'bg-accent-3 checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-soft-outline': { control: 'bg-accent-3 border-accent-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-surface-outline': { control: 'bg-accent-1 border-accent-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'accent-ghost-outline': { control: 'bg-transparent border-accent-7 border checked:bg-accent-9 checked:before:bg-accent-contrast' },
-      'warn-surface': { control: 'bg-warn-1 checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'warn-solid': { control: 'bg-warn-9 checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'warn-soft': { control: 'bg-warn-3 checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'warn-soft-outline': { control: 'bg-warn-3 border-warn-7 border checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'warn-surface-outline': { control: 'bg-warn-1 border-warn-7 border checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'warn-ghost-outline': { control: 'bg-transparent border-warn-7 border checked:bg-warn-9 checked:before:bg-warn-contrast focus-visible:ring-warn-8' },
-      'danger-surface': { control: 'bg-danger-1 checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-      'danger-solid': { control: 'bg-danger-9 checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-      'danger-soft': { control: 'bg-danger-3 checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-      'danger-soft-outline': { control: 'bg-danger-3 border-danger-7 border checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-      'danger-surface-outline': { control: 'bg-danger-1 border-danger-7 border checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-      'danger-ghost-outline': { control: 'bg-transparent border-danger-7 border checked:bg-danger-9 checked:before:bg-danger-contrast focus-visible:ring-danger-8' },
-    },
   },
+  compoundVariants: [
+    { variant: componentVariants.keys.gray, class: { control: 'checked:bg-gray-9 before:bg-gray-contrast' } },
+    { variant: componentVariants.keys.grayAccent, class: { control: 'checked:bg-accent-9 before:bg-accent-contrast' } },
+    { variant: componentVariants.keys.grayWarn, class: { control: 'checked:bg-warn-9 before:bg-warn-contrast' } },
+    { variant: componentVariants.keys.grayDanger, class: { control: 'checked:bg-danger-9 before:bg-danger-contrast' } },
+    { variant: componentVariants.keys.accent, class: { control: 'checked:bg-accent-9 before:bg-accent-contrast' } },
+    { variant: componentVariants.keys.warn, class: { control: 'checked:bg-warn-9 before:bg-warn-contrast' } },
+    { variant: componentVariants.keys.danger, class: { control: 'checked:bg-danger-9 before:bg-danger-contrast' } },
+  ],
 });
 
-const { class: className, radioPosition, elevation, size, variant, textVariants, ...props } = Astro.props;
+const { class: className, elevation, variant, radioPosition, size, textVariants, ...props } = Astro.props;
 const Tag = Astro.slots.has('default') ? 'label' : Fragment;
-const slots = radioGroupRadioVariants({ radioPosition, elevation, size, variant });
+const slots = radioGroupRadioVariants({ elevation, variant, radioPosition, size });
 ---
 
 <Tag data-slot="radio-group-radio" class={slots.base({ className })}>

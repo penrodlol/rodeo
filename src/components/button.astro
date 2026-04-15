@@ -1,4 +1,5 @@
 ---
+import { getComponentVariants } from '@/libs/variant';
 import type { ComponentProps, HTMLAttributes } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Icon from './icon.astro';
@@ -9,12 +10,13 @@ type Props = HTMLAttributes<'button'> & ButtonVariants;
 export type ButtonVariants = VariantProps<typeof buttonVariants> & { icon?: ComponentProps<typeof Icon> };
 
 export const buttonVariants = tv({
+  extend: getComponentVariants({ hover: true, focus: true }).variants,
   slots: {
     base: [
       'inline-flex items-center justify-center gap-2 rounded font-medium',
       'whitespace-nowrap will-change-transform select-none',
+      'focus-visible:ring focus-visible:outline-none',
       'disabled:pointer-events-none disabled:opacity-50',
-      'focus-visible:ring-accent-8 focus-visible:ring focus-visible:outline-none',
       'motion-safe:transition-[background-color,color,scale] motion-safe:active:scale-[0.97]',
     ],
     icon: '',
@@ -22,7 +24,6 @@ export const buttonVariants = tv({
   defaultVariants: { size: '2', variant: 'accent-solid' },
   variants: {
     iconPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
-    elevation: { '1': 'elevation-1', '2': 'elevation-2', '3': 'elevation-3' },
     size: {
       '1': { base: 'h-7.5 px-3 text-sm', icon: 'size-3 opacity-80' },
       '2': { base: 'h-8.5 px-4 text-base', icon: 'size-4 opacity-80' },
@@ -35,48 +36,11 @@ export const buttonVariants = tv({
       '4-icon': { base: 'size-11 shrink-0', icon: 'size-6' },
       '5-icon': { base: 'size-12 shrink-0', icon: 'size-7' },
     },
-    // prettier-ignore
-    variant: {
-      'gray-solid': 'bg-gray-9 text-gray-contrast hover:bg-gray-10',
-      'gray-soft': 'bg-gray-3 text-gray-11 hover:bg-gray-4',
-      'gray-soft-outline': 'bg-gray-3 text-gray-11 border-gray-7 hover:border-gray-8 border',
-      'gray-surface-outline': 'bg-gray-1 text-gray-11 border-gray-8 hover:bg-gray-3 border',
-      'gray-ghost-outline': 'text-gray-11 border-gray-8 hover:bg-gray-3 border',
-      'gray-surface': 'bg-gray-1 text-gray-11 hover:bg-gray-3',
-      'gray-ghost': 'text-gray-11 hover:bg-gray-3',
-      'gray-accent-soft': 'bg-gray-3 text-accent-11 hover:bg-gray-4',
-      'gray-warn-soft': 'bg-gray-3 text-warn-11 hover:bg-gray-4 focus-visible:ring-warn-8',
-      'gray-danger-soft': 'bg-gray-3 text-danger-11 hover:bg-gray-4 focus-visible:ring-danger-8',
-      'gray-accent-soft-outline': 'bg-gray-3 text-accent-11 border-gray-7 hover:border-gray-8 focus-visible:ring-accent-8 border',
-      'gray-warn-soft-outline': 'bg-gray-3 text-warn-11 border-gray-7 hover:border-gray-8 focus-visible:ring-warn-8 border',
-      'gray-danger-soft-outline': 'bg-gray-3 text-danger-11 border-gray-7 hover:border-gray-8 focus-visible:ring-danger-8 border',
-      'accent-solid': 'bg-accent-9 text-accent-contrast hover:bg-accent-10',
-      'accent-soft': 'bg-accent-3 text-accent-11 hover:bg-accent-4',
-      'accent-soft-outline': 'bg-accent-3 text-accent-11 border-accent-7 hover:border-accent-8 border',
-      'accent-surface-outline': 'bg-gray-1 text-accent-11 border-accent-8 hover:bg-accent-3 border',
-      'accent-ghost-outline': 'text-accent-11 border-accent-8 hover:bg-accent-3 border',
-      'accent-surface': 'bg-gray-1 text-accent-11 hover:bg-accent-3',
-      'accent-ghost': 'text-accent-11 hover:bg-accent-3',
-      'warn-solid': 'bg-warn-9 text-warn-contrast hover:bg-warn-10 focus-visible:ring-warn-8',
-      'warn-soft': 'bg-warn-3 text-warn-11 hover:bg-warn-4 focus-visible:ring-warn-8',
-      'warn-soft-outline': 'bg-warn-3 text-warn-11 border-warn-7 hover:border-warn-8 focus-visible:ring-warn-8 border',
-      'warn-surface-outline': 'bg-gray-1 text-warn-11 border-warn-8 hover:bg-warn-3 border',
-      'warn-ghost-outline': 'text-warn-11 border-warn-8 hover:bg-warn-3 border',
-      'warn-surface': 'bg-gray-1 text-warn-11 hover:bg-warn-3',
-      'warn-ghost': 'text-warn-11 hover:bg-warn-3 focus-visible:ring-warn-8',
-      'danger-solid': 'bg-danger-9 text-danger-contrast hover:bg-danger-10 focus-visible:ring-danger-8',
-      'danger-soft': 'bg-danger-3 text-danger-11 hover:bg-danger-4 focus-visible:ring-danger-8',
-      'danger-soft-outline': 'bg-danger-3 text-danger-11 border-danger-7 hover:border-danger-8 focus-visible:ring-danger-8 border',
-      'danger-surface-outline': 'bg-gray-1 text-danger-11 border-danger-8 hover:bg-danger-3 border',
-      'danger-ghost-outline': 'text-danger-11 border-danger-8 hover:bg-danger-3 border',
-      'danger-surface': 'bg-gray-1 text-danger-11 hover:bg-danger-3',
-      'danger-ghost': 'text-danger-11 hover:bg-danger-3 focus-visible:ring-danger-8',
-    },
   },
 });
 
-const { class: className, iconPosition, elevation, size, variant, icon, ...props } = Astro.props;
-const slots = buttonVariants({ iconPosition, elevation, size, variant });
+const { class: className, elevation, variant, iconPosition, size, icon, ...props } = Astro.props;
+const slots = buttonVariants({ elevation, variant, iconPosition, size });
 ---
 
 <button data-slot="button" type="button" class={slots.base({ className })} {...props}>

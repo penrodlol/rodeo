@@ -1,6 +1,6 @@
 ---
 import Icon from '@/components/icon.astro';
-import Surface, { surfaceVariants, surfaceVariantsVariantKeys } from '@/components/surface.astro';
+import Surface, { getSurfaceVariantKeys, surfaceVariants } from '@/components/surface.astro';
 import { componentProvider } from '@/libs/component';
 import type { ComponentProps } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
@@ -11,7 +11,9 @@ type Props = Omit<ComponentProps<typeof Surface<'aside'>>, 'as'> &
 export type NoteVariants = VariantProps<typeof noteVariants>;
 export type NoteType = keyof typeof iconMapper;
 
+export const surfaceVariantKeys = getSurfaceVariantKeys();
 export const noteVariants = tv({
+  extend: surfaceVariants,
   slots: {
     base: [
       'grid grid-cols-[auto_1fr] items-center p-4',
@@ -25,7 +27,6 @@ export const noteVariants = tv({
   },
   defaultVariants: { rounded: true, size: '2', variant: 'gray-soft-outline' },
   variants: {
-    ...surfaceVariants.variants,
     iconHidden: { false: 'gap-x-2' },
     size: {
       '1': { base: 'text-sm', icon: 'size-3.5', content: '[&,*]:text-xs' },
@@ -37,10 +38,10 @@ export const noteVariants = tv({
   },
   // prettier-ignore
   compoundVariants: [
-    { variant: surfaceVariantsVariantKeys.gray, class: { base: 'text-gray-11', content: 'text-gray-12' } },
-    { variant: surfaceVariantsVariantKeys.accent, class: { base: 'text-accent-11', content: 'text-accent-12' } },
-    { variant: surfaceVariantsVariantKeys.warn, class: { base: 'text-warn-11 selection:bg-warn-5', content: 'text-warn-12' } },
-    { variant: surfaceVariantsVariantKeys.danger, class: { base: 'text-danger-11 selection:bg-danger-5', content: 'text-danger-12' } },
+    { variant: surfaceVariantKeys.gray, class: { base: 'text-gray-11', content: 'text-gray-12' } },
+    { variant: surfaceVariantKeys.accent, class: { base: 'text-accent-11', content: 'text-accent-12' } },
+    { variant: surfaceVariantKeys.warn, class: { base: 'text-warn-11 selection:bg-warn-5', content: 'text-warn-12' } },
+    { variant: surfaceVariantKeys.danger, class: { base: 'text-danger-11 selection:bg-danger-5', content: 'text-danger-12' } },
   ],
 });
 

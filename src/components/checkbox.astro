@@ -1,4 +1,5 @@
 ---
+import { getComponentVariants } from '@/libs/variant';
 import type { HTMLAttributes } from 'astro/types';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Icon from './icon.astro';
@@ -8,13 +9,15 @@ type Props = Omit<HTMLAttributes<'input'>, 'type'> & CheckboxVariants & { textVa
 
 export type CheckboxVariants = VariantProps<typeof checkboxVariants>;
 
+export const componentVariants = getComponentVariants({ slot: 'control' });
 export const checkboxVariants = tv({
+  extend: componentVariants.variants,
   slots: {
     base: 'group/checkbox flex w-fit items-center gap-2.5 select-none has-disabled:pointer-events-none has-disabled:opacity-50',
     control: [
       'group/checkbox relative shrink-0 overflow-hidden rounded-sm will-change-transform',
       'has-disabled:pointer-events-none has-disabled:opacity-50',
-      'has-focus-visible:ring-accent-8 has-focus-visible:ring',
+      'has-focus-visible:ring has-focus-visible:outline-none',
       'has-checked:border-transparent has-active:scale-[0.97]',
       'motion-safe:transition-[background-color,color,border-color,scale]',
     ],
@@ -29,7 +32,6 @@ export const checkboxVariants = tv({
   defaultVariants: { size: '2', variant: 'gray-accent-soft-outline' },
   variants: {
     checkboxPosition: { prefix: 'flex-row', suffix: 'flex-row-reverse' },
-    elevation: { '1': { control: 'elevation-1' }, '2': { control: 'elevation-2' }, '3': { control: 'elevation-3' } },
     size: {
       '1': { base: 'text-sm [&+[data-slot="field-description"]]:ml-6', control: 'size-3.5', icon: 'size-3' },
       '2': { base: 'text-base [&+[data-slot="field-description"]]:ml-6.5', control: 'size-4', icon: 'size-3.5' },
@@ -37,40 +39,17 @@ export const checkboxVariants = tv({
       '4': { base: 'text-xl [&+[data-slot="field-description"]]:ml-7.5', control: 'size-5', icon: 'size-4.5' },
       '5': { base: 'text-2xl [&+[data-slot="field-description"]]:ml-8', control: 'size-5.5', icon: 'size-5' },
     },
-    // prettier-ignore
-    variant: {
-      'gray-surface': { control: 'bg-gray-1 text-gray-11 has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-solid': { control: 'bg-gray-9 text-gray-contrast has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-soft': { control: 'bg-gray-3 text-gray-11 has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-soft-outline': { control: 'bg-gray-3 text-gray-11 border-gray-7 border has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-surface-outline': { control: 'bg-gray-1 text-gray-11 border-gray-7 border has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-ghost-outline': { control: 'text-gray-11 border-gray-7 border has-checked:bg-gray-9 has-checked:text-gray-contrast' },
-      'gray-accent-surface': { control: 'bg-gray-1 text-gray-11 has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'gray-accent-solid': { control: 'bg-gray-9 text-gray-contrast has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'gray-accent-soft': { control: 'bg-gray-3 text-gray-11 has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'gray-accent-soft-outline': { control: 'bg-gray-3 text-gray-11 border-gray-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'gray-accent-surface-outline': { control: 'bg-gray-1 text-gray-11 border-gray-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'gray-accent-ghost-outline': { control: 'text-gray-11 border-gray-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-surface': { control: 'bg-accent-1 text-accent-11 has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-solid': { control: 'bg-accent-9 text-accent-contrast has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-soft': { control: 'bg-accent-3 text-accent-11 has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-soft-outline': { control: 'bg-accent-3 text-accent-11 border-accent-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-surface-outline': { control: 'bg-accent-1 text-accent-11 border-accent-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'accent-ghost-outline': { control: 'text-accent-11 border-accent-7 border has-checked:bg-accent-9 has-checked:text-accent-contrast' },
-      'warn-surface': { control: 'bg-warn-1 text-warn-11 has-checked:bg-warn-9 has-checked:text-warn-contrast' },
-      'warn-solid': { control: 'bg-warn-9 text-warn-contrast has-checked:bg-warn-9 has-checked:text-warn-contrast has-focus-visible:ring-warn-8' },
-      'warn-soft': { control: 'bg-warn-3 text-warn-11 has-checked:bg-warn-9 has-checked:text-warn-contrast has-focus-visible:ring-warn-8' },
-      'warn-soft-outline': { control: 'bg-warn-3 text-warn-11 border-warn-7 border has-checked:bg-warn-9 has-checked:text-warn-contrast has-focus-visible:ring-warn-8' },
-      'warn-surface-outline': { control: 'bg-warn-1 text-warn-11 border-warn-7 border has-checked:bg-warn-9 has-checked:text-warn-contrast has-focus-visible:ring-warn-8' },
-      'warn-ghost-outline': { control: 'text-warn-11 border-warn-7 border has-checked:bg-warn-9 has-checked:text-warn-contrast has-focus-visible:ring-warn-8' },
-      'danger-surface': { control: 'bg-danger-1 text-danger-11 has-checked:bg-danger-9 has-checked:text-danger-contrast' },
-      'danger-solid': { control: 'bg-danger-9 text-danger-contrast has-checked:bg-danger-9 has-checked:text-danger-contrast has-focus-visible:ring-danger-8' },
-      'danger-soft': { control: 'bg-danger-3 text-danger-11 has-checked:bg-danger-9 has-checked:text-danger-contrast has-focus-visible:ring-danger-8' },
-      'danger-soft-outline': { control: 'bg-danger-3 text-danger-11 border-danger-7 border has-checked:bg-danger-9 has-checked:text-danger-contrast has-focus-visible:ring-danger-8' },
-      'danger-surface-outline': { control: 'bg-danger-1 text-danger-11 border-danger-7 border has-checked:bg-danger-9 has-checked:text-danger-contrast has-focus-visible:ring-danger-8' },
-      'danger-ghost-outline': { control: 'text-danger-11 border-danger-7 border has-checked:bg-danger-9 has-checked:text-danger-contrast has-focus-visible:ring-danger-8' },
-    },
   },
+  // prettier-ignore
+  compoundVariants: [
+    { variant: componentVariants.keys.gray, class: { control: 'has-checked:text-gray-contrast has-checked:bg-gray-9' } },
+    { variant: componentVariants.keys.grayAccent, class: { control: 'has-checked:text-accent-contrast has-checked:bg-accent-9' } },
+    { variant: componentVariants.keys.grayWarn, class: { control: 'has-checked:text-warn-contrast has-checked:bg-warn-9' } },
+    { variant: componentVariants.keys.grayDanger, class: { control: 'has-checked:text-danger-contrast has-checked:bg-danger-9' } },
+    { variant: componentVariants.keys.accent, class: { control: 'has-checked:text-accent-contrast has-checked:bg-accent-9' } },
+    { variant: componentVariants.keys.warn, class: { control: 'has-checked:text-warn-contrast has-checked:bg-warn-9' } },
+    { variant: componentVariants.keys.danger, class: { control: 'has-checked:text-danger-contrast has-checked:bg-danger-9' } },
+  ],
 });
 
 const { class: className, checkboxPosition, elevation, size, variant, textVariants, ...props } = Astro.props;
