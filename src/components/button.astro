@@ -10,7 +10,7 @@ type Props = HTMLAttributes<'button'> & ButtonVariants;
 export type ButtonVariants = VariantProps<typeof buttonVariants> & { icon?: ComponentProps<typeof Icon> };
 
 export const buttonVariants = tv({
-  extend: getComponentVariants({ hover: true, focus: true }).variants,
+  extend: getComponentVariants({ hover: true }).variants,
   slots: {
     base: [
       'inline-flex items-center justify-center gap-2 rounded font-medium',

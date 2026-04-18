@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 
 export type ComponentVariants = VariantProps<ReturnType<typeof getComponentVariants>['variants']>;
-export type ComponentVariantsProps = { slot?: string; hover?: boolean; focus?: boolean };
+export type ComponentVariantsProps = { slot?: string; hover?: boolean };
 
 // prettier-ignore
 export const getComponentVariants = ({ slot = 'base', hover }: ComponentVariantsProps = {}) => {

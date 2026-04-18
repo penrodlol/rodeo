@@ -8,7 +8,7 @@ type Props = Omit<HTMLAttributes<'input'>, 'type' | 'name'> & RadioGroupRadioVar
 
 export type RadioGroupRadioVariants = VariantProps<typeof radioGroupRadioVariants>;
 
-export const componentVariants = getComponentVariants({ slot: 'control', focus: true });
+export const componentVariants = getComponentVariants({ slot: 'control' });
 export const radioGroupRadioVariants = tv({
   extend: componentVariants.variants,
   slots: {

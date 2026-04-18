@@ -8,7 +8,7 @@ type Props = HTMLAttributes<'input'> & InputVariants;
 export type InputVariants = VariantProps<typeof inputVariants>;
 
 export const inputVariants = tv({
-  extend: getComponentVariants({ focus: true }).variants,
+  extend: getComponentVariants().variants,
   slots: {
     base: [
       'rounded px-4 select-none placeholder:text-current/50',

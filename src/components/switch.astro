@@ -8,7 +8,7 @@ type Props = Omit<HTMLAttributes<'input'>, 'type' | 'role'> & SwitchVariants & {
 
 export type SwitchVariants = VariantProps<typeof switchVariants>;
 
-export const componentVariants = getComponentVariants({ slot: 'control', focus: true });
+export const componentVariants = getComponentVariants({ slot: 'control' });
 export const switchVariants = tv({
   extend: componentVariants.variants,
   slots: {
