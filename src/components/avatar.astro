@@ -1,0 +1,52 @@
+---
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { getComponentVariants } from '../libs/variant';
+import Badge from './badge.astro';
+import Icon from './icon.astro';
+
+type Props = HTMLAttributes<'img'> &
+  AvatarVariants & { fallback?: string | ComponentProps<typeof Icon>; badge?: ComponentProps<typeof Badge> };
+
+export type AvatarVariants = VariantProps<typeof avatarVariants>;
+
+export const avatarVariants = tv({
+  extend: getComponentVariants().variants,
+  slots: {
+    base: 'relative flex shrink-0 items-center justify-center rounded-full select-none',
+    img: 'absolute inset-0 z-10 aspect-square size-full rounded-[inherit] object-cover not-noscript:opacity-0',
+    fallback: 'font-semibold *:data-[slot=icon]:size-full',
+    badge: 'absolute -right-0.5 -bottom-0.5 z-20 rounded-full p-0',
+  },
+  defaultVariants: { variant: 'gray-soft', size: '2' },
+  variants: {
+    size: {
+      '1': { base: 'size-8', fallback: 'text-sm', badge: 'size-3 *:data-[slot=icon]:size-2' },
+      '2': { base: 'size-10', fallback: 'text-base', badge: 'size-4 *:data-[slot=icon]:size-2.5' },
+      '3': { base: 'size-12', fallback: 'text-lg', badge: 'size-4 *:data-[slot=icon]:size-3' },
+      '4': { base: 'size-14', fallback: 'text-xl', badge: 'size-5 *:data-[slot=icon]:size-3.5' },
+      '5': { base: 'size-16', fallback: 'text-2xl', badge: 'size-6 *:data-[slot=icon]:size-4' },
+    },
+  },
+});
+
+const { class: className, src, elevation, variant, size, fallback, badge, onload, ...props } = Astro.props;
+const slots = avatarVariants({ elevation, variant, size });
+---
+
+<div data-slot="avatar" class={slots.base({ className })}>
+  {fallback && <div class={slots.fallback()}>{typeof fallback === 'string' ? fallback : <Icon {...fallback} />}</div>}
+  {badge && <Badge elevation="3" variant="accent-solid" class={slots.badge()} {...badge} />}
+  {
+    src && (
+      <img
+        loading="lazy"
+        decoding="async"
+        src={src}
+        class={slots.img()}
+        onload={`this.classList.remove('not-noscript:opacity-0');${onload}`}
+        {...props}
+      />
+    )
+  }
+</div>

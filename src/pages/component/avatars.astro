@@ -1,0 +1,423 @@
+---
+import Avatar from '@/components/avatar.astro';
+import Surface from '@/components/surface.astro';
+import Layout from '@/layouts/index.astro';
+---
+
+<Layout>
+  <Surface class="flex flex-col gap-6">
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" fallback="UI" />
+      <Avatar variant="gray-solid" fallback="UI" />
+      <Avatar variant="gray-soft" fallback="UI" />
+      <Avatar variant="gray-ghost" fallback="UI" />
+      <Avatar variant="gray-surface-outline" fallback="UI" />
+      <Avatar variant="gray-soft-outline" fallback="UI" />
+      <Avatar variant="gray-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" elevation="1" fallback="UI" />
+      <Avatar variant="gray-solid" elevation="1" fallback="UI" />
+      <Avatar variant="gray-soft" elevation="1" fallback="UI" />
+      <Avatar variant="gray-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="gray-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" elevation="2" fallback="UI" />
+      <Avatar variant="gray-solid" elevation="2" fallback="UI" />
+      <Avatar variant="gray-soft" elevation="2" fallback="UI" />
+      <Avatar variant="gray-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="gray-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" elevation="3" fallback="UI" />
+      <Avatar variant="gray-solid" elevation="3" fallback="UI" />
+      <Avatar variant="gray-soft" elevation="3" fallback="UI" />
+      <Avatar variant="gray-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="gray-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-solid" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" fallback="UI" />
+      <Avatar variant="accent-solid" fallback="UI" />
+      <Avatar variant="accent-soft" fallback="UI" />
+      <Avatar variant="accent-ghost" fallback="UI" />
+      <Avatar variant="accent-surface-outline" fallback="UI" />
+      <Avatar variant="accent-soft-outline" fallback="UI" />
+      <Avatar variant="accent-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" elevation="1" fallback="UI" />
+      <Avatar variant="accent-solid" elevation="1" fallback="UI" />
+      <Avatar variant="accent-soft" elevation="1" fallback="UI" />
+      <Avatar variant="accent-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="accent-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="accent-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="accent-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" elevation="2" fallback="UI" />
+      <Avatar variant="accent-solid" elevation="2" fallback="UI" />
+      <Avatar variant="accent-soft" elevation="2" fallback="UI" />
+      <Avatar variant="accent-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="accent-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="accent-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="accent-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" elevation="3" fallback="UI" />
+      <Avatar variant="accent-solid" elevation="3" fallback="UI" />
+      <Avatar variant="accent-soft" elevation="3" fallback="UI" />
+      <Avatar variant="accent-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="accent-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="accent-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="accent-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-solid" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="accent-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" fallback="UI" />
+      <Avatar variant="warn-solid" fallback="UI" />
+      <Avatar variant="warn-soft" fallback="UI" />
+      <Avatar variant="warn-ghost" fallback="UI" />
+      <Avatar variant="warn-surface-outline" fallback="UI" />
+      <Avatar variant="warn-soft-outline" fallback="UI" />
+      <Avatar variant="warn-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" elevation="1" fallback="UI" />
+      <Avatar variant="warn-solid" elevation="1" fallback="UI" />
+      <Avatar variant="warn-soft" elevation="1" fallback="UI" />
+      <Avatar variant="warn-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="warn-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="warn-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="warn-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" elevation="2" fallback="UI" />
+      <Avatar variant="warn-solid" elevation="2" fallback="UI" />
+      <Avatar variant="warn-soft" elevation="2" fallback="UI" />
+      <Avatar variant="warn-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="warn-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="warn-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="warn-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" elevation="3" fallback="UI" />
+      <Avatar variant="warn-solid" elevation="3" fallback="UI" />
+      <Avatar variant="warn-soft" elevation="3" fallback="UI" />
+      <Avatar variant="warn-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="warn-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="warn-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="warn-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-solid" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="warn-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" fallback="UI" />
+      <Avatar variant="danger-solid" fallback="UI" />
+      <Avatar variant="danger-soft" fallback="UI" />
+      <Avatar variant="danger-ghost" fallback="UI" />
+      <Avatar variant="danger-surface-outline" fallback="UI" />
+      <Avatar variant="danger-soft-outline" fallback="UI" />
+      <Avatar variant="danger-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" elevation="1" fallback="UI" />
+      <Avatar variant="danger-solid" elevation="1" fallback="UI" />
+      <Avatar variant="danger-soft" elevation="1" fallback="UI" />
+      <Avatar variant="danger-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="danger-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="danger-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="danger-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" elevation="2" fallback="UI" />
+      <Avatar variant="danger-solid" elevation="2" fallback="UI" />
+      <Avatar variant="danger-soft" elevation="2" fallback="UI" />
+      <Avatar variant="danger-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="danger-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="danger-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="danger-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" elevation="3" fallback="UI" />
+      <Avatar variant="danger-solid" elevation="3" fallback="UI" />
+      <Avatar variant="danger-soft" elevation="3" fallback="UI" />
+      <Avatar variant="danger-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="danger-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="danger-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="danger-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-solid" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="danger-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" fallback="UI" />
+      <Avatar variant="gray-accent-soft" fallback="UI" />
+      <Avatar variant="gray-accent-ghost" fallback="UI" />
+      <Avatar variant="gray-accent-surface-outline" fallback="UI" />
+      <Avatar variant="gray-accent-soft-outline" fallback="UI" />
+      <Avatar variant="gray-accent-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" elevation="1" fallback="UI" />
+      <Avatar variant="gray-accent-soft" elevation="1" fallback="UI" />
+      <Avatar variant="gray-accent-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="gray-accent-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-accent-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-accent-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" elevation="2" fallback="UI" />
+      <Avatar variant="gray-accent-soft" elevation="2" fallback="UI" />
+      <Avatar variant="gray-accent-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="gray-accent-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-accent-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-accent-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" elevation="3" fallback="UI" />
+      <Avatar variant="gray-accent-soft" elevation="3" fallback="UI" />
+      <Avatar variant="gray-accent-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="gray-accent-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-accent-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-accent-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-accent-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-accent-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-accent-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-accent-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-accent-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" fallback="UI" />
+      <Avatar variant="gray-warn-soft" fallback="UI" />
+      <Avatar variant="gray-warn-ghost" fallback="UI" />
+      <Avatar variant="gray-warn-surface-outline" fallback="UI" />
+      <Avatar variant="gray-warn-soft-outline" fallback="UI" />
+      <Avatar variant="gray-warn-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" elevation="1" fallback="UI" />
+      <Avatar variant="gray-warn-soft" elevation="1" fallback="UI" />
+      <Avatar variant="gray-warn-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="gray-warn-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-warn-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-warn-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" elevation="2" fallback="UI" />
+      <Avatar variant="gray-warn-soft" elevation="2" fallback="UI" />
+      <Avatar variant="gray-warn-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="gray-warn-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-warn-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-warn-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" elevation="3" fallback="UI" />
+      <Avatar variant="gray-warn-soft" elevation="3" fallback="UI" />
+      <Avatar variant="gray-warn-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="gray-warn-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-warn-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-warn-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-warn-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-warn-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-warn-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-warn-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-warn-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" fallback="UI" />
+      <Avatar variant="gray-danger-soft" fallback="UI" />
+      <Avatar variant="gray-danger-ghost" fallback="UI" />
+      <Avatar variant="gray-danger-surface-outline" fallback="UI" />
+      <Avatar variant="gray-danger-soft-outline" fallback="UI" />
+      <Avatar variant="gray-danger-ghost-outline" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" elevation="1" fallback="UI" />
+      <Avatar variant="gray-danger-soft" elevation="1" fallback="UI" />
+      <Avatar variant="gray-danger-ghost" elevation="1" fallback="UI" />
+      <Avatar variant="gray-danger-surface-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-danger-soft-outline" elevation="1" fallback="UI" />
+      <Avatar variant="gray-danger-ghost-outline" elevation="1" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" elevation="2" fallback="UI" />
+      <Avatar variant="gray-danger-soft" elevation="2" fallback="UI" />
+      <Avatar variant="gray-danger-ghost" elevation="2" fallback="UI" />
+      <Avatar variant="gray-danger-surface-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-danger-soft-outline" elevation="2" fallback="UI" />
+      <Avatar variant="gray-danger-ghost-outline" elevation="2" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" elevation="3" fallback="UI" />
+      <Avatar variant="gray-danger-soft" elevation="3" fallback="UI" />
+      <Avatar variant="gray-danger-ghost" elevation="3" fallback="UI" />
+      <Avatar variant="gray-danger-surface-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-danger-soft-outline" elevation="3" fallback="UI" />
+      <Avatar variant="gray-danger-ghost-outline" elevation="3" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-danger-soft" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-danger-ghost" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-danger-surface-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-danger-soft-outline" fallback={{ name: 'user' }} />
+      <Avatar variant="gray-danger-ghost-outline" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-4">
+      <Avatar size="1" fallback="UI" />
+      <Avatar size="2" fallback="UI" />
+      <Avatar size="3" fallback="UI" />
+      <Avatar size="4" fallback="UI" />
+      <Avatar size="5" fallback="UI" />
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-4">
+      <Avatar size="1" fallback={{ name: 'user' }} />
+      <Avatar size="2" fallback={{ name: 'user' }} />
+      <Avatar size="3" fallback={{ name: 'user' }} />
+      <Avatar size="4" fallback={{ name: 'user' }} />
+      <Avatar size="5" fallback={{ name: 'user' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-solid" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-soft" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="accent-surface" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-solid" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-soft" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="accent-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+    </Surface>
+    <!-- prettier-ignore -->
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="warn-surface" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-solid" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-soft" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="warn-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+    </Surface>
+    <!-- prettier-ignore -->
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="danger-surface" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-solid" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-soft" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="danger-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-accent-surface" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-accent-soft" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-accent-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-accent-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-accent-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-accent-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+    </Surface>
+    <!-- prettier-ignore -->
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-warn-surface" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="gray-warn-soft" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="gray-warn-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="gray-warn-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="gray-warn-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+      <Avatar variant="gray-warn-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'warn-solid' }} />
+    </Surface>
+    <!-- prettier-ignore -->
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-danger-surface" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="gray-danger-soft" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="gray-danger-ghost" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="gray-danger-surface-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="gray-danger-soft-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+      <Avatar variant="gray-danger-ghost-outline" fallback="UI" badge={{ icon: { name: 'sparkle' }, variant: 'danger-solid' }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-end gap-4">
+      <Avatar size="1" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar size="2" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar size="3" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar size="4" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar size="5" fallback="UI" badge={{ icon: { name: 'sparkle' } }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-solid" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-soft" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-ghost" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-surface-outline" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-soft-outline" src="/src/assets/icons/logo.svg" alt="Logo" />
+      <Avatar variant="gray-ghost-outline" src="/src/assets/icons/logo.svg" alt="Logo" />
+    </Surface>
+    <!-- prettier-ignore -->
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-solid" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-soft" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-ghost" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-surface-outline" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-soft-outline" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+      <Avatar variant="gray-ghost-outline" src="/src/assets/icons/logo.svg" alt="Logo" badge={{ icon: { name: 'sparkle' } }} />
+    </Surface>
+    <Surface class="flex flex-wrap items-center gap-4">
+      <Avatar variant="gray-surface" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-solid" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-soft" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-ghost" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-surface-outline" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-soft-outline" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+      <Avatar variant="gray-ghost-outline" fallback="UI" src="/src/assets/icons/logoo.svg" alt="Logo" />
+    </Surface>
+  </Surface>
+</Layout>
